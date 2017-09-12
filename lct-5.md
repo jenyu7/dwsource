@@ -1,4 +1,4 @@
-## Tuesday, 9/11 Jumping into the C by Daria "Dasha" Shifrina
+## Monday, 9/11 Jumping into the C by Daria "Dasha" Shifrina
 
 **Interesting Tech News:** [Robot Learns to Follow Orders like Alexa](http://news.mit.edu/2017/robot-learns-to-follow-orders-like-alexa-0830)
 
