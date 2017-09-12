@@ -10,4 +10,5 @@ Don't forget, each new post should go above the one before. If you are late in p
 * Blah
 
 Below you'll find a horizonal bar, please put one at the end of your post.
+
 ---
