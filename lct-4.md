@@ -2,36 +2,36 @@
 
 **Interesting News:** [Apple Face ID](http://www.popsci.com/apple-face-ID)
 
-
-* `man` is a command that will display  a user manual
+`man` is a command that will display  a user manual
        * The manual is divided into sections (we talked about the first three):
-       	    1. executable programs or shell commands
-	    2. system calls
-	    3. library routines
+              1. executable programs or shell commands
+              2. system calls
+              3. library routines
        * If you wanted to look up something from the manual, the command would be `man **keyword**`
-       	   * For example:
-	   	* `man ls`
-		* `man man`
-		* `man stdio`
+              * For example:
+                     * `man ls`
+                     * `man man`
+                     * `man stdio`
        * Some functions may have the same name, and you might want to be able to specify which section the function you want is in.
-       	     * For example, `man printf` will automatically give you the page for a printf in the 1st section. If you wanted to look up a printf from stdio, however, (stdio is in the 3rd section) you would instead type `man 3 printf`. (see below for more details)
+              * For example, `man printf` will automatically give you the page for a printf in the 1st section. If you wanted to look up a printf from stdio, however, (stdio is in the 3rd section) you would instead type `man 3 printf`. (see below for more details)
 
 If you recall from yesterday, when we ran our Hello World code, we were given a warning when using the function `printf()`:
-   * `printf()` is part of stdio, which is the standard input/output library.
+       * `printf()` is part of stdio, which is the standard input/output library.
 
 When compiling your C code, `gcc` will go through two steps:
-     1. Checks if everything matches (syntax, function names, arguments and return type, etc.)
-     	* If it finds a function it does not see defined in the code, it assumes that you know what you're talking about, and will give you a warning.
-     2. Links the code for the external function
-     	* `gcc` can automatically link functions in standard libraries
+       Step 1. Checks if everything matches (syntax, function names, arguments and return type, etc.)
+              * If it finds a function it does not see defined in the code, it assumes that you know what you're talking about, and will give you a warning.
+       Step 2. Links the code for the external function
+              * `gcc` can automatically link functions in standard libraries
 
 Although warnings will still allow you to compile and run your code, it is ideal if your code has no warnings!
-	 * `#include`
-		* Include it in the header of your code
-		* Put system libraries inside <>
-		* Two major libraries we will be using:
-		     1. `#include <stdio.h>`
-		     2. `#include <stdlib.h>`
+
+`#include`
+       * Include it in the header of your code
+       * Put system libraries inside <>
+       * Two major libraries we will be using:
+              1. `#include <stdio.h>`
+              2. `#include <stdlib.h>`
 
 ---
 ## Tuesday, 9/12 Hello, World! by Jake Goldman
