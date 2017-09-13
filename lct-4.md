@@ -1,3 +1,33 @@
+## Tuesday, 9/12 Hello, World! by Jake Goldman
+
+**Interesting News:** [Can AI recreate a game engine?](https://www.digitaltrends.com/computing/ai-super-mario-bros-game-engine/)
+**Bonus:** [Obligatory iPhone X hype](https://www.wired.com/story/apple-iphone-x-iphone-8/)
+
+We began class by looking at a basic hello world program in C:
+
+```C
+int main(){
+  printf("Hello Everybody!\n");
+  return 0;
+}
+```
+After running the code, we discussed several observations:
+* The `main()` method in C doesn't have arguments
+* `printf()` is used to print to the command line (it doesn't add a newline at the end)
+* The 'main()' method can have a return type (usually this will be an int and can indicate how a program terminated)
+
+We then moved on to discuss why we use `./filename` to run C executables. In general, when one uses a command, the machine will search through certain directories stored in a variable known as PATH. As an example, when someone uses `ls`, the computer will go through each of the directories stored in PATH to find a file named ls, which will then be run. The computer only searches in these predetermined directories as a means of security, as certain programs could theoretically run themselves, leading to all kinds of potential issues. By specifying the directory of the executable we are trying to run, we are telling the machine that this is a safe file, and showing where to run it.
+
+History of C:
+The C language was developed by Denis Ritchie in the early 70s while working on UNIX at Bell Labs. The language ended up being the basis of the UNIX kernel, and in 1978, Ritchie along with Brian Kernighan published "The C Programming Language," which is considered to be one of the best books ever written about a programming language.
+
+C Design Choices:
+* C is designed to match very closely with machine level instructions (this creates leaner and faster programs)
+* C is a procedural language (NOT object oriented)
+* C syntax is very similar to Java syntax (Java syntax was based on C)
+
+
+---
 ## Monday, 9/11 Basic C Code by Helen Ye
 
 **Interesting News:** [Pluto's features are being named!](http://www.skyandtelescope.com/astronomy-news/first-pluto-features-officially-named/)
