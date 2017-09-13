@@ -6,14 +6,14 @@
 
 Basic C code
 * Source Code:
-    * Put in .c files (convention)
-    * Naming convention: snake_case
+  * Put in .c files (convention)
+  * Naming convention: snake_case
 * Compiling (with command `gcc`)
-    * Compiles to architecture specific (OS + Processor) executable files
-    * Default name of compiled file is a.out
-    * gcc option: -o \<file\> compiles to the given file name
-		* Run file with ./\<file\>
-			* C checks the $PATH for the file if you just type in the file name, unless you specify  it's directory
+  * Compiles to architecture specific (OS + Processor) executable files
+  * Default name of compiled file is a.out
+	* gcc option: -o \<file\> compiles to the given file name
+	* Run file with ./\<file\>
+		* C checks the $PATH for the file if you just type in the file name, unless you specify  it's directory
 
 ---
 ## Wednesday, 9/6 Blissfull respite, I hardly knew ye by Clyde "Thluffy" Sinclair
