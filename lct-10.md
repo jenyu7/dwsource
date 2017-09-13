@@ -1,6 +1,6 @@
 ## Tuesday, 09/12 Hello, world by Jeffrey Weng
 
-**Interesting Tech News: **[Iphone X hype?](https://www.theverge.com/2017/9/12/16291244/new-iphone-x-photos-video-hands-on)
+**Interesting Tech News:** [Iphone X hype?](https://www.theverge.com/2017/9/12/16291244/new-iphone-x-photos-video-hands-on)
 
 We were told to copy a simple Hello World program in C and compile it:
 
