@@ -1,6 +1,7 @@
 ## Wednesday, 9/13 Variables are the Spice of Life by Jennifer Zhang
 
-** Interesting News:** http://www.popsci.com/apple-face-ID
+**Interesting News:** [Apple Face ID](http://www.popsci.com/apple-face-ID)
+
 
 *`man` is a command that will display  a user manual
        *The manual is divided into sections (we talked about the first three):
