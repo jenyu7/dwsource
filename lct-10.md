@@ -1,6 +1,6 @@
 ## Tuesday, 09/12 Hello, world by Jeffrey Weng
 
-**Interesting Tech News:**[Iphone X hype?](https://www.theverge.com/2017/9/12/16291244/new-iphone-x-photos-video-hands-on)
+**Interesting Tech News: **[Iphone X hype?](https://www.theverge.com/2017/9/12/16291244/new-iphone-x-photos-video-hands-on)
 
 We were told to copy a simple Hello World program in C and compile it:
 
@@ -15,28 +15,28 @@ We also made some distinctions between C and Java:
 * No public/private access modifiers
 * No classes
 * Not `System.out.println()` but `printf()` *(Note: `printf()` doesn't include a new line)*
-* 'main()' instead of 'public static void main(String[] args)' 
+* `main()` instead of `public static void main(String[] args)` 
 * We also touched on the idea of returning 0 instead of using a void function because it shows that the function has ran correctly
 
 
 **IMPORTANT**: C is a imperative/procedural programming language while Java is a OOP language
 
 
-**Calling our compiled file requires us to use `./<filename>` when we're in the same directory as the file instead of calling just the `<filename>`**
-### Why?
+*Calling our compiled file requires us to use `./<filename>` when we're in the same directory as the file instead of calling just the `<filename>`*
+#### Why?
 
 For example if we were to change our filename to a common command such as `ls`, which displays the files in your current directory, how do we determine the difference?
 
-While calling `ls` we access an environmental variable called PATH, which tells the shell which directory to look for the ls program. Note this doesn't call our *ls program* but the
+While calling `ls` we access an environmental variable called **PATH**, which tells the shell which directory to look for the ls program. Note this doesn't call our *ls program* but the
 compiled C program in the system.
 
-To call our *ls program* we would specify which directory it is in, to override our PATH environmental variable. 
+To call our *ls program* we would specify which directory it is in, to override our **PATH** environmental variable. 
 
 Doing this provides us extra security as it stops regular users from manipulating common commands such as `ls` and helps us differentiate similarly named programs.
 
-##### Useful Commands
+#### Useful Commands
 
-`which [-option]` - Searches the path of executable in system paths set in $PATH
+`which [-option]` - Searches the path of executable in system paths set in $PATH <br />
 `echo` - you can use this to either *echo* a string you input or if you provide an environmental variable, show the values of the environmental variable
 
 Examples of `echo`
