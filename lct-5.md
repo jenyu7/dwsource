@@ -1,3 +1,38 @@
+## Wednesday, 9/13 If Variables are the Spice of Life, Then are They SpiceC? By Queenie Xiang
+
+**Interesting Tech News:** [Facebook's Artificial Intelligence Robots Get "Shut Down"](http://www.independent.co.uk/life-style/gadgets-and-tech/news/facebook-artificial-intelligence-ai-chatbot-new-language-research-openai-google-a7869706.html) 
+
+The aim for today's class was "Variables are the spice of life." Our do now was to run <pre><code>$man stdio</code></pre> and share what we learned. 
+
+We found out that <pre><code>$man stdio</code></pre> displayed the manual and documentation for stdio. It shows the name, library, synopsis, description, standards, list of functions, and bugs.
+
+Generally, <code>man</code></pre> represents the manual where you can look up the details of a command or program you're not familiar with. So for example, if you wanted to look up the documentation on <pre><code>ls</code></pre>, you would type in <pre><code>$man ls </code></pre>. Each command/program has a section of the manual it belongs to. The number of the section appears in the top right corner. 
+
+To look up something in a particular section: 
+<pre><code> man section# command/program_name </code></pre> 
+For example, <pre><code>printf</code></pre> exists in many sections. If you wanted to look at the <pre><code>printf</code></pre> in section 3 instead of section 1, you would type:
+<pre><code>$man 3 printf</code></pre>
+
+In the manual, if <pre><code>...</code></pre> is in a function headline, it means the function can take an arbitrary number of arguments. 
+
+To include librarys and use functions defined in other files:
+* (1) Check that you're using the function correctly: the arguments and return type must match what the function defined.
+* (2) Link the code for the external function to your executeable code: GCC can automatically link functions in standard libraries and it grabs ONLY what is needed. 
+
+Use: <pre><code> #include </code></pre> (used during step 1 above) 
+* Used to include function headers with your code: this tells the compiler to look and check for these functions. 
+* It is necessary to match arguments and return type.
+* It's not necessary for linking(step 2 above).
+* If it's a standard C library, use angle brackets: <pre><code> <standard_c_library_name> </code></pre> (otherwise, don't). 
+
+An example of this would be:
+```C 
+#include <stdio.h>
+``` 
+
+By the way, the # in <pre><code> #include </code></pre> is interpreted before all other code. 
+
+---  
 
 ## Tuesday, 9/12 The ABCs of C by Michael Cheng
 
