@@ -30,7 +30,7 @@ An example of this would be:
 #include <stdio.h>
 ``` 
 
-By the way, the # in <code> #include </code> is allows the include to be interpreted before all other code. 
+By the way, the # in <code> #include </code> allows the include to be interpreted before all other code. 
 
 ---  
 
