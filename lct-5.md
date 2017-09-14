@@ -1,3 +1,94 @@
+## Thursday 09/14 Always Read the Fine Print By Ricky Chen
+
+**Interesting Tech News:** [OpenAI bot beats professional DoTA2 players.](https://blog.openai.com/dota-2/) [(Further reading)](https://blog.openai.com/more-on-dota-2/)
+
+Do Now: List the Java primitives.
+* int
+* double
+* float
+* char
+* long
+* short
+* byte
+* boolean
+
+### All About C Primitives
+In C, there are no byte or boolean primitives. All C primitives are numerical, which means that char is expressed using ASCII.
+
+These primitives differ in both their sizes and the content which they can store. int, short, and long are used for integers while double and float are for floating point numbers. The following table should give insight into the the size of each primitive:
+
+| Primitive | Size (Bytes)| Range |
+| ------------- |:-------------:| -----:|
+| int | 4 | ~ -2 billion to 2 billion |
+| char | 1 |    |
+| double | 8 | |
+| float | 4 |  |
+| long | 8 | 14 digits of percision |
+| short | 2 | 7 digits of percision |
+
+### All About Printf
+The function `printf(<string literal>, var1, var2...)` is essential to the C library. It is found in the stdio.h library and can be used by adding `#include <stdio.h>` to your code.
+The function itself can take one argument that must be a string, **not a variable.** If you wish to append a variable to an existing string, you may do something like the following:
+```C
+int i = 29;
+printf("The number is: %d\n", i);
+```
+Notice the use of `%d`. This marks the spot for which the variable will be placed into the string. `%d` is not universal formatting for all data types; thus that the following table should be of use:
+
+| Type | Formatting|
+| ------------- |-------------:|
+| int | %d |
+| char | %c |
+| double | %lf |
+| float | %f |
+| long | %ln |
+| short | %hi |
+| pointer | %p |
+
+As a side note, int is paired with `%d` due to it being a *d*ecimal number.
+
+Following this, we were asked to create a C program that would first print a variable correctly and then incorrectly. This was my code for correctly:
+```C
+#include <stdio.h>
+
+int x = 42;
+double y = 28.6668;
+char z = 's';
+
+int main(){
+    printf("Int is: %d\n", x);
+    printf("Double is: %lf\n", y);
+    printf("Char is: %c\n", z);
+    return 0;
+}
+```
+This was what was shown in the terminal:
+>Int is: 42
+
+>Double is: 28.666800
+
+>Char is: s
+
+Now, for doing it incorrectly, I modified my main class to be:
+```C
+int main(){
+    printf("Int is: %lf\n", x);
+    printf("Double is: %c\n", y);
+    printf("Char is: %d\n", z);
+    return 0;
+}
+```
+Which resulted in:
+>Int is: -0.026042
+
+>Double is:
+
+>Char is: 115
+
+Interesting to note is that I did not get a warning for the third printf call.
+
+---
+
 ## Wednesday, 9/13 If Variables are the Spice of Life, Then are They SpiceC? By Queenie Xiang
 
 **Interesting Tech News:** [Facebook's Artificial Intelligence Robots Get "Shut Down"](http://www.independent.co.uk/life-style/gadgets-and-tech/news/facebook-artificial-intelligence-ai-chatbot-new-language-research-openai-google-a7869706.html) 
