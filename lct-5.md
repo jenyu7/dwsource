@@ -41,8 +41,7 @@ Notice the use of `%d`. This marks the spot for which the variable will be place
 | char | %c |
 | double | %lf |
 | float | %f |
-| long | %ln |
-| short | %hi |
+| long | %ld |
 | pointer | %p |
 
 As a side note, int is paired with `%d` due to it being a *d*ecimal number.
