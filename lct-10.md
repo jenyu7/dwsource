@@ -1,3 +1,23 @@
+## Wednesday 09/13 Variables are the spice of life by Jake Zaia
+
+**Interesting Tech News:**  [Solar panels are getting cheaper faster than expected!](https://arstechnica.com/science/2017/09/solar-now-costs-6-per-kilowatt-hour-beating-government-goal-by-3-years/)
+
+We spent the day discussing libraries in C, and how to include them in our programs, as well as how to utilize the `man` command to its full potential.
+
+### Things to know about `man`
+* `man` is short for "manual", the whole manual of how to use Linux (Or OS X) comes with the computer and is *in* the computer
+* `man` also has pages for C, detailing libraries and commands
+* The manual is split into 9 sections, and to locate each one, you can read the man page for man (`$ man man`)
+* To view a specific section of the man pages, you can pass it the section as a parameter. ex. `$ man 3 printf` will check the 3rd section of the man pages for the page about "printf"
+
+### Things to know about including libraries in C
+* Upon compiling C does 2 things to use library functions
+	1. Checks the function for syntactic use to make sure it is legal
+	2. Links the code for the external function (and ONLY that function) to your executable
+* To include a library in C, you write `#include <libraryname>` including the angle brackets/gang signs 
+
+---
+
 ## Tuesday, 09/12 Hello, world by Jeffrey Weng
 
 **Interesting Tech News:** [Iphone X hype?](https://www.theverge.com/2017/9/12/16291244/new-iphone-x-photos-video-hands-on)
