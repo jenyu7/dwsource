@@ -1,3 +1,62 @@
+## Thursday, 9/14 Primitives by Jeremy Sharapov
+
+**Interesting News:** [US bans Kaspersky software from government agencies](https://www.cnet.com/news/us-bans-kaspersky-software-from-government-agencies-trump-dhs-russia/)
+
+**Bonus (I'm sick of Apple so here's some Google):** [Pixel 2 Launches on October 4th](https://arstechnica.com/gadgets/2017/09/google-teaser-site-promises-a-pixel-2-launch-on-october-4/)
+
+Aim: Always read the fine print!
+
+For our Do Now, we listed all of the primitives in Java, which are: 
+* int
+* char
+* bool
+* float
+* double
+* byte
+* short
+* long
+
+In C we have all of them except bool and byte, and all of them are numeric, with the only differences between them being if it includes floating points and the size of the variable in memory.
+However, do note that the size can be platform dependent; use `sizeOf(<Type>)` to find the size in bytes.
+
+|  Type  | Standard Size (in bytes) |                          Range                         |
+|:------:|:------------------------:|:------------------------------------------------------:|
+|  char  |             1            |                       -128 - 127                       |
+|   int  |             4            |             -2,147,483,648 - 2,147,483,647             |
+|  short |             2            |                    -32,768 - 32,767                    |
+|  long  |             8            | -9,223,372,036,854,775,808 - 9,223,372,036,854,775,807 |
+|  float |             4            |                    7 digit precision                   |
+| double |             8            |                   14 digit presicion                   |
+
+* `printf()` - `stdio.h`
+  * The most important C function
+  * Prints formatted Strings
+  * `printf(<String literal>, <var 1>, <var 2>, ...); `
+  * Simple printf does not need the <var> arguments
+  * printf does not add a newline at the end! Use `\n`
+  * If you want to print variables, you must include formatting placeholders in the String argument
+  
+ ex.
+  ```C
+  int i = 5;
+  int main(){
+    printf("i is %d", i);
+    return 0;
+  }
+  ```
+will print out `"i is 5"`
+
+|         Type        | Formatting Character |
+|:-------------------:|:--------------------:|
+|         int         |          %d          |
+|         long        |          %ld         |
+|        float        |          %f          |
+|        double       |          %lf         |
+|         char        |          %c          |
+| char array (String) |          %s          |
+|       Pointer       |          %p          |
+
+---
 ## Wednesday, 9/13 Variables are the Spice of Life by Jennifer Zhang
 
 **Interesting News:** [Apple Face ID](http://www.popsci.com/apple-face-ID)
