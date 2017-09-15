@@ -1,6 +1,6 @@
 ## Thursday, 9/14 | Always read the fine print | Ahbab Ashraf
 
-**Interesting Tech News** [Iphone X? Never heard of it](https://www.theverge.com/2017/9/14/16306472/google-pixel-2-launch-date-october)
+**Interesting Tech News:** [Iphone X? Never heard of it](https://www.theverge.com/2017/9/14/16306472/google-pixel-2-launch-date-october)
 
 We spent most of the class discussing primitives in C, which largely are the same as in Java. However, both booleans and bytes are excluded in C. Below is a table of the 6 types of primitives, with other important info:
 
@@ -8,8 +8,8 @@ We spent most of the class discussing primitives in C, which largely are the sam
 |:---:|:---:|:---:|
 | char | 1 | -128 to 127 | 
 | int | 4 | ~-2 billion to ~2 billion |
-| short | 2 | a |
-| long | 8 | b |
+| short | 2 |  |
+| long | 8 |  |
 | float | 4 | 7 digit precision |
 | double | 8 | 14 digit precision |
 
