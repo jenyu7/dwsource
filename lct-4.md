@@ -36,14 +36,14 @@ However, do note that the size can be platform dependent; use `sizeOf(<Type>)` t
   * printf does not add a newline at the end! Use `\n`
   * If you want to print variables, you must include formatting placeholders in the String argument
   * ex.
-  ```C
-  int i = 5;
-  int main(){
-    printf("i is %d", i);
-    return 0;
-  }
-  ``` 
-  print outs `"i is 5"`
+    ```C
+    int i = 5;
+    int main(){
+      printf("i is %d", i);
+      return 0;
+    }
+    ``` 
+    print outs `"i is 5"`
 
 |         Type        | Formatting Character |
 |:-------------------:|:--------------------:|
