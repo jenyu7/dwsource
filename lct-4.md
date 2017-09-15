@@ -28,7 +28,7 @@ However, do note that the size can be platform dependent; use `sizeOf(<Type>)` t
 |  float |             4            |                    7 digit precision                   |
 | double |             8            |                   14 digit presicion                   |
 
-* `printf()` - `stdio.h`
+`printf()` - `stdio.h`
   * The most important C function
   * Prints formatted Strings
   * `printf(<String literal>, <var 1>, <var 2>, ...); `
