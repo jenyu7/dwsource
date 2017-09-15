@@ -1,6 +1,6 @@
 ## Thursday, 9/14 | Always read the fine print | Ahbab Ashraf
 
-**Interesting Tech News** [Iphone X? Never heard of it] (https://www.theverge.com/2017/9/14/16306472/google-pixel-2-launch-date-october)
+**Interesting Tech News** [Iphone X? Never heard of it](https://www.theverge.com/2017/9/14/16306472/google-pixel-2-launch-date-october)
 
 We spent most of the class discussing primitives in C, which largely are the same as in Java. However, both booleans and bytes are excluded in C. Below is a table of the 6 types of primitives, with other important info:
 
