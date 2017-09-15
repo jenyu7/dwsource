@@ -1,3 +1,46 @@
+## Thursday, 9/14 | Always read the fine print | Ahbab Ashraf
+
+**Interesting Tech News** [Iphone X? Never heard of it] (https://www.theverge.com/2017/9/14/16306472/google-pixel-2-launch-date-october)
+
+We spent most of the class discussing primitives in C, which largely are the same as in Java. However, both booleans and bytes are excluded in C. Below is a table of the 6 types of primitives, with other important info:
+
+| Primitive | Size(bytes) | Range |
+|:---:|:---:|:---:|
+| char | 1 | -128 to 127 | 
+| int | 4 | ~-2 billion to ~2 billion |
+| short | 2 | a |
+| long | 8 | b |
+| float | 4 | 7 digit precision |
+| double | 8 | 14 digit precision |
+
+#### More about primitives
+* All primitives are numeric
+* They differ in both their sizes and their type of numerical information (floating point vs integer)
+* If you want to find a primitive's size on the fly, you can use ``sizeof(TYPE)`` (from stdlib.in)
+
+We also talked about `printf` and formatting placeholders. This is a way of printing variables more easily than in Java. Here's an example:
+
+```C
+int i = 5;
+printf("i is %d", i);
+```
+
+In this case, `%d` is the placeholder variable for the integer `i`. For every placeholder, there must be a corresponding value in the function call. Below are a number of placeholders and their corresponding data types:
+
+| Type | Placeholder |
+|:---:|:---:|
+| int | %d |
+| long | %ld |
+| float | %f |
+| double | %lf |
+| char | %c |
+| char array | %s |
+| pointer | %p |
+
+**NOTE:** For doubles, `%0.<x>` can be used as a placeholder as well, printing with x digits after the floating point.
+
+---
+
 ## Wednesday 09/13 Variables are the spice of life by Jake Zaia
 
 **Interesting Tech News:**  [Solar panels are getting cheaper faster than expected!](https://arstechnica.com/science/2017/09/solar-now-costs-6-per-kilowatt-hour-beating-government-goal-by-3-years/)
