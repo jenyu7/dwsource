@@ -16,7 +16,7 @@ For our Do Now, we listed all of the primitives in Java, which are:
 * short
 * long
 
-In C we have all of them except bool and byte, and all of them are numeric, with the only differences between them being if it includes floating points and the size of the variable in memory.
+In C we have all of them except bool and byte, and all of them are numeric, with the only differences between them being if they include floating points and the size of the variable in memory.
 However, do note that the size can be platform dependent; use `sizeOf(<Type>)` to find the size in bytes.
 
 |  Type  | Standard Size (in bytes) |                          Range                         |
@@ -35,16 +35,15 @@ However, do note that the size can be platform dependent; use `sizeOf(<Type>)` t
   * Simple printf does not need the <var> arguments
   * printf does not add a newline at the end! Use `\n`
   * If you want to print variables, you must include formatting placeholders in the String argument
-  
- ex.
+  * ex.
   ```C
   int i = 5;
   int main(){
     printf("i is %d", i);
     return 0;
   }
-  ```
-will print out `"i is 5"`
+  ``` 
+  print outs `"i is 5"`
 
 |         Type        | Formatting Character |
 |:-------------------:|:--------------------:|
