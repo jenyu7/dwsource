@@ -1,6 +1,6 @@
 ## Monday, 9/18 More on Variables + Arrays by Mansour Elsharawy
 
-**Tech News!:** [Name of Link](link)
+**Tech News!:** [ANDROID OREO FEATURES Y'ALL](http://www.androidauthority.com/android-8-0-review-758783/)
 
 Aim: A vast array of possibilities
 
