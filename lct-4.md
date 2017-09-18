@@ -1,3 +1,89 @@
+## Monday, 9/18 More on Variables + Arrays by Mansour Elsharawy
+
+**Tech News!:** [Name of Link](link)
+
+Aim: A vast array of possibilities
+
+In the Do Now, we discussed with our partners any interesting, weird, or confusing things/issues we found while working on our Project Euler problems. Then we delved a more into variables in C!
+
+### More on Variables!
+
+First off, character literals can be denoted by single quotes instead of their numerical denomination.
+Example: `char c = 'A';` and `char c = 65;` effectively do the same thing, but one is much more obvious as representing the character A.
+
+String literals also exist, even though there is no String data type in C.
+Example: `"Hello!"`
+
+When declaring variables, the *order* in which you declare variables (and by extension, functions) matters.
+Example...
+
+```C
+
+int i = 7;
+int j = i + 1;
+```
+...is an entirely viable piece of code. *However...*
+
+```C
+int j = i + 1;
+int i = 7;
+```
+...this will not work.
+
+Variables also cannot be initialized in for loops in C, unlike Java, but can be initialized beforehand.
+
+Example of proper for loopage:
+
+```C
+
+int i;
+for(i = 0; i < 10; i++){
+printf("i is %d\n",i);
+}
+```
+
+Variables can also be declared as "unsigned," prohibiting the variable from taking on a negative variable.
+This expands the range of values a variable can have, with 0 as the lower bound and a higher upper bound than an unsigned variable.
+Example: `unsigned char x;` 0 <= x <= 255, where just `char x;` has -128 <= x <= 127
+
+Booleans don't exist in C, but any variable with a value of 0 is regarded as false. *Any* other value evaluates to true.
+
+Example of an infinite loop:
+```C
+while(1){
+printf("To infinity and beyond!");
+}
+
+```
+
+**IMPORTANT**
+```C
+int x=5;
+if(x=6){
+printf("foo");"
+}
+```
+Even though the intended purpose of this code may be to skip the block containing the print statement, "foo" will be printed, as C will interpret the assignment of x to 6, which returns what x was assigned to (6), and that will evaluate as true.
+
+Sometimes we may actually want this effect in the future!
+
+### Memory Management
+
+Memory allocation can happen at either compile or run time (as it is dynamic).
+When the compiler sees you declaring a character variable for example, it will reserve 8 bits in memory for it, and is packaged with the binary of the program.
+
+There is *no* default value for any variable. You get assigned a piece of memory which *might* be zero, but no guarantees!
+
+We also briefly touched arrays, but the bell rang before we got anywhere meaningful besides the initialization:
+
+```C
+int l[5];
+```
+Cheers!
+
+
+
+---
 ## Thursday, 9/14 Primitives by Jeremy Sharapov
 
 **Interesting News:** [US bans Kaspersky software from government agencies](https://www.cnet.com/news/us-bans-kaspersky-software-from-government-agencies-trump-dhs-russia/)
