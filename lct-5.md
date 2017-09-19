@@ -1,3 +1,51 @@
+## Monday 09/18 Data Types and Variables By Daniel Regassa
+
+**Interesting Tech News**: [Intel is working with Waymo to build fully self-driving cars](https://www.theverge.com/2017/9/18/16328284/intel-waymo-partnership-self-driving-car-chrysler)
+
+### Character and String Literals
+* Just to refresh our memories, in programming languages a literal is a value that can never be changed after
+    it is declared, while on the contrary, a variable represents a value that can be redeclared indefinitely.
+* In C, there exist both character and string literals (even though there is no "string" data type)
+* Character Literals are delimited by single quotes like so: `'a'`
+* String Literals are delimited by double quotes like so: `"hello, world!"`
+
+### Unsigned Integers
+* All variables of the primitive data types can be initialized with the `unsigned` keyword at the front
+* Ex: `unsigned int foo = 42;` 
+* Unsigned variables can only take up non-nengative values
+* They can hold up to twice as many positive numbers as their "signed" counterparts
+* For example, a char can hold the values from -128 to 127, while an unsigned char can hold the values 0 to 255
+
+### Booleans
+* Unlike other programming languages like Java or Python, there is no boolean data type.
+* Instead, in C we use integer values for booleans
+* `0` corresponds to false, and any other integer corresponds to true
+
+**WARNING**: Don't do this unintentionally: 
+
+ `if(x = 6){...}` 
+
+When you mean to do this: 
+
+ `if (x == 6){...}`
+
+As in the former the assignment operator will return the value of the integer literal, in this case 6, which will always
+be interpreted as true.
+
+### Memory Management (to be continued in the next lesson)
+* Memory in C is allocated either at compile time (static memory) or run time (dynamic memory)
+
+#### Compiler Allocated Memory
+* Packaged with the compiled binary file
+* The variables and arrays we have been using so far use this type of mamory
+* Variables not have a standard default value, like they would in other languages like Java (the default being `0` for many 
+data types)
+- Instead a variable that has not been declared yet will use whatever value already resides in that spot in memory
+- This is because C's philosophy is to do only exactly what we tell it to, and auto-declaring every variable to a default
+value would be a wasteful operation. C assumes that if we wanted to set something, we would on our own
+
+---
+
 ## Thursday 09/14 Always Read the Fine Print By Ricky Chen
 
 **Interesting Tech News:** [OpenAI bot beats professional DoTA2 players.](https://blog.openai.com/dota-2/) [(Further reading)](https://blog.openai.com/more-on-dota-2/)
