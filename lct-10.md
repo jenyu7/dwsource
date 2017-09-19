@@ -1,3 +1,39 @@
+## Tuesday, 9/19 | What's the point of it all? | Grace Cuenca
+
+**Interesting Tech News:**  [Twitter Cracking Down on Accounts Promoting Terrorism](http://money.cnn.com/2017/09/19/technology/business/twitter-transparency-report/index.html)
+
+## Memory Management 
+* Memory allocation either happens at compiler time or at run time (dynamic)
+* Compiler allocated memory:
+  * Packaged with the binary of the program
+  * There is no standard default value (unlike Java). This is because C doesn't "zero out" anything. This saves processing time.
+  * Variables and arrays are allocated here
+
+Example:
+```C
+float a
+int b[5] //when you do this, you ask the operating system to give you an array of 5 integers. 
+//The memory is allocated when it's compiled, not when it's run
+```
+## Arrays
+* Must have a fixed size set at declaration
+ * However, there is memory before and after the allocation
+ * There is no error that appears if you go beyond the array size (either before or after)
+ ```C
+ b[6]
+ b[-2]
+ //both will not cause errors
+```
+ * **NOTE:** In accessing memory beyond the array, you may run into this error:
+ ```C
+segmentation fault (core dump) //the function is trying to access memory that it's not allowed to
+```
+* When you ask for an array in C, you're asking the operating system for a contiguous block of memory of a certain size
+* There is no length function
+* There is no boundary checking
+
+---
+
 ## Monday, 9/18 | Data Types and Variables | Sabrina Wen
 
 **Interesting Tech News:**  [Computers and Human Brains!](https://nyti.ms/2y5xcLS)
