@@ -1,3 +1,55 @@
+## Monday, 9/18 | Data Types and Variables | Sabrina Wen
+
+**Interesting Tech News:**  [Computers and Human Brains!](https://nyti.ms/2y5xcLS)
+
+We spent the first half of class talking about how to submit homework assignments by using submodules (basically links to separate repositorys), and the second half going over data types and variables in C.
+
+### How to use submodules to submit homework assignments:
+
+1. First, make a *separate repository* for every homework assignment. 
+2. When you commit your repository (or any other repository for that manner), it's recommended that you use the flags `-a -m`. For example: 
+```
+git commit -a -m "This is a commit msg!"
+```
+3. Clone the master repository (aka the class assignment respository) and make sure to use the HTTPS link.
+4. Use the following to add your submodule to the master repository:
+```
+git submodule add *insert HTTPS link wow!*
+```
+5. Commit and push your file as your normally would. You can also remove the master repo from your computer if you want to.
+
+### Data Types and Variables 
+* Character literals are single characters inside `''`. Ex: `'a'`, `'b'`
+* String literals exist, even though there is no string data type. Ex: `"hello"`, `"hi there"`
+* Note that `%s` is the placeholder for a string literal.
+
+* The order that identifiers are declared is important. This includes functions, which must also be declared before they are used.
+* Variables can't be declared inside for loop statements, but they can be initializeD. Ex:
+```C
+int a;
+for (a = 0; a < 10; a++) { 
+    printf("hi\n");
+}
+```
+* Any variable type can be declared as an "unsigned" variable. This means the variable will never be negative.
+	1. The lower bound of any unsigned variable is equal to 0.
+	2. The upper bound of any unsigned variable is greater than the unsigned version.
+Ex: `unsigned char x;` where 0 <= x <= 255
+* All boolean values are numbers. 
+	1. 0 --> false
+	2. anything else --> true
+
+**NOTE:** Since boolean values are represented by numbers, it's easy to trigger an infinite loop. For example:
+```C
+if (x = 6) {
+    do stuff
+}
+```
+Because x is assigned to the variable 6, the boolean value in the if statement will always be true.
+
+
+---
+
 ## Thursday, 9/14 | Always read the fine print | Ahbab Ashraf
 
 **Interesting Tech News:** [Iphone X? Never heard of it](https://www.theverge.com/2017/9/14/16306472/google-pixel-2-launch-date-october)
