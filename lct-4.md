@@ -1,3 +1,51 @@
+## Tuesday, 9/19 Arrays and Memory by Winnie Chen
+**Tech News:** [When Driver and Car Share the Same Brain](http://nautil.us/issue/51/limits/when-driver-and-car-share-the-same-brain)
+
+**Aim:** What’s the point of it all?
+
+### Arrays
+
+Declaring an Array
+
+`<elements' type> <array name>[<array size>]`
+* E.g. ` int b[5]`
+* An array must have a fixed size set at declaration as a literal (not a variable name nor a function).
+* When declaring an array, the program is only requesting memory (generally thought to be consecutive) from the OS. The data currently in the memory is not changed. 
+* In this case, the program is requesting 20 bytes (5 * 4 bytes) of memory from the OS.
+* This memory is allocated at compile time, so one cannot use expressions, which would be evaluated at runtime, as the array size.
+
+    E.g. ` int b[5 + 1]` will not work because the 5 + 1 part is evaluated at runtime, not compile time.
+* There is something different called dynamic memory allocation, which is done at runtime.
+
+There is no length function, but the ` sizeof(<data type or expression>)` function can be used to calculate the length of the array in this way: ` sizeof(<array name>) / sizeof(elements’ type>)`
+
+* E.g. `sizeof(b) / sizeof(int)`
+
+There is no boundary checking.
+
+* When you reference something using an out-of-bounds index, there is no warning nor compiler error.
+
+    E.g. `printf(“%d\n”, b[5]);`
+    
+    This acts normally, printing the current value in the memory there (around the memory specified for the array).
+    
+    Imagine the memory:
+    
+    |Memory                   |            |        |        |        |        |        |           |           |
+    |:------------------------|:-----------|:-------|:-------|:-------|:-------|:-------|:----------|:----------|
+    |Address (4 bytes/element)|996         |1000    |1004    |1008    |1012    |1016    |1020       |1024       |
+    
+    If the array starts at 1000, the memory specified for the array spans from the block with the address 1000 to the block with the address 1016, but there still exists memory before and after that, which can be referenced with out of bounds indices.
+    
+    One can also modify/reference variables using out of bounds arrays, although it is not a good idea to do so.
+    
+    Different compilers allocate memory differently. For example, some compilers pad memory, so there are blocks of memory between each variable.
+    
+    Nowadays, we have protected memory, preventing our programs from referencing memory that other programs are using. Doing so will result in a segmentation fault because the OS will not allow the protected memory to be referenced.
+
+
+
+---
 ## Monday, 9/18 More on Variables + Arrays by Mansour Elsharawy
 
 **Tech News!:** [ANDROID OREO FEATURES Y'ALL](http://www.androidauthority.com/android-8-0-review-758783/)
