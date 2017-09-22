@@ -1,3 +1,52 @@
+## Wednesday, 09/20 Try Not to Hurt Yourself, the Point is Sharp by Jeffrey Luo
+
+**Interesting Tech News**: [Researchers are using machine learning to predict earthquakes](https://phys.org/news/2017-08-machine-learning-earthquake-lab.html)
+
+Today, we were introduced to pointers and how they work alongside memory addresses. Pointers are a relatively new concept as they aren't explicitly featured in Java. Below are the main points we covered in class.
+
+### Pointers and their syntax
+* Pointers simply are variables that store a memory address.
+* Because they're used to store addresses, all pointers are the same size, regardless of type. Typically, they are either 4 or 8 bytes large depending on architecture (32 vs 64 bit).
+* Pointers are denoted by using the asterisk (`*`).
+* Memory addresses can be obtained by using the ampersand (`&`) before the variable. Ex: `&a` returns the address of variable `a`.
+* Addresses stored in pointers can be printed using the `%p` format modifier. Ex: `printf("%p\n", p)` prints the memory address of pointer `p`.
+
+Example:
+```C
+int x = 4;
+int *ip; // creates an integer pointer
+printf("Address of x: %d\n", &x); // prints "Address of x: 15288" (for the sake of this example)
+ip = &x; // initializes pointer 'ip' by assigning it the address of variable 'x'
+```
+We can the visualize the above as:
+
+|         |    x    |       ip     |
+|--------:|:-------:|:------------:|
+|  Value  |      4  |     15288    |
+| Address |  15288  | (not needed) |
+
+* Pointers can be dereferenced  also by using the asterisk (`*`). This returns the value of the data which the pointer points to. Continuing from above:
+```C
+printf("Value of x: %d\n", *ip); // prints "Value of x: 4"
+```
+* Finally, remember that pointers themselves have memory addresses! After all, they are variables themselves.
+
+### Pointer Arithmetic
+
+* As pointers store memory addresses, they can be incremented at a size corresponding to the data type. Because of this, we can access different memory addresses relative to the initial memory address.
+Example: 
+```C
+int a = 10; 
+int *ip = &a;
+char b = 'a'; 
+char *cp = &b;
+ip++; // increments ip by 4 bytes (size of int)
+cp++; // increments cp by 1 byte (size of char)
+```
+
+
+---
+
 ## Monday 09/18 Data Types and Variables By Daniel Regassa
 
 **Interesting Tech News**: [Intel is working with Waymo to build fully self-driving cars](https://www.theverge.com/2017/9/18/16328284/intel-waymo-partnership-self-driving-car-chrysler)
