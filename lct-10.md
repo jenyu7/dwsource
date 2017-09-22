@@ -1,3 +1,72 @@
+## Wednesday, 9/20 | Pointers | Khyber Sen
+
+**Interesting Tech News:**  [Java 9 has just been released last Thursday, bringing a long-awaited module system](https://jaxenter.com/top-9-improvements-features-java-9-136081.html)
+
+### Pointers
+* Normally variables store values, 
+but pointers are special variables that store the memory address.
+Java and Python don't explictly use pointers anywhere, 
+but in both languages, pointers are still used behind the scenes
+for all non-primitives.  But using and manipulating pointers directly
+is completely new.
+* A `*` is used to declare a pointer:
+    ```C
+    int *pointer_to_int;
+    char *pointer_to_char;
+    ```
+* Pointers are just an address, so they can be manipulated just like any other unsigned integer.
+* `&` is the address-of operator.  It returns the address of a variable:
+    ```C
+    int i;
+    int *pointer_to_i = &i;
+    
+    int a[10];
+    int *pointer_to_beginning_of_a = &a[0];
+    pointer_to_beginning_of_a += 5; // now points to 5th int in `a`
+    ```
+* Pointers are strongly-typed too, so `int *` is not the same as `char *`.
+This means that when pointers are arithmetically manipulated, 
+they are treated as offsets into an array of their type.
+Example:
+    ```C
+    char s[100];
+    void *p = s;
+    int *ip = p;
+    assert(p + 10 * (sizeof(int) / sizeof(char)) == ip + 10)
+    ```
+    When you do `ip++`, the address is increased by sizeof(int).
+* `*` is also the de-reference operator, 
+allowing you to access (read or write) the memory at that address:
+    ```C
+    int i = 0;
+    int *ip = &i;
+    *ip = 10;
+    // i is now 10
+    ```
+* Arrays and pointers are slightly different, 
+but an array variable can also be assigned to a pointer
+and treated identically.
+* Pointers can be indexed like arrays, but it is just syntactic sugar.
+`a[i]` is the same as `*(a + i)`.
+* The actual address doesn't really matter and 
+will change every time you run the program.  
+Only offsets from that address into allocated memory matter.
+You could potentially assign any unsigned integer value to a pointer,
+but just like accessing arrays with out of bound indices,
+the results are undefined and will probably create a segfault.
+Pointers should always be kept in allocated memory.
+* Pointers can point to anything:  
+    * normal types like `int` and `char`: `int *` or `char 8`
+    * anything: `void *`
+    * other pointers: `int **` (pointer to a pointer to an int)
+    * even functions: `int (*f)(char)` 
+        (pointer named f to a function accepting a char and return an int)
+
+I found this website really useful in understanding complex pointers:
+https://cdecl.org/
+
+---
+
 ## Tuesday, 9/19 | What's the point of it all? | Grace Cuenca
 
 **Interesting Tech News:**  [Twitter Cracking Down on Accounts Promoting Terrorism](http://money.cnn.com/2017/09/19/technology/business/twitter-transparency-report/index.html)
