@@ -1,3 +1,42 @@
+## Wednesday, 9/20 Try not to hurt yourself, the point is Sharp by Max Chan
+
+**Tech News** [Despite all odds, Hyperloop One just raised another $85 million](https://techcrunch.com/2017/09/22/despite-all-odds-hyperloop-one-just-raised-another-85-million/)
+
+We started off class today by finishing up arrays from the previous day.  The array variable only tracks where the memory allocated for the array is, which is why we can go outside the bounds of the array, and won't get an error.  Then we moved onto pointers.
+
+### Pointers
+* Pointers are variable designed to store memory addresses.
+* `*` is used to denote a pointer variable (`int *p` `double *q` `char *r`)
+* We discussed different type of pointer variables, including int, double, and char
+* Because pointer variables, regardless of type, all point to a memory location, they're all the same size.  Today, most machines will allocate 8 bytes of memory to a pointer variable, while previously it was 4 bytes (Which meant the maximum memory your program could have was 4GB)
+* Pointer variables story the addresses in hexidecimal format
+* When printing pointers, use the `%p` formatting character
+* `&` is used to get the address of a variable:
+```C
+int i;
+int *p;
+p = &i; //p now stores the address of the int i
+```
+* `*` is also the dereference operator, which accesses the value at a memory location:
+
+```C
+int i = 42;
+int *p = &i;
+printf("i = %d\n", *p); // prints "i = 42"
+```
+
+### Pointer Arithmetic
+C will automatically add the right increment of memory to a pointer variable, based on its type:
+```C
+int *p = &i;
+char *c = &l;
+p++; // will add 4 to p
+c++; // will add 1 to c
+```
+
+The reason 4 is added to p is because p points to an int, which has 4 bytes of memory.  Likewise, 1 is added to c because a char is allocated only 1 byte.
+
+
 ## Tuesday, 9/19 Arrays and Memory by Winnie Chen
 **Tech News:** [When Driver and Car Share the Same Brain](http://nautil.us/issue/51/limits/when-driver-and-car-share-the-same-brain)
 
