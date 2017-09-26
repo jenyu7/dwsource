@@ -1,3 +1,44 @@
+## Monday, 9/25 | Functioning Code | Piotr Milewski
+
+**Interesting Tech News:**  [University of Tokyo pair invent loop-based quantum computing technique](https://www.japantimes.co.jp/news/2017/09/24/national/science-health/university-tokyo-pair-invent-loop-based-quantum-computing-technique/#.Wcmv-RdrxhF)
+
+At the start of class we were told to write a c program with a simple function and to call the function in main(). Once we finished writing our basic programs we went over different ways of completing Homework 03. The remainder of the class was spent going over arrays, pointers, and certain unorthodox methods of utilizing arrays and pointers that are looked down upon by Mr. DW and the coding world. At the end of class we briefly discussed writing functions.
+
+### Arrays and Pointers
+* Array variables are immutable pointers. 
+* Pointers can be assigned to array variables.
+	```C
+	int ray[5]; //initialize array of size 5
+	int *rp = ray; //set pointer to array
+	ray[3]; <==> *(ray + 3); //access index 3 of array
+	rp[3]; <==> *(rp + 3); //access index 3 of array (version 2)
+	3[rp]; <==> *(3 + rp); //access index 3 of array (version 3)
+	```
+* From this code snippet we find that `ray[3]` simply translates to `*(ray + 3)` which means that whenever we try to index an array, all we are doing is dereferencing the address of `ray + 3` or in other words, accessing the memory at `ray + 3`. This let's us get away with calls such as `3[ray]` or `3[rp]`, even though they don't make logical sense (so just stick with the regular format of `array[index]`.
+* This is also relevant to Homework 03 because rather than using `*pointer  = &array[i]` to set the address of the pointer, we can use `*pointer = array + i`. 
+	* Since we learned that a pointer of type `int` are treated as offsets of their own type and can be arithmetically manipulated, we can get away with calls such as `*pointer++` to traverse an array in a loop if `*pointer` points to an array.
+
+### Writing Functions
+* Function headers
+	* `<return type> <name>(<parameters>)`
+* All functions are pass by value
+	* Function arguments are new variables that contain a copy of the data passed to them.
+	* However, when we pass a pointer as an argument instead of a variable, then the address of the variable is passed instead of the value. 
+		* Any change made by the function using the pointer is permanently made at the address of the passed variable.
+		```C
+		void foo(int *a){ //pointer *a is an argument
+			*a += 7; //add 7 to the value of pointer *a
+		}
+		int main() {
+			int b = 7; //initialize int b and set it to 7
+			foo(&b); //pass the address of b to foo()
+			return 0;
+		}
+		```
+		* After running this program, the values of `*a` and `b` will both be 14.
+
+---
+
 ## Wednesday, 9/20 | Pointers | Khyber Sen
 
 **Interesting Tech News:**  [Java 9 has just been released last Thursday, bringing a long-awaited module system](https://jaxenter.com/top-9-improvements-features-java-9-136081.html)
