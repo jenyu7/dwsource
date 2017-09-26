@@ -1,3 +1,27 @@
+## Thursday, 9/25 How to Write Functioning Code, by alex lu
+
+**Tech News** [In flight Netflix will be available on more airlines in 2018](https://www.engadget.com/2017/09/25/in-flight-netflix-comes-to-more-airlines/)
+
+We kicked off class with a quick presentation of Charles' homework, followed by some relevant questions pertaining to pointers. 
+### Pointers and Arrays
+* Array variables are immutable pointers
+* Pointers can be assigned to array variables
+
+We learned that `array[17]` is simply shorthand for `*(array + 3)`. This can get us into some fun and interesting trouble.
+```
+int array[100];
+array[17] = *(array + 17)
+==> *(17 + array)
+==> 17[array]
+```
+Hm... This doesn't seem too logical. Don't do it! But this emphasises that `array[17]` is nothing more than shorthand, so the communative property gives us the strange expression `17[array]`. Let's talk about functions.
+
+### Function Stuff
+* Header format: <return type>, <name>, (<arguments>){...}
+* ALL functions are "pass by value"
+* This means that if a fxn `foo(int a)` takes in some int k, the fxn will create a copy of k, named a: `foo(k) ==> a = k`
+* The arguments are just variables containing the value passed to them
+
 ## Wednesday, 9/20 Try not to hurt yourself, the point is Sharp by Max Chan
 
 **Tech News** [Despite all odds, Hyperloop One just raised another $85 million](https://techcrunch.com/2017/09/22/despite-all-odds-hyperloop-one-just-raised-another-85-million/)
