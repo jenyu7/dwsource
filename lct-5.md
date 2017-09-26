@@ -1,3 +1,63 @@
+## Monday, 9/25 How to Write Functioning Code, by Michael Lee
+
+**Interesting Tech News:** [Poor coding limits IS hackers' cyber-capabilities, says researcher](http://www.bbc.com/news/technology-41385619)
+
+We started class with Alex presenting his homework code. Many of us had code that looked something like this:
+```C
+int *p;
+p = &array1[9-i];
+array2[i] = *p;
+```
+
+While this code is correct, `&array1[9-i]` is redundant. If we do `array[index]`, that is shorthand for `*(array + index)`. A smarter way to do this would be `p = array + 9 - i`, which uses addition of pointers. 
+
+Then we looked at an extreme case of C funkiness. Because array indexing is simply just pointer addition, the commutative property applies. Therefore:
+
+```C
+array[25]
+```
+and
+```C
+25[array]
+```
+yield the same result. However, good programmers would never do this because it is a headache to read.
+
+
+
+#### Functions
+C functions are structured similar to their java counterparts:
+* returntype name(parameters){...}
+Arguments are pass by values, meaning a copy of them is stored and used in the body of the function. This means if you have code like this:
+```C
+void foo(int a){
+    a++;
+}
+
+int main(){
+    int b = 3;
+    foo(b);
+    printf("%d\n", b);
+    return 0;
+}
+```
+the output value of b would still be `3`. 
+
+---
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 ## Wednesday, 09/20 Try Not to Hurt Yourself, the Point is Sharp by Jeffrey Luo
 
 **Interesting Tech News**: [Researchers are using machine learning to predict earthquakes](https://phys.org/news/2017-08-machine-learning-earthquake-lab.html)
