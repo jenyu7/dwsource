@@ -1,3 +1,42 @@
+## Tuesday, 9/26 | Headers| by Bayan Berri
+
+**Interesting Tech News:** [Excel's getting smarter](https://techcrunch.com/2017/09/26/microsoft-excel-is-about-to-get-a-lot-smarter/)
+
+###### Aim: Let's head to function town. 
+
+#### Continuing from Yesterday:
+* We started class by continuing from the foo function that we spoke about at the end of Monday's class. 
+* We mentioned that foo works on an array as well. 
+We can do:
+
+```C
+void foo (float *x) 
+or
+void foo(float *x[])
+```
+
+Object variables in Java are similar to pointers in c.
+#### Void Pointers ####
+* Used when a pointer is needed but you don't know or care about the type. 
+* Moves by __1 byte__ 
+* Points to a chunk of memory. 
+* (More on this in the future)
+
+As we already know- in C the order that identifiers are declared matters. Including functions, so they must be declared before use. There are a few ways to do this.
+
+#### Declarations Possibilities ####
+* Functions are declared before main
+* You can declare a function header at the top and write a function header and body later on in the code (or not, you can declare it and not define it). If you decide to do this it solves the issue of function dependency in a weird circulation. You also won't need to include names for the variables (Only the type) 
+```C
+void foo (int, int);
+```
+* The last possibility is to put all your headers in a file my_headers.h for example. At the top of your c program make sure to include my_headers.h (.h can be anything but .h is convention.) However it isn't included using angle brackets the usual way. 
+
+
+```C
+#include "my_headers.h"
+```
+---
 ## Monday, 9/25 | Functioning Code | Piotr Milewski
 
 **Interesting Tech News:**  [University of Tokyo pair invent loop-based quantum computing technique](https://www.japantimes.co.jp/news/2017/09/24/national/science-health/university-tokyo-pair-invent-loop-based-quantum-computing-technique/#.Wcmv-RdrxhF)
