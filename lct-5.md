@@ -1,3 +1,47 @@
+## Tuesday, 9/26 Let's Head to Function Town by Cesar Mu
+
+**Interesting Tech News:** [Twitter just doubled the character limit for tweets to 280](https://www.theverge.com/2017/9/26/16363912/twitter-character-limit-increase-280-test)
+
+Today we continued our discussion on passing by value and array variables, and learned of new ways to fix function declaration orders.
+
+### Passing Arrays Into Functions
+* Functions that take arrays as arguments can use pointer variables as their parameters.
+```C
+float arr[5];
+foo(arr);
+
+void foo(float *x){...} // *x will refer to the memory address of the array "arr"
+```
+* This works because array variables are inherently immutable pointers.
+
+### Declaring Functions
+* C is a procedural language, meaning that the order of the functions matters.
+* Previously, we would just place any helper functions we needed at the top of the code and call it a day, but this will run into issues when we have cyclical functions that call on themselves.
+
+* #### We have 2 better ways to fix this issue: 
+    1. Declare the function header at the beginning of the code, then define later.
+        * You don't need to provide names for the parameters, you just need the data types.
+        ```C
+        void print_array(int, int); // beginning of the code
+        ...
+        void print_array(int x, int y){...} // later on in the code
+        ```
+    2. Put the function headers in a separate file, then `#include` the header file.
+        * When `#include`ing, the header file name must be in quotes.
+        ```C
+        // in "my_header.h"
+        void print_array(int, int);
+        
+        // in "program.c"
+        #include "my_header.h"
+        ```
+
+### Other Interesting Things
+* An array variable points to a memory address, but that variable itself also has the same memory address.
+* There is no way to determine what data type an array holds, because the collection of 0s and 1s in memory can be interpreted in any way, as int, float, double, etc.
+
+---
+
 ## Monday, 9/25 How to Write Functioning Code, by Michael Lee
 
 **Interesting Tech News:** [Poor coding limits IS hackers' cyber-capabilities, says researcher](http://www.bbc.com/news/technology-41385619)
