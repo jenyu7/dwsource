@@ -1,8 +1,58 @@
+## Tuesday, 9/26 Let's Head to Function Town, by Jonathan Wong
+
+**Tech News** [Twitter is experimenting with 280-char tweets](https://www.theverge.com/2017/9/26/16363912/twitter-character-limit-increase-280-test)
+
+Once we came into class, we were asked to bring up a copy of HW#3, the array_swap hw using pointers. Upon the completion of this, we went over how to create functions again.  
+
+### Passing Arrays
+
+* Arrays are pointers, and thus only store a memory address
+*This means that if you pass an array to a function, you're simply passing the memory address, NOT a copy.
+
+```C
+int arr[2];
+arr[0] = 0;
+
+void changeArr(int arr[]){
+  arr[0] = 5;
+}
+
+changeArr(arr);
+
+printf("arr 0 is %d\n", arr[0]); // will return 5
+```
+
+### Getting around pass by value
+
+* If we want to use a function to change a variable, we can pass a pointer as a parameter to the function.
+
+### Using Functions in a Procedural-based language
+* Since C is a procedural based language, using functions can get a little tricky, especially when calling functions within other functions. This leaves three options.
+  1. Declare all the functions in such an order such that the functions that other functions rely on are declared first. This can get messy and very confusing.
+  2. C has something called function headers. They look like this.
+  ```C
+  void changeArr(int arr[]);
+  ```
+  Or this.
+  ```C
+  void changeArr(int* );
+  ```
+  A function header is simply the first line of the function. It does not require parameter names, as it only type checks.
+  3. Option 2, but outsourcing the function headers to another file. In C, these are header files, and they typically end in `.h`. To do this, you need to let the compiler know where your header file is.
+  ```C
+  #include “PATH/filename.h”
+  ```
+  Note that angle brackets are not included, being replaced by quotes instead. This is because the angle brackets are for special locations like `usr/bin` where standard libraries are stored.
+
+### Misc.
+
+* You can use pointers and arrays in very similar manners.
+
 ## Thursday, 9/25 How to Write Functioning Code, by alex lu
 
 **Tech News** [In flight Netflix will be available on more airlines in 2018](https://www.engadget.com/2017/09/25/in-flight-netflix-comes-to-more-airlines/)
 
-We kicked off class with a quick presentation of Charles' homework, followed by some relevant questions pertaining to pointers. 
+We kicked off class with a quick presentation of Charles' homework, followed by some relevant questions pertaining to pointers.
 ### Pointers and Arrays
 * Array variables are immutable pointers
 * Pointers can be assigned to array variables
@@ -73,7 +123,7 @@ Declaring an Array
 `<elements' type> <array name>[<array size>]`
 * E.g. ` int b[5]`
 * An array must have a fixed size set at declaration as a literal (not a variable name nor a function).
-* When declaring an array, the program is only requesting memory (generally thought to be consecutive) from the OS. The data currently in the memory is not changed. 
+* When declaring an array, the program is only requesting memory (generally thought to be consecutive) from the OS. The data currently in the memory is not changed.
 * In this case, the program is requesting 20 bytes (5 * 4 bytes) of memory from the OS.
 * This memory is allocated at compile time, so one cannot use expressions, which would be evaluated at runtime, as the array size.
 
@@ -89,21 +139,21 @@ There is no boundary checking.
 * When you reference something using an out-of-bounds index, there is no warning nor compiler error.
 
     E.g. `printf(“%d\n”, b[5]);`
-    
+
     This acts normally, printing the current value in the memory there (around the memory specified for the array).
-    
+
     Imagine the memory:
-    
+
     |Memory                   |            |        |        |        |        |        |           |           |
     |:------------------------|:-----------|:-------|:-------|:-------|:-------|:-------|:----------|:----------|
     |Address (4 bytes/element)|996         |1000    |1004    |1008    |1012    |1016    |1020       |1024       |
-    
+
     If the array starts at 1000, the memory specified for the array spans from the block with the address 1000 to the block with the address 1016, but there still exists memory before and after that, which can be referenced with out of bounds indices.
-    
+
     One can also modify/reference variables using out of bounds arrays, although it is not a good idea to do so.
-    
+
     Different compilers allocate memory differently. For example, some compilers pad memory, so there are blocks of memory between each variable.
-    
+
     Nowadays, we have protected memory, preventing our programs from referencing memory that other programs are using. Doing so will result in a segmentation fault because the OS will not allow the protected memory to be referenced.
 
 
@@ -203,7 +253,7 @@ Cheers!
 
 Aim: Always read the fine print!
 
-For our Do Now, we listed all of the primitives in Java, which are: 
+For our Do Now, we listed all of the primitives in Java, which are:
 * int
 * char
 * bool
@@ -239,7 +289,7 @@ However, do note that the size can be platform dependent; use `sizeOf(<Type>)` t
       printf("i is %d", i);
       return 0;
     }
-    ``` 
+    ```
     print outs `"i is 5"`
 
 |         Type        | Formatting Character |
