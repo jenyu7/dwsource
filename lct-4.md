@@ -1,3 +1,67 @@
+## Wednesday, 9/27 Strings in C by Anthony Hom
+
+**Tech News** [A smaller Echo and thee new Echo Plus from Amazon](https://www.theverge.com/2017/9/27/16375984/amazon-echo-plus-hands-on-impressions-photos)
+
+We started class off by writing a block of code that had a char-typed pointer pointing to the string 'hello' and a char-typed array containing 'hello'. At the end the code contained a print statement that referred to the address of 'hello'. Afterwards, the class went over why the print statement with the 'hello' address was the same as the pointer's address as opposed to the array's address. Then we went to talk more about strings and memory addresses.
+
+```C
+#include <stdio.h>
+#include <stdlib.h>
+
+int main(){
+char *s = "hello";
+char s1[] = "hello";
+printf("s points to: %p\n", s);
+printf("s1 points to %p\n", s1);
+printf("address of \"hello\": %p\n", &"hello");
+
+// -----------------------------------------------
+
+char s2[5];
+printf("s: %s\n", s);
+s2[0]= 'h';
+s2[1] = 'i';
+s2[2] = 0;
+printf("s2: %s\n", s2);
+
+return 0;
+}
+```
+
+### About that address...
+* We determined that in the first part of the block of code above, &hello refers to an address of the literal string 'hello' which array s1 does not do.
+
+### What are strings?
+* Strings are char arrays, or an array of char.
+* By convention, strings end with a null character.
+* Examples include either `''` or `C 0 ` or ` '\0' ` (Escape 0). We do this for the escape 0 because it is an ascii value.
+* IMPORTANT: The null character is useful for using while loops instead of length. Why? Because we do not know the length of the string in C and we cannot return the size back.
+
+### More on the null
+* When you make a literal string using ` "" `, an immutable string is created in the memory. These strings are automatically null terminated.
+
+### How does C know our address?
+* When using multiple literals, C does not make a copy of them and C will refer to the same string.
+* All references to the same literal string refers to the same immutable string in the memory.
+
+### Declaring Strings
+* `char s[256]` is a normal array declaration. This array allocates 256 bytes. We could use all 256 bytes, but some things could break . 
+* It is important that we use 255 bytes of this array and leave the last byte null.
+
+###Examples:
+```C 
+char s[256] = "Imagine"; // Allocates 256 bytes and creates an immutable string "Imagine"
+// It then copies (including the terminating null) into the array
+```
+```C
+char s[] = "Tuesday";
+```
+* Array s allocates 8 bytes. It creates an immutable string "Tuesday" and then copies the string and the null into the array.
+
+### The last part of the block of code in the Do Now!
+* Given our array s2 with 5 bytes, we fill in index 0 to 1 with 'hi', followed by the terminating null.
+* IMPORTANT: After the null, anything that we put in the array afterwards will not be displayed nor is used by the array. 
+
 ## Tuesday, 9/26 Let's Head to Function Town, by Jonathan Wong
 
 **Tech News** [Twitter is experimenting with 280-char tweets](https://www.theverge.com/2017/9/26/16363912/twitter-character-limit-increase-280-test)
