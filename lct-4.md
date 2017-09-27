@@ -48,15 +48,15 @@ return 0;
 * `char s[256]` is a normal array declaration. This array allocates 256 bytes. We could use all 256 bytes, but some things could break . 
 * It is important that we use 255 bytes of this array and leave the last byte null.
 
-###Examples:
+### Examples:
 ```C 
 char s[256] = "Imagine"; // Allocates 256 bytes and creates an immutable string "Imagine"
 // It then copies (including the terminating null) into the array
 ```
 ```C
-char s[] = "Tuesday";
+char s[] = "Tuesday"; //Array s allocates 8 bytes. 
+// It creates an immutable string "Tuesday" and then copies the string and the null into the array.
 ```
-* Array s allocates 8 bytes. It creates an immutable string "Tuesday" and then copies the string and the null into the array.
 
 ### The last part of the block of code in the Do Now!
 * Given our array s2 with 5 bytes, we fill in index 0 to 1 with 'hi', followed by the terminating null.
