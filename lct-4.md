@@ -38,6 +38,7 @@ printf("arr 0 is %d\n", arr[0]); // will return 5
   void changeArr(int* );
   ```
   A function header is simply the first line of the function. It does not require parameter names, as it only type checks.
+  
   3. Option 2, but outsourcing the function headers to another file. In C, these are header files, and they typically end in `.h`. To do this, you need to let the compiler know where your header file is.
   ```C
   #include “PATH/filename.h”
