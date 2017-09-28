@@ -7,7 +7,7 @@ Today we used our knowledge of arrays and pointers to understand how strings wor
 ### Strings in c
 Strings as character arrays
 * Strings in c are simply character arrays.
-* By convention, the last character in a string is a NULL character, denoted by `0`, `""`, or `"\0"`.
+* By convention, the last character in a string is a NULL character, denoted by `0`, or `'\0'`.
 * This allows the end of a string to be found, as otherwise there is no way to find the length of an array.
 * When printing a string, for example, everything from starting from the pointer location to the next null character is printed.
 
