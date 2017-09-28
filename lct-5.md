@@ -1,3 +1,27 @@
+## Wednesday, 9/27 cstrings by Eric Zhang
+
+**Interesting Tech News:** [Some websites are using visitors' computers to mine cryptocurrency as an alternative to running ads](https://www.theguardian.com/technology/2017/sep/27/pirate-bay-showtime-ads-websites-electricity-pay-bills-cryptocurrency-bitcoin?CMP=twt_gu)
+
+Today we used our knowledge of arrays and pointers to understand how strings work in c.
+
+### Strings in c
+Strings as character arrays
+* Strings in c are simply character arrays.
+* By convention, the last character in a string is a NULL character, denoted by `0`, `""`, or `"\0"`.
+* This allows the end of a string to be found, as otherwise there is no way to find the length of an array.
+* When printing a string, for example, everything from starting from the pointer location to the next null character is printed.
+
+String literals
+* When creating a string literal using `""`, an immutable string is created in memory, and is automatically null terminated.
+* Consequently, all references to the same string literal reference the same immutable string in memory.
+
+Declaring strings
+* `char s[256];` is a normal array declaration, allocating 256 bytes to character array s.
+* `char s[256] = "Imagine";` allocates the memory to s, then creates and copies the immutable string "Imagine", including the terminating null character.
+* `char s[] = "Imagine";` creates the immutable string "Imagine", then allocates the appropriate amount of memory to s and copies it.
+
+---
+
 ## Tuesday, 9/26 Let's Head to Function Town by Cesar Mu
 
 **Interesting Tech News:** [Twitter just doubled the character limit for tweets to 280](https://www.theverge.com/2017/9/26/16363912/twitter-character-limit-increase-280-test)
