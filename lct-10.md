@@ -25,7 +25,7 @@ int main(){
 * By convention, strings end with a null character, either:
   * `''`
   * `0`
-  * `'\0'` --- This is because 0 has an ASCII, so by placing an escape sequence, we place the character with code 0
+  * `'\0'` --- This is because 0 has an ASCII value, so by placing an escape sequence, we place the character with code 0
 * When you make a literal string using `""`, an immutable character array (string) is created in memory. The string will be automatically terminated (the last element is set to a null character)
 * All references to same literal string refer to the same immutable string in memory
 #### Declaring Strings
