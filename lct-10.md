@@ -1,3 +1,53 @@
+
+## Thursday, 9/28 | A string of functions | by Kristin Lin
+
+**Interesting Tech News:** [Tech and Photography?](https://www.nytimes.com/2017/09/27/technology/personaltech/how-technology-has-changed-news-photography-over-40-years.html)
+
+*DO NOW: Write a function to find length of strings.*
+
+One possible way: 
+```C
+int str_length (char *point) { //note, NOT char s[]
+  int len = 0;
+  while (*point) { //because 0 is FALSE in C
+    count++;
+    point++;
+  }
+  return len;
+}
+```
+Another possible way using POINTERS:
+```C
+// gist: create a char pointer, increment until null, each char is 1 byte, so subtract
+int str_length (char *point) {
+  char *i;
+  for (i = point; *i; i++); //note, empy FOR loops can be ended with a semicolon
+  return i - point;
+}
+```
+*INTERESTING NOTE: [What is "obfuscated code"?](http://www.ioccc.org/)*
+
+#### Declaring Strings (CONT.) ####
+* `char *s3 = "mankind"`          
+creates immutable string "mankind" and returns a pointer to that string. You cannot modify strings created this way because the memory the pointer points to is immutable.
+
+* `char s[] = "hello"; //ok!`             
+`s[] = "seven"; //NOT ok`             
+array pointers are immutable
+
+* `char * s = "hello"; //ok!`                  
+`s = "seven"; //also ok!`            
+regular pointers are NOT immutable
+
+
+###### THE TWO ESSENTIAL QUESTIONS: ######
+1. *"Is my pointer immutable?"*
+2. *"Is the data my pointer is pointing to immutable?"*
+
+For homework, we split into groups of four, with the numbers 0, 1, 2, 3 being assigned by our seating arrangement.
+
+---
+
 ## Wednesday, 9/27 | ctrings | by Khinshan "Shan" Khan [ :octocat: ](https://github.com/)
 
 **Interesting Tech News:** [MIT CSAIL's origami-bot wears foldable exosuits](https://www.engadget.com/2017/09/27/mit-csail-transforming-robot-origami-exoskeleton/)
