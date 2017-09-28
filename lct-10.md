@@ -1,36 +1,104 @@
+## Wednesday, 9/27 | ctrings | by Khinshan "Shan" Khan [ :octocat: ](https://github.com/)
+
+**Interesting Tech News:** [MIT CSAIL's origami-bot wears foldable exosuits](https://www.engadget.com/2017/09/27/mit-csail-transforming-robot-origami-exoskeleton/)
+
+We started off with a do now involving us to see pointers and how they were related:
+
+```C
+#include <stdio.h>
+#include <stdlib.h>
+
+int main(){
+  char *s = "hello";
+  char s1[] = "hello";
+  printf("s points to: %p\n", s);
+  printf("s1 points to %p\n", s1);
+  printf("address of \"hello\": %p\n", &"hello");
+
+  return 0;
+}
+```
+
+#### Strings
+* Strings are character arrays
+  * formatting character would be `%s`
+* By convention, strings end with a null character, either:
+  * `''`
+  * `0`
+  * `'\0'` --- This is because 0 has an ASCII, so by placing an escape sequence, we place the character with code 0
+* When you make a literal string using `""`, an immutable character array (string) is created in memory. The string will be automatically terminated (the last element is set to a null character)
+* All references to same literal string refer to the same immutable string in memory
+#### Declaring Strings
+
+```C
+// normal array declaration
+// allocates 256 bytes
+char s[256];
+
+// allocates 256 bytes
+// will create the immutable string "imagine", and then copies it into a character array along with null character
+char s[256]= "imagine";
+
+// allocates 8 bytes
+// will create the immutable string "Tuesday", and then copies it into a character array along with null character
+char s[]= "Tuesday";
+```
+
+Endowed with this knowledge, we proceeded to see the effects of self entered null characters:
+<br>(following code was just added into main)
+
+```C
+char s2[4];
+
+s2[0]= 'h';
+s2[1] = 'i';
+s2[2] = '!';
+printf("s2: %s\n", s2);
+
+s2[0]= 'h';
+s2[1] = '0';
+s2[2] = '!';
+printf("s2: %s\n", s2);
+```
+
+Will be continued tomorrow. 
+
+
+---
+
 ## Tuesday, 9/26 | Headers| by Bayan Berri
 
 **Interesting Tech News:** [Excel's getting smarter](https://techcrunch.com/2017/09/26/microsoft-excel-is-about-to-get-a-lot-smarter/)
 
-###### Aim: Let's head to function town. 
+###### Aim: Let's head to function town.
 
 #### Continuing from Yesterday:
-* We started class by continuing from the foo function that we spoke about at the end of Monday's class. 
-* We mentioned that foo works on an array as well. 
+* We started class by continuing from the foo function that we spoke about at the end of Monday's class.
+* We mentioned that foo works on an array as well.
 We can do:
 
 ```C
-void foo (float *x) 
+void foo (float *x)
 or
 void foo(float *x[])
 ```
 
 Object variables in Java are similar to pointers in c.
 #### Void Pointers ####
-* Used when a pointer is needed but you don't know or care about the type. 
-* Moves by __1 byte__ 
-* Points to a chunk of memory. 
+* Used when a pointer is needed but you don't know or care about the type.
+* Moves by __1 byte__
+* Points to a chunk of memory.
 * (More on this in the future)
 
 As we already know- in C the order that identifiers are declared matters. Including functions, so they must be declared before use. There are a few ways to do this.
 
 #### Declarations Possibilities ####
 * Functions are declared before main
-* You can declare a function header at the top and write a function header and body later on in the code (or not, you can declare it and not define it). If you decide to do this it solves the issue of function dependency in a weird circulation. You also won't need to include names for the variables (Only the type) 
+* You can declare a function header at the top and write a function header and body later on in the code (or not, you can declare it and not define it). If you decide to do this it solves the issue of function dependency in a weird circulation. You also won't need to include names for the variables (Only the type)
 ```C
 void foo (int, int);
 ```
-* The last possibility is to put all your headers in a file my_headers.h for example. At the top of your c program make sure to include my_headers.h (.h can be anything but .h is convention.) However it isn't included using angle brackets the usual way. 
+* The last possibility is to put all your headers in a file my_headers.h for example. At the top of your c program make sure to include my_headers.h (.h can be anything but .h is convention.) However it isn't included using angle brackets the usual way.
 
 
 ```C
@@ -44,7 +112,7 @@ void foo (int, int);
 At the start of class we were told to write a c program with a simple function and to call the function in main(). Once we finished writing our basic programs we went over different ways of completing Homework 03. The remainder of the class was spent going over arrays, pointers, and certain unorthodox methods of utilizing arrays and pointers that are looked down upon by Mr. DW and the coding world. At the end of class we briefly discussed writing functions.
 
 ### Arrays and Pointers
-* Array variables are immutable pointers. 
+* Array variables are immutable pointers.
 * Pointers can be assigned to array variables.
 	```C
 	int ray[5]; //initialize array of size 5
@@ -54,7 +122,7 @@ At the start of class we were told to write a c program with a simple function a
 	3[rp]; <==> *(3 + rp); //access index 3 of array (version 3)
 	```
 * From this code snippet we find that `ray[3]` simply translates to `*(ray + 3)` which means that whenever we try to index an array, all we are doing is dereferencing the address of `ray + 3` or in other words, accessing the memory at `ray + 3`. This let's us get away with calls such as `3[ray]` or `3[rp]`, even though they don't make logical sense (so just stick with the regular format of `array[index]`.
-* This is also relevant to Homework 03 because rather than using `*pointer  = &array[i]` to set the address of the pointer, we can use `*pointer = array + i`. 
+* This is also relevant to Homework 03 because rather than using `*pointer  = &array[i]` to set the address of the pointer, we can use `*pointer = array + i`.
 	* Since we learned that a pointer of type `int` are treated as offsets of their own type and can be arithmetically manipulated, we can get away with calls such as `*pointer++` to traverse an array in a loop if `*pointer` points to an array.
 
 ### Writing Functions
@@ -62,7 +130,7 @@ At the start of class we were told to write a c program with a simple function a
 	* `<return type> <name>(<parameters>)`
 * All functions are pass by value
 	* Function arguments are new variables that contain a copy of the data passed to them.
-	* However, when we pass a pointer as an argument instead of a variable, then the address of the variable is passed instead of the value. 
+	* However, when we pass a pointer as an argument instead of a variable, then the address of the variable is passed instead of the value.
 		* Any change made by the function using the pointer is permanently made at the address of the passed variable.
 		```C
 		void foo(int *a){ //pointer *a is an argument
@@ -83,9 +151,9 @@ At the start of class we were told to write a c program with a simple function a
 **Interesting Tech News:**  [Java 9 has just been released last Thursday, bringing a long-awaited module system](https://jaxenter.com/top-9-improvements-features-java-9-136081.html)
 
 ### Pointers
-* Normally variables store values, 
+* Normally variables store values,
 but pointers are special variables that store the memory address.
-Java and Python don't explictly use pointers anywhere, 
+Java and Python don't explictly use pointers anywhere,
 but in both languages, pointers are still used behind the scenes
 for all non-primitives.  But using and manipulating pointers directly
 is completely new.
@@ -99,13 +167,13 @@ is completely new.
     ```C
     int i;
     int *pointer_to_i = &i;
-    
+
     int a[10];
     int *pointer_to_beginning_of_a = &a[0];
     pointer_to_beginning_of_a += 5; // now points to 5th int in `a`
     ```
 * Pointers are strongly-typed too, so `int *` is not the same as `char *`.
-This means that when pointers are arithmetically manipulated, 
+This means that when pointers are arithmetically manipulated,
 they are treated as offsets into an array of their type.
 Example:
     ```C
@@ -115,7 +183,7 @@ Example:
     assert(p + 10 * (sizeof(int) / sizeof(char)) == ip + 10)
     ```
     When you do `ip++`, the address is increased by sizeof(int).
-* `*` is also the de-reference operator, 
+* `*` is also the de-reference operator,
 allowing you to access (read or write) the memory at that address:
     ```C
     int i = 0;
@@ -123,12 +191,12 @@ allowing you to access (read or write) the memory at that address:
     *ip = 10;
     // i is now 10
     ```
-* Arrays and pointers are slightly different, 
+* Arrays and pointers are slightly different,
 but an array variable can also be assigned to a pointer
 and treated identically.
 * Pointers can be indexed like arrays, but it is just syntactic sugar.
 `a[i]` is the same as `*(a + i)`.
-* The actual address doesn't really matter and 
+* The actual address doesn't really matter and
 will change every time you run the program.  
 Only offsets from that address into allocated memory matter.
 You could potentially assign any unsigned integer value to a pointer,
@@ -139,7 +207,7 @@ Pointers should always be kept in allocated memory.
     * normal types like `int` and `char`: `int *` or `char 8`
     * anything: `void *`
     * other pointers: `int **` (pointer to a pointer to an int)
-    * even functions: `int (*f)(char)` 
+    * even functions: `int (*f)(char)`
         (pointer named f to a function accepting a char and return an int)
 
 I found this website really useful in understanding complex pointers:
@@ -151,7 +219,7 @@ https://cdecl.org/
 
 **Interesting Tech News:**  [Twitter Cracking Down on Accounts Promoting Terrorism](http://money.cnn.com/2017/09/19/technology/business/twitter-transparency-report/index.html)
 
-## Memory Management 
+## Memory Management
 * Memory allocation either happens at compiler time or at run time (dynamic)
 * Compiler allocated memory:
   * Packaged with the binary of the program
@@ -161,7 +229,7 @@ https://cdecl.org/
 Example:
 ```C
 float a
-int b[5] //when you do this, you ask the operating system to give you an array of 5 integers. 
+int b[5] //when you do this, you ask the operating system to give you an array of 5 integers.
 //The memory is allocated when it's compiled, not when it's run
 ```
 ## Arrays
@@ -191,8 +259,8 @@ We spent the first half of class talking about how to submit homework assignment
 
 ### How to use submodules to submit homework assignments:
 
-1. First, make a *separate repository* for every homework assignment. 
-2. When you commit your repository (or any other repository for that manner), it's recommended that you use the flags `-a -m`. For example: 
+1. First, make a *separate repository* for every homework assignment.
+2. When you commit your repository (or any other repository for that manner), it's recommended that you use the flags `-a -m`. For example:
 ```
 git commit -a -m "This is a commit msg!"
 ```
@@ -203,7 +271,7 @@ git submodule add *insert HTTPS link wow!*
 ```
 5. Commit and push your file as your normally would. You can also remove the master repo from your computer if you want to.
 
-### Data Types and Variables 
+### Data Types and Variables
 * Character literals are single characters inside `''`. Ex: `'a'`, `'b'`
 * String literals exist, even though there is no string data type. Ex: `"hello"`, `"hi there"`
 * Note that `%s` is the placeholder for a string literal.
@@ -212,7 +280,7 @@ git submodule add *insert HTTPS link wow!*
 * Variables can't be declared inside for loop statements, but they can be initializeD. Ex:
 ```C
 int a;
-for (a = 0; a < 10; a++) { 
+for (a = 0; a < 10; a++) {
     printf("hi\n");
 }
 ```
@@ -220,7 +288,7 @@ for (a = 0; a < 10; a++) {
 	1. The lower bound of any unsigned variable is equal to 0.
 	2. The upper bound of any unsigned variable is greater than the unsigned version.
 Ex: `unsigned char x;` where 0 <= x <= 255
-* All boolean values are numbers. 
+* All boolean values are numbers.
 	1. 0 --> false
 	2. anything else --> true
 
@@ -243,7 +311,7 @@ We spent most of the class discussing primitives in C, which largely are the sam
 
 | Primitive | Size(bytes) | Range |
 |:---:|:---:|:---:|
-| char | 1 | -128 to 127 | 
+| char | 1 | -128 to 127 |
 | int | 4 | ~-2 billion to ~2 billion |
 | short | 2 |  |
 | long | 8 |  |
@@ -294,7 +362,7 @@ We spent the day discussing libraries in C, and how to include them in our progr
 * Upon compiling C does 2 things to use library functions
 	1. Checks the function for syntactic use to make sure it is legal
 	2. Links the code for the external function (and ONLY that function) to your executable
-* To include a library in C, you write `#include <libraryname>` including the angle brackets/gang signs 
+* To include a library in C, you write `#include <libraryname>` including the angle brackets/gang signs
 
 ---
 
@@ -315,7 +383,7 @@ We also made some distinctions between C and Java:
 * No public/private access modifiers
 * No classes
 * Not `System.out.println()` but `printf()` *(Note: `printf()` doesn't include a new line)*
-* `main()` instead of `public static void main(String[] args)` 
+* `main()` instead of `public static void main(String[] args)`
 * We also touched on the idea of returning 0 instead of using a void function because it shows that the function has ran correctly
 
 
@@ -330,7 +398,7 @@ For example if we were to change our filename to a common command such as `ls`, 
 While calling `ls` we access an environmental variable called **PATH**, which tells the shell which directory to look for the ls program. Note this doesn't call our *ls program* but the
 compiled C program in the system.
 
-To call our *ls program* we would specify which directory it is in, to override our **PATH** environmental variable. 
+To call our *ls program* we would specify which directory it is in, to override our **PATH** environmental variable.
 
 Doing this provides us extra security as it stops regular users from manipulating common commands such as `ls` and helps us differentiate similarly named programs.
 
@@ -356,22 +424,22 @@ OPTIONAL TEXTBOOK: The C Programming Language by Brian Kernighan and Dennis Ritc
 
 **Interesting Tech News:** ['The New Yorker' on Hyperloops](https://www.newyorker.com/tech/elements/hypnotized-by-elon-musks-hyperloop)
 
-We learned the basics of C programming by creating a file and compiling it. Here are the steps to creating your very own executable C file: 
+We learned the basics of C programming by creating a file and compiling it. Here are the steps to creating your very own executable C file:
 1. Write source code in a text editor and save with the `.c` extension. <br>
-	* **Note**: The naming convention for C is **snake_case**, _where all words are lowercase and distinct words are separated by underscores._ 
-  
+	* **Note**: The naming convention for C is **snake_case**, _where all words are lowercase and distinct words are separated by underscores._
+
 2. Open the command line and type in `gcc <filename>`. <br>
-	* **gcc** stands for "GNU C Compiler", and compiles the file to the architecture specific (OS + Processor) executable file. 
-  
-3. ``ls`` to list the files in your current directory. 
-   * You will see an ``a.out`` file, which is the default name of a compiled file in the C programming language. 
+	* **gcc** stands for "GNU C Compiler", and compiles the file to the architecture specific (OS + Processor) executable file.
+
+3. ``ls`` to list the files in your current directory.
+   * You will see an ``a.out`` file, which is the default name of a compiled file in the C programming language.
 4. Run the executable file: `./a.out`
 
 OPTIONAL BUT **HIGHLY** RECOMMENDED <br>
 Rename your `a.out` file! Despite it being the default name, it's by no means descriptive and will be overwritten if another C file is compiled within the same directory. <br><br>
 To do so: <br>
-``gcc -o <new_filename> <filename>``<br> 
-\* `new_filename` does not include an extension. 
+``gcc -o <new_filename> <filename>``<br>
+\* `new_filename` does not include an extension.
 <br><br>
 Example: <br>
 If I did: `gcc -o hi hello.c`<br>
