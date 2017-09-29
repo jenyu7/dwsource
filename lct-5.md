@@ -1,3 +1,55 @@
+
+## Thursday, 9/28 | A string of functions | by Angelica Zverovich
+
+**Interesting Tech News:** [Liquid Nitrogen Drives 18-Core Core i9-7980XE Above 6GHz](https://www.extremetech.com/computing/256623-liquid-nitrogen-drives-18-core-core-i9-7980xe-6ghz)
+
+*DO NOW: Write a function to find length of strings.*
+
+There are many possible ways to do this. 
+Here is one example using bracket notation: 
+```C
+int length(char *s) {
+  int i = 0; 
+  while (s[i]) { //not necessary to write s[i] != 0 as the conditional because 0 is false in C
+    i ++;
+  }
+  return i;
+}
+```
+Here is another example using pointers:
+```C
+int length (char *s) {
+    int i = 0; 
+    while (*s++) { //you can imcrement the pointer in the while loop statement
+        i ++;
+    }
+    return i;
+  
+}
+```
+
+Note that while it is possible to make the argument a char[] instead of a char * , any array is automatically passed as a pointer to the function, so there is no purpose in doing so. 
+
+#### Declaring Strings ####
+* `char *s2 = "Mankind"`  
+
+   Creates immutable string "mankind" and returns a pointer to that string.You cannot modify strings created this way because the memory the pointer points to is immutable.
+
+* You can only assign char arrays with = at declaration 
+
+   `char s[] = "hello"; //ok!`             
+   `s[] = "seven"; //NOT ok`
+
+   Array are immutable pointers, you can't reassign an array pointer.
+
+* Char pointers can assigned using = at any time 
+
+    `char * s = "hello"; //ok!`                  
+    `s = "seven"; //also ok!`            
+
+---
+
+
 ## Wednesday, 9/27 cstrings by Eric Zhang
 
 **Interesting Tech News:** [Some websites are using visitors' computers to mine cryptocurrency as an alternative to running ads](https://www.theguardian.com/technology/2017/sep/27/pirate-bay-showtime-ads-websites-electricity-pay-bills-cryptocurrency-bitcoin?CMP=twt_gu)
