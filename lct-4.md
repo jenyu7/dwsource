@@ -1,3 +1,41 @@
+## Thursday, 9/28 Functions with Srings by Gilvir Gill
+**Tech Noos** [San Francisco Sues Equifax over data breach] (https://techcrunch.com/2017/09/27/san-francisco-sues-equifax-on-behalf-of-15-million-californians-affected-by-the-breach/)
+
+We started clas by writing code that will return the length of the string, abusing the fact that String literals are automatically terminated with '\0's (null, or 0). We had the idea of 0 being false reinforced by realizing that we could just terminate with the boolean `(*(str+ i))`, which will return 0 when it lands on the null.
+
+
+```C
+#include <stdio.h>
+int str_len(char * str) {
+    int i = -1;
+    while ((str[++i]));
+    return i;
+}
+
+void main() {
+    char * s = "hello";
+    char * s0 = "";
+    printf("Length of \"%s\": %d\n", s, str_len(s)); 
+    printf("Length of \"%s\": %d\n", s0, str_len(s0)); 
+}
+```
+We also reviewed the difference between different expressions, particularly mutable pointers, immutable arrays, immutable String literals, and their mutable copies held in array locations.
+
+For example:
+
+* `char *s3 = "Mankind"` just points to the immutable piece of memory that holds "Mankind" 
+
+In addition, you can only assign char arrays with = at declaration. If you declare it with an = it first finds the literal that was created in the beginning in memory and then clones it in an O(n) procedure. On the other hand, if you declare a char pointer, it simply points to the literal. If you want to ensure that you have a mutable copy of a string, you want to declare it with an array. You can of course assign a pointer to it afterwards if needed. 
+
+We were later told to examine one of four functions:
+* 0 : strcpy/strncpy
+* 1 : strcat/strncat
+* 2 : strcmp/strncmp
+* 3 : strchr/strstr
+
+for homework. 
+
+
 ## Wednesday, 9/27 Strings in C by Anthony Hom
 
 **Tech News** [A smaller Echo and thee new Echo Plus from Amazon](https://www.theverge.com/2017/9/27/16375984/amazon-echo-plus-hands-on-impressions-photos)
