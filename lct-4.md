@@ -150,7 +150,7 @@ printf("arr 0 is %d\n", arr[0]); // will return 5
 ### Misc.
 
 * You can use pointers and arrays in very similar manners.
-
+---
 ## Thursday, 9/25 How to Write Functioning Code, by alex lu
 
 **Tech News** [In flight Netflix will be available on more airlines in 2018](https://www.engadget.com/2017/09/25/in-flight-netflix-comes-to-more-airlines/)
