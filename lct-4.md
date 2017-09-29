@@ -35,7 +35,7 @@ We were later told to examine one of four functions:
 
 for homework. 
 
-
+---
 ## Wednesday, 9/27 Strings in C by Anthony Hom
 
 **Tech News** [A smaller Echo and thee new Echo Plus from Amazon](https://www.theverge.com/2017/9/27/16375984/amazon-echo-plus-hands-on-impressions-photos)
@@ -216,7 +216,7 @@ The reason 4 is added to p is because p points to an int, which has 4 bytes of m
 
 ## Tuesday, 9/19 Arrays and Memory by Winnie Chen
 **Tech News:** [When Driver and Car Share the Same Brain](http://nautil.us/issue/51/limits/when-driver-and-car-share-the-same-brain)
-
+---
 **Aim:** What’s the point of it all?
 
 ### Arrays
