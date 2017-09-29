@@ -3,7 +3,7 @@
 
 **Interesting Tech News:** [Liquid Nitrogen Drives 18-Core Core i9-7980XE Above 6GHz](https://www.extremetech.com/computing/256623-liquid-nitrogen-drives-18-core-core-i9-7980xe-6ghz)
 
-*DO NOW: Write a function to find length of strings.*
+**DO NOW**: Write a function to find length of strings.
 
 There are many possible ways to do this. 
 Here is one example using bracket notation: 
