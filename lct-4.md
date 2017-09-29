@@ -100,6 +100,7 @@ char s[] = "Tuesday"; //Array s allocates 8 bytes.
 * Given our array s2 with 5 bytes, we fill in index 0 to 1 with 'hi', followed by the terminating null.
 * IMPORTANT: After the null, anything that we put in the array afterwards will not be displayed nor is used by the array. 
 
+---
 ## Tuesday, 9/26 Let's Head to Function Town, by Jonathan Wong
 
 **Tech News** [Twitter is experimenting with 280-char tweets](https://www.theverge.com/2017/9/26/16363912/twitter-character-limit-increase-280-test)
