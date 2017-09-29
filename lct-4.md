@@ -1,5 +1,5 @@
 ## Thursday, 9/28 Functions with Srings by Gilvir Gill
-**Tech Noos** [San Francisco Sues Equifax over data breach] (https://techcrunch.com/2017/09/27/san-francisco-sues-equifax-on-behalf-of-15-million-californians-affected-by-the-breach/)
+**Tech Noos** [San Francisco Sues Equifax over data breach](https://techcrunch.com/2017/09/27/san-francisco-sues-equifax-on-behalf-of-15-million-californians-affected-by-the-breach/)
 
 We started clas by writing code that will return the length of the string, abusing the fact that String literals are automatically terminated with '\0's (null, or 0). We had the idea of 0 being false reinforced by realizing that we could just terminate with the boolean `(*(str+ i))`, which will return 0 when it lands on the null.
 
