@@ -174,7 +174,7 @@ Hm... This doesn't seem too logical. Don't do it! But this emphasises that `arra
 * ALL functions are "pass by value"
 * This means that if a fxn `foo(int a)` takes in some int k, the fxn will create a copy of k, named a: `foo(k) ==> a = k`
 * The arguments are just variables containing the value passed to them
-
+---
 ## Wednesday, 9/20 Try not to hurt yourself, the point is Sharp by Max Chan
 
 **Tech News** [Despite all odds, Hyperloop One just raised another $85 million](https://techcrunch.com/2017/09/22/despite-all-odds-hyperloop-one-just-raised-another-85-million/)
