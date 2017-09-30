@@ -37,10 +37,10 @@ Don't copy strings that are larger than the destination string.
 Make sure that the terminating `0` will be copied over into the destination string.
 
 ```C
-  printf("%s\n", * strncpy( str2, str1, sizeof( str2 ) )); // will result in "hello" being printed
-  printf("%s\n", * strncpy( str3, str1, sizeof( str3 ) )); // will result in 
+  printf("%s\n", strncpy( str2, str1, sizeof( str2 ) )); // will result in "hello" being printed
+  printf("%s\n", strncpy( str3, str1, sizeof( str3 ) )); // will result in "he" being printed
 ```
-This is a way to ensure that you won't end up with an error or unintended behavior as seen above with `strcpy`.
+By setting the maximum amount of chars equal to the size of `dest`, you can ensure that you won't end up with an error or unintended behavior as seen above with `strcpy`.
 
 #### `strcat` and `strncat`
 ##### `strcat( char * dest, char * src );`
