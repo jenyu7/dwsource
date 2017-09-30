@@ -1,3 +1,108 @@
+---
+
+## Friday, 9/29 | string.h functions | By Naotaka Kinoshita
+
+**Interesting Tech News:** [Tattoos to Monitor Your Health](https://news.harvard.edu/gazette/story/2017/09/harvard-researchers-help-develop-smart-tattoos/)
+
+We spent the class introducing the various string.h functions that we were assigned for homework.
+
+#### `strcpy` and `strncpy`
+### `strcpy( char * dest, char * src );`
+### `strncpy( char * dest, char * src, int n);`
+
+These two functions are made for copying strings. They both work by copying the `src` into `dest`. However, `strncpy` only copies the first `n` characters of `src`. Note that these functions change `dest`, so `dest` cannot be immutable, but `src` can. 
+
+```C
+#include <string.h>
+int main() {
+
+  char str1[] = "hello";
+  char str2[20];
+  char str3[2];
+  
+  printf("%s\n", * strcpy( str2, str1 )); // will result in "hello" being printed
+```
+Note that for the first usage of `strcpy`, the first argument, "hello", is smaller in size than the second argument, which will allow for the copying to take place.
+
+```C
+  printf("%s\n", * strcpy( str3, str1 )); // will result in bad things (it could possibly work, but can also result in an Abort trap)
+```
+Don't copy strings that are larger than the destination string.
+
+`strncpy` is like strcpy, but safer. You should probably use `strncpy` anytime you want to copy strings, regardless of how much of the string you want to copy over. 
+
+```C
+  printf("%s\n", * strncpy( str3, str1, 1 )); // will result in "h" being printed
+  printf("%s\n", * strncpy( str3, str1, 2 )); // terminating null won't be copied over - don't do this
+```
+Make sure that the terminating `0` will be copied over into the destination string.
+
+```C
+  printf("%s\n", * strncpy( str2, str1, sizeof( str2 ) )); // will result in "hello" being printed
+  printf("%s\n", * strncpy( str3, str1, sizeof( str3 ) )); // will result in 
+```
+This is a way to ensure that you won't end up with an error or unintended behavior as seen above with `strcpy`.
+
+####`strcat` and `strncat`
+### `strcat( char * dest, char * src );`
+### `strncat( char * dest, char * src, int n);`
+These two functions are used to concatenate the source string to the destination string. As with `strcpy` and `strncpy`, `strncat` takes a number of chars in the source string that you want to concatenate over.
+
+```C
+#include <string.h>
+int main() {
+
+  char str1[16] = "h";
+  char * str2 = "ello";
+  
+  printf("%s\n",  * strcat( str1, str2 )); // will result in "hello" being printed
+```
+Note that the size of `str1` has to be large enough for the size of `str1` + the size of `str2`. Like `strcpy` and `strncpy`, the destination string can't be immutable, but the source can.
+
+```C
+  printf("%s\n",  * strncat( str1, str2, 3 )); // will result in "hell" being printed
+```
+`strncat` will take the number of chars specificed, in this case 3, and concatenate to the destination string. 
+
+####`strcmp` and `strncmp`
+###`strcmp( char * s1, char * s2 );`
+###`strncmp( char * s1, char * s2, int n ); `
+These two functions compare the two strings. If `s1` is less than `s2`, a negative integer is returned, if `s1` is equal to `s2`, zero is returned, and if `s1` is greater than `s2`, a positive integer is returned. Note that the return value is not -1, 0, or 1, unlike other languages. `strncmp` will compare only the first `n` chars of the string, while `strcmp` will compare the entire string.
+
+```C
+#include <string.h>
+int main() {
+
+  printf("%d\n", strcmp("A", "a")); // will print -1
+  printf("%d\n", strcmp("A", "A")); // will print 0
+  printf("%d\n", strcmp("a", "A")); // will print 1
+  
+  printf("%d\n", strncmp("aA", "Aa", 1)); // compares "a" with "A" -- prints 1
+  
+  return 0;
+}
+```
+
+####`strchr` and `strstr`
+###`strchr( char * s1, char c );`
+###`strstr( char * s1, char * s);`
+`strchr` returns a pointer to the first instance of the specified char `c`, while `strstr` returns a pointer to the index of the first char in the first occurence of the substring `s` in `s1`. 
+
+```C
+#include <string.h>
+int main() {
+  printf("%p\n", strchr("hello", 'e')); // will return pointer to 'e'
+  printf("%c\n", * strchr("hello", 'e')); // will print 'e'
+  printf("%p\n", strchr("hello", 'a')); // will return null pointer
+    
+  printf("%p\n", strstr("hello", "el")); // will return pointer to 'e'
+  printf("%p\n", strstr("hello", "abc")); // will return null pointer
+  
+  return 0;
+}
+```
+Note that looking for a substring or char that doesn't occur in the string will result in a null pointer being returned.
+---
 
 ## Thursday, 9/28 | A string of functions | by Kristin Lin
 
