@@ -1,4 +1,3 @@
----
 
 ## Friday, 9/29 | string.h functions | By Naotaka Kinoshita
 
@@ -7,8 +6,8 @@
 We spent the class introducing the various string.h functions that we were assigned for homework.
 
 #### `strcpy` and `strncpy`
-### `strcpy( char * dest, char * src );`
-### `strncpy( char * dest, char * src, int n);`
+##### `strcpy( char * dest, char * src );`
+##### `strncpy( char * dest, char * src, int n);`
 
 These two functions are made for copying strings. They both work by copying the `src` into `dest`. However, `strncpy` only copies the first `n` characters of `src`. Note that these functions change `dest`, so `dest` cannot be immutable, but `src` can. 
 
@@ -43,9 +42,9 @@ Make sure that the terminating `0` will be copied over into the destination stri
 ```
 This is a way to ensure that you won't end up with an error or unintended behavior as seen above with `strcpy`.
 
-####`strcat` and `strncat`
-### `strcat( char * dest, char * src );`
-### `strncat( char * dest, char * src, int n);`
+#### `strcat` and `strncat`
+##### `strcat( char * dest, char * src );`
+##### `strncat( char * dest, char * src, int n);`
 These two functions are used to concatenate the source string to the destination string. As with `strcpy` and `strncpy`, `strncat` takes a number of chars in the source string that you want to concatenate over.
 
 ```C
@@ -64,9 +63,9 @@ Note that the size of `str1` has to be large enough for the size of `str1` + the
 ```
 `strncat` will take the number of chars specificed, in this case 3, and concatenate to the destination string. 
 
-####`strcmp` and `strncmp`
-###`strcmp( char * s1, char * s2 );`
-###`strncmp( char * s1, char * s2, int n ); `
+#### `strcmp` and `strncmp`
+##### `strcmp( char * s1, char * s2 );`
+##### `strncmp( char * s1, char * s2, int n ); `
 These two functions compare the two strings. If `s1` is less than `s2`, a negative integer is returned, if `s1` is equal to `s2`, zero is returned, and if `s1` is greater than `s2`, a positive integer is returned. Note that the return value is not -1, 0, or 1, unlike other languages. `strncmp` will compare only the first `n` chars of the string, while `strcmp` will compare the entire string.
 
 ```C
@@ -83,10 +82,10 @@ int main() {
 }
 ```
 
-####`strchr` and `strstr`
-###`strchr( char * s1, char c );`
-###`strstr( char * s1, char * s);`
-`strchr` returns a pointer to the first instance of the specified char `c`, while `strstr` returns a pointer to the index of the first char in the first occurence of the substring `s` in `s1`. 
+#### `strchr` and `strstr`
+##### `strchr( char * s1, char c );`
+##### `strstr( char * s1, char * s);`
+`strchr` returns a pointer to the first instance of the specified char `c`, while `strstr` returns a pointer to the index of the first char in the first occurence of the substring `s` in `s1`. Note that looking for a substring or char that doesn't occur in the string will result in a null pointer being returned.
 
 ```C
 #include <string.h>
@@ -101,7 +100,7 @@ int main() {
   return 0;
 }
 ```
-Note that looking for a substring or char that doesn't occur in the string will result in a null pointer being returned.
+
 ---
 
 ## Thursday, 9/28 | A string of functions | by Kristin Lin
