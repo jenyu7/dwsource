@@ -1,6 +1,7 @@
 ## Friday, 9/29 | Functions that Deal with Strings | Haoyu Chen
 
 **Interesting Tech News:** [Belkin - Apple Dongle has lighthing port and headphone jack](https://www.theverge.com/circuitbreaker/2017/10/1/16393078/apple-belkin-rockstar-iphone-adapter-headphone-lightning)
+
 **DO NOW**: Discuss the functions that you researched for homework with classmates
 ```C
 #include <string.h>
