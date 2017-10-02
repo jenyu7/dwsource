@@ -1,6 +1,45 @@
+## Friday, 9/29 | Functions that Deal with Strings | Haoyu Chen
+
+**Interesting Tech News:** [Belkin - Apple Dongle has lighthing port and headphone jack](https://www.theverge.com/circuitbreaker/2017/10/1/16393078/apple-belkin-rockstar-iphone-adapter-headphone-lightning)
+**DO NOW**: Discuss the functions that you researched for homework with classmates
+```C
+#include <string.h>
+char *strcpy(char *dest, char *src);
+char *strncpy(char *dest, char *src, size_t n);
+```
+strcpy(), strncpy() :
+These functions copy a string from one address to another, stopping at the NUL terminator on the srcstring.
+strncpy() is just like strcpy(), except only the first n characters are actually copied. Beware that if you hit the limit, n before you get a NUL terminator on the src string, your dest string won't be NUL-terminated. 
+Both functions return dest for your convenience, at no extra charge.
+```C
+#include <string.h>
+int strcat(const char *dest, const char *src);
+int strncat(const char *dest, const char *src, size_t n);
+```
+strcat(), strncat()
+These functions take two strings, and stick them together, storing the result in the first string.
+These functions don't take the size of the first string into account when it does the concatenation. 
+Both functions return a pointer to the destination string, like most of the string-oriented functions.
+```C
+#include <string.h>
+int strcmp(const char *s1, const char *s2);
+int strncmp(const char *s1, const char *s2, size_t n);
+```
+strcmp(), strncmp()
+strcmp() compares the entire string down to the end, while strncmp() only compares the first n characters of the strings.
+Returns zero if the strings are the same, less-than zero if the first different character in s1 is less than that in s2, or greater-than zero if the first difference character in s1 is greater than than in s2.
+```C
+#include <string.h>
+char *strchr(char *str, int c);
+char *strstr(const char *str, const char *substr);
+```
+strchr(), strstr()
+The functions strchr() finds the first occurance of a letter in a string
+strchr() returns a pointer to the occurance of the letter in the string, or NULL if the letter is not found.
+Let's say you have a big long string, and you want to find a word, or whatever substring strikes your fancy, inside the first string. Then strstr() is for you! It'll return a pointer to the substr within the str!
+strstr() returns a pointer to the occurance of the substr inside the str, or NULL if the substring can't be found.
 
 ## Thursday, 9/28 | A string of functions | by Angelica Zverovich
-
 **Interesting Tech News:** [Liquid Nitrogen Drives 18-Core Core i9-7980XE Above 6GHz](https://www.extremetech.com/computing/256623-liquid-nitrogen-drives-18-core-core-i9-7980xe-6ghz)
 
 **DO NOW**: Write a function to find length of strings.
