@@ -39,6 +39,8 @@ strchr() returns a pointer to the occurance of the letter in the string, or NULL
 Let's say you have a big long string, and you want to find a word, or whatever substring strikes your fancy, inside the first string. Then strstr() is for you! It'll return a pointer to the substr within the str!
 strstr() returns a pointer to the occurance of the substr inside the str, or NULL if the substring can't be found.
 
+---
+
 ## Thursday, 9/28 | A string of functions | by Angelica Zverovich
 **Interesting Tech News:** [Liquid Nitrogen Drives 18-Core Core i9-7980XE Above 6GHz](https://www.extremetech.com/computing/256623-liquid-nitrogen-drives-18-core-core-i9-7980xe-6ghz)
 
