@@ -1,7 +1,32 @@
-## Thursday, 9/28 Functions with Srings by Gilvir Gill
+## Friday, 9/29 String Functions by Connie Lei
+**Tech News** [Microsofts's Nadella Wants To Help Coders Take A Quantum Leap](https://www.wired.com/story/microsofts-nadella-wants-to-help-coders-take-a-quantum-leap/)
+
+We started class in our groups and explained our homework, showing each function and running our test code. We then went over the functions together in class so we could have a class discussion about it and ask questions.
+
+You need to use `#include <string.h>` at the top of your file
+
+* **strcpy/strncpy**
+   * `strcpy( char * dest, char * src );`
+   * `strncpy( char * dest, char * src, int n);`
+   * These two functions copy strings from the source to the destination. The latter one allows you to choose the length of the source string. If you choose to copy a string of a length longer than the destination memory allocation, the null terminating is overwritten. You need to make sure to copy over the null terminating as well.
+* **strcat/strncat**
+   * `strcat( char * dest, char * src );`
+   * `strncat( char * dest, char * src, int n);`
+   * The two functions allow you to concatenate strings from the source to the destination. The destination string has to have enough space for both functions. The null termination from the destination string is overwritten with the first character in the source string.
+* **strcmp/strncmp**
+   * `strcmp( char * s1, char * s2 );`
+   * `strncmp( char * s1, char * s2, int n );`
+   * These function allows you to compare two strings, it returns s1 - s2 so if s1 is less than s2, a negative number is returned, a positive if s1 is greater and 0 if the two are equal. The latter function will only compare the first n characters of the string.
+* **strchr/strstr**
+   * `strchr( char * s1, char c );`
+   * `strstr( char * s1, char * s);`
+   * These function return a pointer to the first instance of the character or the index for the string. A null pointer will be returned if the string/character does not exist.
+---
+
+## Thursday, 9/28 Functions with Strings by Gilvir Gill
 **Tech Noos** [San Francisco Sues Equifax over data breach](https://techcrunch.com/2017/09/27/san-francisco-sues-equifax-on-behalf-of-15-million-californians-affected-by-the-breach/)
 
-We started clas by writing code that will return the length of the string, abusing the fact that String literals are automatically terminated with '\0's (null, or 0). We had the idea of 0 being false reinforced by realizing that we could just terminate with the boolean `(*(str+ i))`, which will return 0 when it lands on the null.
+We started clas by writing code that will return the length of the string, abusing the fact that String literals are automatically terminated with '\0's (null, or 0). We had the idea of 0 being false reinforced by realizing that we could just terminate with the boolean `(*(str+ i))`, which will return 0 when it lands on the null. 
 
 
 ```C
