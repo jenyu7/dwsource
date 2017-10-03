@@ -1,3 +1,53 @@
+## Tuesday, 10/3 Make It So by Eric Chen
+
+** Tech News ** [General Motors to go Electric](https://www.washingtonpost.com/news/innovations/wp/2017/10/02/death-of-diesel-begins-as-gm-announces-plans-for-all-electric-future/?utm_term=.7a940daf5ee4)
+
+AIM: Make it so
+
+Separate Compilation
+- You can combine multiple C files into a C program by including them all in one gcc command.
+	i.e. `gcc test.c string.c foo.c woohoo.c`
+- One and only one of these files must have a main function.
+- You cannot have duplicate functions or global variable names across these files.
+
+`gcc -c`
+- Compiles a C file into a .o file, it is not a fully functional program, but it is compiled code.  Do this to compile a .c file that does not contain a main() function.
+- .o files can be liked together with .c files through gcc.
+
+Make
+- Create compiling instructions and setup dependencies.
+- Standard name for the file is makefile.
+- Syntax:
+	```<TARGET>: <DEPENDENCIES>
+	[TAB]<RULES>```
+- `<TARGET>` can be either a file or just a name.
+	i.e.
+
+```
+strtest: dwstring.o main.o
+	gcc -o strtest dwstring.o main.o
+
+dwstring.o: dwstring.c dwstring.h
+	gcc -c dwstring.c
+
+main.o: main.c dwstring.h
+	gcc -c main.c
+
+clean:
+	rm *.o
+	rm *~
+
+run: all
+	./strtest
+```
+- In order to run a makefile, the syntax is `make <TARGET>`
+	It will only make that specific target.
+	If `<TARGET>` is left blank, it will make the first target and all its dependencies only.
+- The clean target will run using `make clean`
+- The run target will compile all its dependencies and run automatically with `make run`
+
+---
+
 ## Friday, 9/29 String Functions by Connie Lei
 **Tech News** [Microsofts's Nadella Wants To Help Coders Take A Quantum Leap](https://www.wired.com/story/microsofts-nadella-wants-to-help-coders-take-a-quantum-leap/)
 
