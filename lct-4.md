@@ -1,5 +1,5 @@
 ## Tuesday, 10/3 Make It So by Eric Chen
-**Tech News** [General Motors to go Electric](https://www.washingtonpost.com/news/innovations/wp/2017/10/02/death-of-diesel-begins-as-gm-announces-plans-for-all-electric-future/?utm_term=.7a940daf5ee4)
+**Tech News:** [General Motors to go Electric](https://www.washingtonpost.com/news/innovations/wp/2017/10/02/death-of-diesel-begins-as-gm-announces-plans-for-all-electric-future/?utm_term=.7a940daf5ee4)
 
 AIM: Make it so
 
