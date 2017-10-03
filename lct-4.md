@@ -5,7 +5,7 @@ AIM: Make it so
 
 Separate Compilation
 - You can combine multiple C files into a C program by including them all in one gcc command.
-	i.e. `gcc test.c string.c foo.c woohoo.c`
+- i.e. `gcc test.c string.c foo.c woohoo.c`
 - One and only one of these files must have a main function.
 - You cannot have duplicate functions or global variable names across these files.
 
@@ -20,7 +20,7 @@ Make
 	```<TARGET>: <DEPENDENCIES>
 	[TAB]<RULES>```
 - `<TARGET>` can be either a file or just a name.
-	i.e.
+- i.e.
 
 ```
 strtest: dwstring.o main.o
