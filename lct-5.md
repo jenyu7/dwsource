@@ -1,3 +1,79 @@
+## Tuesday, 10/3 | Make it So | Asim Kapparova
+
+**Tech News:** [drone deliveries using codes flashed from your phone’s LED](https://www.theverge.com/2017/10/4/16417986/delivair-drone-concept-led-flash-coded-cambridge-consultants)
+
+Multiple File Compilation
+- You can combine multiple C files into a C program by including them all in one gcc command.
+-`gcc test.c stringc foo.c woohoo.c/EDITING HERE`
+- You cannot have duplicate functions or global variable names across these files.
+- Be careful: only one of these files should have a main 
+
+Using gcc -c
+- By using `gcc -c cfile.c` a file is created with the name cfile.o
+- It is not a functional program, but it is compiled code.
+- This is primarily used to compile c files without a main function.
+- .o files can be linked with each other or with other c fiels by compiling them all at once.
+- `gcc a.o b.c c.c`
+
+Make
+- Create compiling instructions and setup dependencies.
+- Standard name used for make is makefile.
+
+Syntax::
+```make
+<TARGET>: <DEPENDENCIES>
+	<RULES>
+```
+
+For Example:
+```make
+all: dwstring.o main.o
+	gcc -o strtest dwstring.o main.o
+
+dwstring.o: dwstring.c dwstring.h
+	gcc -c dwstring.c
+
+main.o: main.c dwstring.h
+	gcc -c main.c
+
+clean:
+	rm *.o
+	rm *~
+
+run: all
+	./strtest
+```
+
+- Running a makefile: `make`
+  - This will automatically make the first target. Which will recursively check if any dependencies need to be updated and then update them.
+  - You can also include a target `make <TARGET>` and this will make the target specified recursively.
+- The first target is typically a file that doesn't exist such that it is always updated.
+- We also usually include a clean target to remove junk files and the like.
+- Similarly we include a run target, that runs the final product.
+
+Make is a good way to manage large processing of compiling/running code.
+
+---
+
+
+
+
+
+
+
+
+
+//////////////////////
+
+
+
+
+
+
+
+
+
+
 ## Friday, 9/29 | Functions that Deal with Strings | Haoyu Chen
 
 **Interesting Tech News:** [Belkin - Apple Dongle has lighthing port and headphone jack](https://www.theverge.com/circuitbreaker/2017/10/1/16393078/apple-belkin-rockstar-iphone-adapter-headphone-lightning)
