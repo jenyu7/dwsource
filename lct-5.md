@@ -4,7 +4,7 @@
 
 Multiple File Compilation
 - You can combine multiple C files into a C program by including them all in one gcc command.
--`gcc test.c stringc foo.c woohoo.c/EDITING HERE`
+-`gcc test.c stringc foo.c woohoo.c`
 - You cannot have duplicate functions or global variable names across these files.
 - Be careful: only one of these files should have a main 
 
@@ -54,26 +54,6 @@ run: all
 Make is a good way to manage large processing of compiling/running code.
 
 ---
-
-
-
-
-
-
-
-
-
-//////////////////////
-
-
-
-
-
-
-
-
-
-
 ## Friday, 9/29 | Functions that Deal with Strings | Haoyu Chen
 
 **Interesting Tech News:** [Belkin - Apple Dongle has lighthing port and headphone jack](https://www.theverge.com/circuitbreaker/2017/10/1/16393078/apple-belkin-rockstar-iphone-adapter-headphone-lightning)
