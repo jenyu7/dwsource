@@ -1,3 +1,55 @@
+## Tuesday, 10/3 Make It So by Adeebur Rahman
+**Tech News:** [NASA Black Marble Techology](https://www.cnbc.com/2017/10/03/nasa-uses-black-marble-tech-in-disaster-response-in-puerto-rico.html)
+
+Multiple File Compilation
+- You can combine multiple C files into a C program by including them all in one gcc command. `gcc a.c b.c c.c`
+- You cannot have duplicate functions or global variable names across these files. (main counts as a function)
+
+Compile into .o files.
+- By using `gcc -c cfile.c` a file is created with the name cfile.o
+- It is not a functional program, but it is compiled code.
+- This is primarily used to compile c files without a main function.
+- .o files can be linked with each other or with other c fiels by compiling them all at once. `gcc a.o b.c c.c`
+
+Make
+- Create compiling instructions and setup dependencies.
+- Standard name used for make is makefile.
+
+The syntax is as follows:
+```make
+<TARGET>: <DEPENDENCIES>
+	<RULES>
+```
+
+Example makefile:
+```make
+all: dwstring.o main.o
+	gcc -o strtest dwstring.o main.o
+
+dwstring.o: dwstring.c dwstring.h
+	gcc -c dwstring.c
+
+main.o: main.c dwstring.h
+	gcc -c main.c
+
+clean:
+	rm *.o
+	rm *~
+
+run: all
+	./strtest
+```
+
+- Running a makefile is as simple as typing `make`
+  - This will automatically make the first target. Which will recursively check if any dependencies need to be updated and then update them.
+  - You can also include a target `make <TARGET>` and this will make the target specified recursively.
+- The first target is typically a file that doesn't exist such that it is always updated.
+- We also usually include a clean target to remove junk files and the like.
+- Similarly we include a run target, that runs the final product.
+
+Thus, using make simplifies the processing of compiling and running code.
+
+---
 
 ## Friday, 9/29 | string.h functions | By Naotaka Kinoshita
 
