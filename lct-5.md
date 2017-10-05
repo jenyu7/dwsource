@@ -4,11 +4,11 @@
 
 Multiple File Compilation
 - You can combine multiple C files into a C program by including them all in one gcc command.
--`gcc test.c stringc foo.c woohoo.c`
+-`gcc test.c string.c foo.c woohoo.c`
 - You cannot have duplicate functions or global variable names across these files.
 - Be careful: only one of these files should have a main 
 
-Using gcc -c
+Using `gcc -c`
 - By using `gcc -c cfile.c` a file is created with the name cfile.o
 - It is not a functional program, but it is compiled code.
 - This is primarily used to compile c files without a main function.
