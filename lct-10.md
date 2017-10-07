@@ -1,5 +1,5 @@
 ## Friday, 20/6 typedef and struct by Leo Liu
-**Tech News:** [To Be Added](url here)
+**Tech News:** [AIM Will Shut Down after 20 Years](https://www.theverge.com/2017/10/6/16435690/aim-shutting-down-after-20-years-aol-instant-messenger)
 
 ### typedef
 Give a new name to an existing primative.
