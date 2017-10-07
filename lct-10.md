@@ -32,7 +32,7 @@ struct foo s2;
 - `<type name>` (optional) will save this structure so it may be used without repeated declaration of the specifications of its content.
 - `<var name>` (optional) will declare a variable containing the declared collection of types.
 
-**Note**
+**Note:**
 `;` is present at the end of the ending `}`
 
 ---
