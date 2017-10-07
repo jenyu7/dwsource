@@ -1,21 +1,21 @@
 ## Friday, 20/6 typedef and struct by Leo Liu
 **Tech News:** [To Be Added](url here)
 
-###typedef
+### typedef
 Give a new name to an existing primative.
-####Syntax:
+#### Syntax:
 ```c
 typedef <primitive type> <name>
 ```
-####Example:
+#### Example:
 ```c
 typedef short compact
 ```
 This will allow the declaration of variables of the type `compact`. Main purpose is for **portability**, as chainging the primitive type in `typedef` will change it in all occurences of that type. Can also give extra information in the type name itself.
 
-###struct
+### struct
 Create a new type that is a collection of other types.
-####Syntax:
+#### Syntax:
 ```c
 struct <type name>{
        type var1;
@@ -23,7 +23,7 @@ struct <type name>{
        //declare as many as necessary
 } <var name>;
 ```
-####Example:
+#### Example:
 ```c
 struct foo{ int a; float b; char c};
 struct foo s1;
@@ -31,9 +31,9 @@ struct foo s2;
 ```
 `<type name>` (optional) will save this structure so it may be used without repeated declaration of the specifications of its content.
 `<var name>` (optional) will declare a variable containing the declared collection of types.
-|Note|
-|----|
-|`;` is present at the end of the ending `}`|
+
+**Note**
+`;` is present at the end of the ending `}`
 
 ---
 
