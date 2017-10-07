@@ -11,7 +11,7 @@ typedef <primitive type> <name>
 ```c
 typedef short compact
 ```
-This will allow the declaration of variables of the type `compact`. Main purpose is for **portability**, as chainging the primitive type in `typedef` will change it in all occurences of that type. Can also give extra information in the type name itself.
+This will allow the declaration of variables of the type `compact`. Main purpose is for **portability**, as changing the primitive type in `typedef` will change it in all occurences of that type. Can also give extra information in the type name itself.
 
 ### struct
 Create a new type that is a collection of other types.
@@ -29,8 +29,8 @@ struct foo{ int a; float b; char c};
 struct foo s1;
 struct foo s2;
 ```
-`<type name>` (optional) will save this structure so it may be used without repeated declaration of the specifications of its content.
-`<var name>` (optional) will declare a variable containing the declared collection of types.
+- `<type name>` (optional) will save this structure so it may be used without repeated declaration of the specifications of its content.
+- `<var name>` (optional) will declare a variable containing the declared collection of types.
 
 **Note**
 `;` is present at the end of the ending `}`
