@@ -1,3 +1,49 @@
+## Friday, 10/6 Finding your type by Jerome Freudenberg
+**Tech News:** [YouTube Changes Search Algorithms](https://www.theguardian.com/us-news/2017/oct/06/youtube-alters-search-algorithm-over-fake-las-vegas-conspiracy-videos)
+
+### AIM: Finding your type
+
+On Friday, we discussed useful keywords in C:
+
+#### typedef
+-Usage:
+```C
+typedef <real type> <new name>;
+```
+-provides a new name for an existing data type
+-Ex:
+```C
+typedef unsigned long size_t;
+size_t x = 139; //x is really an unsigned long
+```
+-Can be used to improve portability
+
+#### struct
+-Usage:
+```C
+struct {int a; char x;} s;
+```
+-creates a new type that is a collection of values
+-The example above is technically 5 bytes, but has extra padding so that the memory allocated is a power of 2
+-You can also assign it to a variable:
+```C
+struct foo {int a; char x;};
+```
+-This means that foo is a prototype for this kind of struct, to be used later
+		(e.g.)
+```C
+struct foo s1;
+```
+-Note the semicolon after the curly brace as people tend to forget to place it there
+
+###### We also discussed what this dude, Linus, wrote about coding style:
+[His thoughts](https://www.kernel.org/doc/Documentation/process/coding-style.rst)
+
+-Noteworthy things included that Hungarian notation is for the brain damaged
+-He also mentioned typedefs are not for readability and should not be used for structures and pointers
+
+---
+
 ## Tuesday, 10/3 Make It So by Eric Chen
 **Tech News:** [General Motors to go Electric](https://www.washingtonpost.com/news/innovations/wp/2017/10/02/death-of-diesel-begins-as-gm-announces-plans-for-all-electric-future/?utm_term=.7a940daf5ee4)
 
@@ -75,7 +121,7 @@ You need to use `#include <string.h>` at the top of your file
 ## Thursday, 9/28 Functions with Strings by Gilvir Gill
 **Tech Noos** [San Francisco Sues Equifax over data breach](https://techcrunch.com/2017/09/27/san-francisco-sues-equifax-on-behalf-of-15-million-californians-affected-by-the-breach/)
 
-We started clas by writing code that will return the length of the string, abusing the fact that String literals are automatically terminated with '\0's (null, or 0). We had the idea of 0 being false reinforced by realizing that we could just terminate with the boolean `(*(str+ i))`, which will return 0 when it lands on the null. 
+We started clas by writing code that will return the length of the string, abusing the fact that String literals are automatically terminated with '\0's (null, or 0). We had the idea of 0 being false reinforced by realizing that we could just terminate with the boolean `(*(str+ i))`, which will return 0 when it lands on the null.
 
 
 ```C
@@ -89,17 +135,17 @@ int str_len(char * str) {
 void main() {
     char * s = "hello";
     char * s0 = "";
-    printf("Length of \"%s\": %d\n", s, str_len(s)); 
-    printf("Length of \"%s\": %d\n", s0, str_len(s0)); 
+    printf("Length of \"%s\": %d\n", s, str_len(s));
+    printf("Length of \"%s\": %d\n", s0, str_len(s0));
 }
 ```
 We also reviewed the difference between different expressions, particularly mutable pointers, immutable arrays, immutable String literals, and their mutable copies held in array locations.
 
 For example:
 
-* `char *s3 = "Mankind"` just points to the immutable piece of memory that holds "Mankind" 
+* `char *s3 = "Mankind"` just points to the immutable piece of memory that holds "Mankind"
 
-In addition, you can only assign char arrays with = at declaration. If you declare it with an = it first finds the literal that was created in the beginning in memory and then clones it in an O(n) procedure. On the other hand, if you declare a char pointer, it simply points to the literal. If you want to ensure that you have a mutable copy of a string, you want to declare it with an array. You can of course assign a pointer to it afterwards if needed. 
+In addition, you can only assign char arrays with = at declaration. If you declare it with an = it first finds the literal that was created in the beginning in memory and then clones it in an O(n) procedure. On the other hand, if you declare a char pointer, it simply points to the literal. If you want to ensure that you have a mutable copy of a string, you want to declare it with an array. You can of course assign a pointer to it afterwards if needed.
 
 We were later told to examine one of four functions:
 * 0 : strcpy/strncpy
@@ -107,7 +153,7 @@ We were later told to examine one of four functions:
 * 2 : strcmp/strncmp
 * 3 : strchr/strstr
 
-for homework. 
+for homework.
 
 ---
 ## Wednesday, 9/27 Strings in C by Anthony Hom
@@ -157,22 +203,22 @@ return 0;
 * All references to the same literal string refers to the same immutable string in the memory.
 
 ### Declaring Strings
-* `char s[256]` is a normal array declaration. This array allocates 256 bytes. We could use all 256 bytes, but some things could break . 
+* `char s[256]` is a normal array declaration. This array allocates 256 bytes. We could use all 256 bytes, but some things could break .
 * It is important that we use 255 bytes of this array and leave the last byte null.
 
 ### Examples:
-```C 
+```C
 char s[256] = "Imagine"; // Allocates 256 bytes and creates an immutable string "Imagine"
 // It then copies (including the terminating null) into the array
 ```
 ```C
-char s[] = "Tuesday"; //Array s allocates 8 bytes. 
+char s[] = "Tuesday"; //Array s allocates 8 bytes.
 // It creates an immutable string "Tuesday" and then copies the string and the null into the array.
 ```
 
 ### The last part of the block of code in the Do Now!
 * Given our array s2 with 5 bytes, we fill in index 0 to 1 with 'hi', followed by the terminating null.
-* IMPORTANT: After the null, anything that we put in the array afterwards will not be displayed nor is used by the array. 
+* IMPORTANT: After the null, anything that we put in the array afterwards will not be displayed nor is used by the array.
 
 ---
 ## Tuesday, 9/26 Let's Head to Function Town, by Jonathan Wong
@@ -215,7 +261,7 @@ printf("arr 0 is %d\n", arr[0]); // will return 5
   void changeArr(int* );
   ```
   A function header is simply the first line of the function. It does not require parameter names, as it only type checks.
-  
+
   3. Option 2, but outsourcing the function headers to another file. In C, these are header files, and they typically end in `.h`. To do this, you need to let the compiler know where your header file is.
   ```C
   #include “PATH/filename.h”
