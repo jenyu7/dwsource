@@ -25,6 +25,7 @@ struct {int a; char x;} s;
 ```
 -creates a new type that is a collection of values
 -The example above is technically 5 bytes, but has extra padding so that the memory allocated is a power of 2
+
 -You can also assign it to a variable:
 ```C
 struct foo {int a; char x;};
@@ -40,6 +41,7 @@ struct foo s1;
 [His thoughts](https://www.kernel.org/doc/Documentation/process/coding-style.rst)
 
 -Noteworthy things included that Hungarian notation is for the brain damaged
+
 -He also mentioned typedefs are not for readability and should not be used for structures and pointers
 
 ---
