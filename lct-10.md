@@ -33,7 +33,7 @@ struct foo s2;
 - `<var name>` (optional) will declare a variable containing the declared collection of types.
 
 **Note:**
-`;` is present at the end of the ending `}`
+`;` is present after the ending `}`
 
 ---
 
