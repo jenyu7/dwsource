@@ -42,7 +42,9 @@ struct bar u;
 
 We didn't go over how to access/modify the collection of values in a struct.
 
----## Tuesday, 10/3 | Make it So | Asim Kapparova
+---
+
+## Tuesday, 10/3 | Make it So | Asim Kapparova
 
 **Tech News:** [drone deliveries using codes flashed from your phone’s LED](https://www.theverge.com/2017/10/4/16417986/delivair-drone-concept-led-flash-coded-cambridge-consultants)
 
