@@ -1,4 +1,48 @@
-## Tuesday, 10/3 | Make it So | Asim Kapparova
+## Friday, 10/3 | Finding your type | Arif Roktim
+
+**Tech News:** [Google Fiber Scales Back TV Service To Focus Solely On High-Speed Internet](https://hothardware.com/news/google-fiber-scales-back-tv-service-to-focus-solely-on-gigabit-internet)
+
+On Friday, we went over some commands involving types.
+
+`typedef`: Provides a new name for an existing type  
+Syntax: `typedef <real type> <new name>;`  
+Reasons for using typedef include compatibility and readability.  
+For example, strlen() returns type size\_t, which is typedef'd to `unsigned long`. It's clear that the function is returning a size.  
+Usage:
+```c
+typedef long lolcat;
+lolcat rainbow = 5;
+```
+
+We also went over `struct`. Structs are used to create a new type that is a collection of values.
+Syntax:
+```c
+struct{ int a; char x; } var0;
+struct{ int a; char x; } var1;
+struct{ char *s1; char *s2; } var2;
+printf("sizeof var0: %lu", sizeof(var0));
+```
+The type of variable `var0` is `struct{ int a; char x; }`.
+
+It's annoying to have to type `struct{ int a; char x; }` over and over again so there is prototyping. Prototyping allows you to name a struct type.  
+Syntax:
+```c
+struct foo {int a; char x;};
+// struct foo is a prototype to be used later
+struct foo s;
+printf("sizeof s: %lu", sizeof(s))
+```
+Notice how the prototype has to be preceded by `struct`.
+
+You can also make a prototype and instantiate a new variable at the same time:
+```c	
+struct bar {int a; char x;} t;
+struct bar u;
+```
+
+We didn't go over how to access/modify the collection of values in a struct.
+
+---## Tuesday, 10/3 | Make it So | Asim Kapparova
 
 **Tech News:** [drone deliveries using codes flashed from your phone’s LED](https://www.theverge.com/2017/10/4/16417986/delivair-drone-concept-led-flash-coded-cambridge-consultants)
 
