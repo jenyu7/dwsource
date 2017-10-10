@@ -1,3 +1,70 @@
+## Tuesday, 10/10 If you don't pay attention you'll get into a heap of trouble! by William Hong
+**Tech news:** [AOL Instant Messenger shutting down] (https://techcrunch.com/2017/10/06/aol-instant-messenger-shut-down/)
+
+### AIM: If you don't pay attention you'll get into a heap of trouble! 
+
+We briefly discussed structs, below is prototyping a struct
+#### struct
+```C
+struct foo {
+    int a;
+    char x;
+};
+```
+Using the code above, we can declare variables as struct foo
+```C
+struct foo s;
+struct foo s2; //this is a different variable of type foo
+```
+Prototypes are different than directly declaring a struct such as below
+```C
+struct {int a; char x;} s;
+```
+Prototypes are meant to be used later, like a template
+
+IMPORTANT: We use the . operator to access a value inside a struct, see example below
+```C
+s.a = 10;
+s.x = '@';
+```
+Structs can contain variables and even more structs. You can also have a pointer to a struct within the struct itself, thus making a linked list data structure
+```C
+struct foo{
+    //variables, etc
+    struct foo *next;
+}; 
+```
+
+Note: even if we use a struct in the parameter of a function, it is stilled passed by value, which means a copy of the argument is made. Do this instead...
+```C 
+void foo_stuff(struct foo *s); //as opposed to void foo_stuff(struct foo s)
+```
+
+More notes on the dot operator:
+. binds before *
+```C
+struct foo *p;
+p = &s;
+(*p).x; //this is accessing the data in a pointer to a struct
+```
+
+Additional note: anything you do to p will modify whatever's going on in x
+IMPORTANT: to access data from a struct pointer, you can also use ->
+```C 
+p->x; //this is the same as (*p).x
+```
+If there's a pointer inside a struct with another pointer to another struct, you can chain the arrows
+Caution: you can typedef structs, but this will hide the fact that you are working with a struct
+
+We also discussed memory, but didn't have time to talk about heap memory yet. Computer programs separate memory usage into two parts: stack and heap. Every program can have its own stack and heap
+
+Notes on stack memory
+-Stack memory stores all normally declared variables (including pointers and structs), arrays and function calls
+-Functions are pushed into the stack in the order they are called, and popped off when completed
+-When a function is popped off the stack, the stack memory associated with it (like an array for instance) is released. You can't use that memory later because it's gone
+
+---
+
 ## Friday, 10/6 Finding your type by Jerome Freudenberg
 **Tech News:** [YouTube Changes Search Algorithms](https://www.theguardian.com/us-news/2017/oct/06/youtube-alters-search-algorithm-over-fake-las-vegas-conspiracy-videos)
 
