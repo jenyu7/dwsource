@@ -1,5 +1,5 @@
 ## Tuesday, 10/10 If you don't pay attention you'll get into a heap of trouble! by William Hong
-**Tech News:** [AOL Insant Messenger Shutting Down](https://techcrunch.com/2017/10/06/aol-instant-messenger-shut-down/)
+**Tech News:** [More Governments Test Out Cryptocurrency](http://www.investopedia.com/news/more-governments-test-out-cryptocurrencies/)
 
 ### AIM: If you don't pay attention you'll get into a heap of trouble! 
 
