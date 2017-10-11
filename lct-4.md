@@ -1,4 +1,4 @@
-## Tuesday, 10/10 If you don't pay attention you'll get into a heap of trouble! by William Hong
+## Tuesday, 10/10 and Wednesday 10/11 If you don't pay attention you'll get into a heap of trouble! by William Hong
 **Tech News:** [More Governments Test Out Cryptocurrency](http://www.investopedia.com/news/more-governments-test-out-cryptocurrencies/)
 
 ### AIM: If you don't pay attention you'll get into a heap of trouble! 
@@ -62,6 +62,34 @@ Notes on stack memory
 - Stack memory stores all normally declared variables (including pointers and structs), arrays and function calls
 - Functions are pushed into the stack in the order they are called, and popped off when completed
 - When a function is popped off the stack, the stack memory associated with it (like an array for instance) is released. You can't use that memory later because it's gone
+-The stack contains all the memory we learned so far in C, including arguments to functions. The copy of the argument(s) associated with that function is put onto the stack
+
+```C
+struct node{
+	int data;
+	struct node *next;
+}
+
+struct node *insert_front(struct node *front, int d){
+	struct node new;
+	new.data = d;
+	new.next = front;
+	return &new;
+}
+```
+- On the above example, this looks good on paper. This should implement a linked list data structure
+- However, this is BAD. The struct node new would cease to exist because it's stack memory
+- Declaring a variable in a function puts it into the stack and it subsequently gets popped off
+
+
+
+Notes on Heap memory
+- Stores dynamically allocated memory
+- IMPORTANT DIFFERENCE FROM STACK MEMORY: data will remain in the heap until it is released manually by you or when the program terminates
+- Can be accessed through pointers
+- Can be accessed across many functions
+- Persists throughout the duration of the program's execution, until it terminates of course
+- A memory leak occurs when a program uses lots of heap memory
 
 ---
 
