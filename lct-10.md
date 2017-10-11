@@ -60,7 +60,7 @@ One way to use struct pointers is like this: `(*my_boi).x`
 
 This is too long for us. We like shorthands, so we can use the following:
 ```c
-myboi->x
+my_boi->x
 ```
 The `->` operator isn't some special character on a keyboard; it's the hyphen (`-`) followed by an angle bracket (`>`) **without** a space in between. With it, we can access the members of a struct without having to deference the pointer with the `*` operator.
 
