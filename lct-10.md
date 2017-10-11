@@ -1,3 +1,112 @@
+## Tuesday, 10/10 If you don't pay attention, you'll get into a heap of trouble by Stanley Lin
+**Tech News:** [The Quest for Production Quantum Computing Continues](https://techcrunch.com/2017/10/10/intel-moves-towards-production-quantum-computing-with-new-17-qubit-chip/)
+
+Today, we continued examining structs and exploring how to use them.
+
+Given this struct:
+```c
+struct boi {
+	int x;
+	char y;
+} hai;
+```
+
+We can access the variables with the '.' operator:
+```c
+hai.x = 99;
+hai.y = 'A';
+```
+
+### Quirky things to remember about structs!
+
+* The type of the above struct is `struct boi`, not just `boi`. In fact, `boi` doesn't actually mean anything by itself, so we can do this:
+```c
+float boi = 5.6;
+```
+And it would work out fine (though it is highly unrecommended).
+* Depending on your system (and potentially your OS version), the value returned when trying to get the 'sizeof' a struct can vary. You may get a value that is the sum of the sizes of the variables contained in it (such as 9 if the members are an `int` and a `char`) or a potentially larger number. This is due to the padding in memory between the two members.
+* You **cannot** place a variable with the same type as the struct within itself:
+```c
+struct boi {
+	int x;
+	char y;
+	struct boi uh;
+};
+```
+The compiler won't know how much memory to allocate to `uh`, because it doesn't know how much space it will take up: the definition of the struct hasn't even been complete yet!
+
+### On `typedef`ing a struct
+You may be tempted to `typedef` a struct to avoid having to type the entire type name. However, this will confuse people—it will no longer be clear if the variable they are using is a struct.
+```c
+struct boi yay;
+
+typedef struct boi boi_t;
+boi_t um;		//this could've been a typedef of some other primitive type, but no one would know!
+```
+
+### structs are passed by value!
+If we declare a function like the one below:
+```c
+void lol(struct boi my_boi);
+```
+Every time we pass in a struct to it, the program will allocate memory every single time to make a copy of it. We can avoid this overhead by using pointers instead:
+```c
+void lol(struct boi *my_boi_on_point);
+```
+
+### Using struct pointers!
+One way to use struct pointers is like this: `(*my_boi).x`
+* Note the usage of the parentheses. The `.` operator has higher precedence than `*`, so we need it to first deference the pointer, then get the member variables from it.
+
+This is too long for us. We like shorthands, so we can use the following:
+```c
+myboi->x
+```
+The `->` operator isn't some special character on a keyboard; it's the hyphen (`-`) followed by an angle bracket (`>`) **without** a space in between. With it, we can access the members of a struct without having to deference the pointer with the `*` operator.
+
+
+This is very nice, because now we can create cool things like linked lists. An example definition is below:
+```c
+struct node {
+	int data;
+	struct node *next;
+};
+```
+Notice how we included `struct node *next`. This is valid because we are *pointing* to a struct, and a pointer always has a pre-defined size (dependant on your system of course).
+
+### A brief explanation on stack memory
+Soon we will be wanting to dynamically allocate memory for our variables. Right now, we have been using stack memory.
+
+Whenever we define/intialize variables, or whenever we call a function, it is placed onto the stack, similar to the data structure of the same name. With the below program:
+```c
+void bar() {}
+
+void foo() {
+	bar();
+}
+
+int main() {
+	foo();
+}
+```
+A rough representation of the stack may look like this:
+
+Stack |
+----- |
+`bar()`
+`foo()`
+`main()`
+(bottom of stack)
+
+Whenever a function returns, it is popped off the memory stack. So if `foo` finished, then the stack would look like this:
+
+Stack |
+----- |
+`main()`
+(bottom of stack)
+
+---
+
 ## Friday, 20/6 typedef and struct by Leo Liu
 **Tech News:** [AIM Will Shut Down after 20 Years](https://www.theverge.com/2017/10/6/16435690/aim-shutting-down-after-20-years-aol-instant-messenger)
 
