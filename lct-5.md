@@ -1,3 +1,75 @@
+## Tuesday, 10/10: "If you don't pay attention you'll get into a heap of trouble" by Jeffrey Lin
+
+**Interesting Tech News:** [Hacking is inevitable, so it's time to assume our data will be stolen](https://archive.is/EVOUi)
+
+We use the `.` operator to access a value inside a struct.
+
+```c
+struct {int a; char x;} s;
+s.a = 10;
+s.x = '@';
+```
+
+You may not put a struct within itself, as that creates a compile-time error:
+
+```c
+int main() {
+  struct foo {int a; char x; struct foo f;};
+}
+```
+
+```
+tmp $ clang x.c
+x.c:2:39: error: field has incomplete type 'struct foo'
+struct foo {int a; char x; struct foo f;};
+                                      ^
+x.c:2:8: note: definition of 'struct foo' is not complete until the closing '}'
+struct foo {int a; char x; struct foo f;};
+       ^
+1 error generated.
+1 tmp $
+```
+
+However, you may put a pointer to that struct within itself:
+
+```c
+int main() {
+  struct foo {int a; char x; struct foo *f;};
+}
+```
+
+This allows us to create a data structure similar to nodes and linked lists.
+
+The `.` operation binds before the `*` operation.
+
+```c
+struct foo *p;
+p = &s; // access the value of p.x using (*p).x
+```
+
+To access data from a struct pointer, you may also use `->`:
+
+```c
+p->x // same as (*p).x
+```
+
+You can typedef structs, but you must be careful as this will hide the fact that
+you are working with a struct.
+
+Moving on to stack memory versus heap memory:
+
+Computer programs separate memory usage into two parts: the stack and the heap.
+Every program can have its own stack and heap.
+
+Stack memory stores all normally declared variables (including pointers and
+structs), arrays, and function calls.
+Functions are pushed onto the stack in the order they are called, and popped off
+when completed.
+When a function is popped off the stack, the stack memory associated with it is
+released.
+
+--------------------------------------------------------------------------------
+
 ## Friday, 10/3 | Finding your type | Arif Roktim
 
 **Tech News:** [Google Fiber Scales Back TV Service To Focus Solely On High-Speed Internet](https://hothardware.com/news/google-fiber-scales-back-tv-service-to-focus-solely-on-gigabit-internet)
