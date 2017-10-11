@@ -1,4 +1,4 @@
-## Tuesday, 10/10 If you don't pay attention, you'll get into a heap of trouble by Stanley Lin
+## Tuesday and Wednesday, 10/10 and 10/11 If you don't pay attention, you'll get into a heap of trouble by Stanley Lin
 **Tech News:** [The Quest for Production Quantum Computing Continues](https://techcrunch.com/2017/10/10/intel-moves-towards-production-quantum-computing-with-new-17-qubit-chip/)
 
 Today, we continued examining structs and exploring how to use them.
@@ -11,7 +11,7 @@ struct boi {
 } hai;
 ```
 
-We can access the variables with the '.' operator:
+We can access the variables with the `.` operator:
 ```c
 hai.x = 99;
 hai.y = 'A';
@@ -24,7 +24,7 @@ hai.y = 'A';
 float boi = 5.6;
 ```
 And it would work out fine (though it is highly unrecommended).
-* Depending on your system (and potentially your OS version), the value returned when trying to get the 'sizeof' a struct can vary. You may get a value that is the sum of the sizes of the variables contained in it (such as 9 if the members are an `int` and a `char`) or a potentially larger number. This is due to the padding in memory between the two members.
+* Depending on your system (and potentially your OS version), the value returned when trying to get the `sizeof` a struct can vary. You may get a value that is the sum of the sizes of the variables contained in it (such as 9 if the members are an `int` and a `char`) or a potentially larger number. This is due to the padding in memory between the two members.
 * You **cannot** place a variable with the same type as the struct within itself:
 ```c
 struct boi {
@@ -63,7 +63,6 @@ This is too long for us. We like shorthands, so we can use the following:
 my_boi->x
 ```
 The `->` operator isn't some special character on a keyboard; it's the hyphen (`-`) followed by an angle bracket (`>`) **without** a space in between. With it, we can access the members of a struct without having to deference the pointer with the `*` operator.
-
 
 This is very nice, because now we can create cool things like linked lists. An example definition is below:
 ```c
@@ -104,6 +103,24 @@ Stack |
 ----- |
 `main()`
 (bottom of stack)
+
+### Local variables and the stack
+Suppose we want to create the linked list we mentioned earlier. Let's say we create a function to add to the head of a linked list using the same definition of a node as the one above:
+
+```c
+struct node* add_to_front(struct node *head) {
+	struct node new;	//(1)
+	new.data = 42;
+	new.next = head;
+	
+	return &new;		//(2)
+}
+```
+There's actually a very big issue with this implementation. It's important to note that at `(1)`, we do indeed allocate memory for `new`; however, we are allocating it in the wrong place: the stack.
+
+When we try to return the address of `new`, as we have done in `(2)`, that section of memory that was allocated for `new` gets released (or "popped off" the stack) the moment the function completes. Therefore, the program will see that section of memory as "open," and can put whatever it wants in there.
+
+This can be worked around by requesting memory from the heap, aka dynamically allocating memory.
 
 ---
 
