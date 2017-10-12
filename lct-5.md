@@ -1,3 +1,57 @@
+## Wednesday, 10/11: "If you don't pay attention you'll get into a heap of trouble" by Jeffrey Lin
+
+**Interesting Tech News:** [Google Will Hit 100% Renewable Energy this Year](https://web.archive.org/web/20171011014233/https://www.inverse.com/article/37308-google-renewable-energy-goal)
+
+Recall the "stack trace diagrams" used for debugging to make sense of stack
+memory.
+
+We can attempt to make a linked list structure like so:
+
+```c
+#include <stddef.h> // declares NULL
+
+struct node {
+  int data;
+  struct node *next;
+};
+
+struct node *insert_front(struct node *front, int d) {
+  struct node new;
+  new.data = d;
+  new.next = front;
+  return &new;
+}
+
+int main() {
+  struct node *list = NULL;
+  list = insert_front(list, 12);
+  return 0;
+}
+```
+
+Note that the compiler generates a warning:
+
+```
+tmp $ clang x.c                                                      
+x.c:12:11: warning: address of stack memory associated with local variable 'new'
+      returned [-Wreturn-stack-address]   
+  return &new;       
+          ^~~        
+1 warning generated. 
+```
+
+The node is a piece of stack memory. When `insert_front` ends, *new* is popped off
+the stack.
+The value might still be there, but "might does not make right".
+
+You need to use dynamically allocated memory to create a linked list.
+Heap memory stores dynamically allocated memory.
+Data will remain in the heap until it is released (or the program terminates).
+Heap memory can be accessed through pointers, and can be accessed across many
+functions.
+
+--------------------------------------------------------------------------------
+
 ## Tuesday, 10/10: "If you don't pay attention you'll get into a heap of trouble" by Jeffrey Lin
 
 **Interesting Tech News:** [Hacking is inevitable, so it's time to assume our data will be stolen](https://archive.is/EVOUi)
