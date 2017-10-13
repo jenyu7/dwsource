@@ -1,3 +1,29 @@
+## Thursday, 10/12 malloc & free: the dynamic duo! by Penn Wu
+**Tech News:** [Bitcoin rockets above $5,000 to all-time high](https://www.reuters.com/article/us-global-markets-bitcoin/bitcoin-rockets-above-5000-to-all-time-high-idUSKBN1CH0YQ)
+
+We spent most of the class writing code demonstrating either the functions `malloc` and `free` or `calloc` and `realloc`.
+
+**malloc**
+```C
+void *malloc(size_t x);
+```
+* allocates x bytes of memory dynamically (i.e., from the heap), and returns the address to the beginning of the allocated memory.
+* returns a void pointer, which you should typecast to the correct type like so:
+```C
+int *p;
+p = (int *)malloc(sizeof(int) * 5);
+```
+
+**free**
+```C
+void free(void *p);
+```
+* frees dynamically allocated memory starting from the pointer parameter
+* doesn't immediately mean that whatever data was stored there is gone, it just means that it isn't guaranteed to be there anymore
+* in other words, **don't use memory that you freed**
+
+---
+
 ## Tuesday, 10/10 and Wednesday 10/11 If you don't pay attention you'll get into a heap of trouble! by William Hong
 **Tech News:** [More Governments Test Out Cryptocurrency](http://www.investopedia.com/news/more-governments-test-out-cryptocurrencies/)
 
