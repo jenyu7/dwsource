@@ -1,3 +1,36 @@
+## Thursday, 10/12 malloc & free: The dynamic duo! by Victor Teoh
+**Tech News:** [Google commits $1 billion in grants to train U.S. workers for high-tech jobs](https://techcrunch.com/2017/10/12/google-commits-1-billion-in-grants-to-train-u-s-workers-for-high-tech-jobs/)
+#### malloc 
+```c
+void *malloc(size_t size);
+```
+`malloc` allocates a requested amount of bytes of dynamic memory and returns a pointer to that memory.
+
+```c
+short* p;
+p = (short *) malloc( 10 * sizeof(short));
+```
+* Void * as the return type is used so the function would work with any type of pointer.
+* You can and should typecast the void pointer to the appropriate pointer type.
+
+#### free
+Unlike in java we must release our dynamicaly allocated memory when we are done with it.
+```c
+void free(void *ptr);
+```
+`free` takes a pointer to the beggining of dunamicaly allocaterd memory and releases it.
+
+```c
+short* p;
+P = (short *) malloc( 10 * sizeof(short));
+// code using p
+free(p);
+```
+
+* Only one pointer pointing to the beginning must be used to free the memory.
+* One should not work with the memory once it is freed.
+
+
 ## Tuesday and Wednesday, 10/10 and 10/11 If you don't pay attention, you'll get into a heap of trouble by Stanley Lin
 **Tech News:** [The Quest for Production Quantum Computing Continues](https://techcrunch.com/2017/10/10/intel-moves-towards-production-quantum-computing-with-new-17-qubit-chip/)
 
