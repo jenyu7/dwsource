@@ -1,7 +1,6 @@
 ## Thursday, 10/12: "Malloc & Free: The dynamic duo" by Alexander Shevchenko
 
-**Interesting Tech News:** [Facebook has launcehd a service through which its users can order food online] 
-(https://www.reuters.com/article/us-facebook-food/facebook-launches-u-s-food-order-and-delivery-service-idUSKBN1CI1UU)
+**Interesting Tech News:** [Facebook has launcehd a service through which its users can order food online](https://www.reuters.com/article/us-facebook-food/facebook-launches-u-s-food-order-and-delivery-service-idUSKBN1CI1UU)
 
 Dynamic memory allocation:
 
