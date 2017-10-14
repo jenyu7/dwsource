@@ -11,11 +11,11 @@ malloc(size_t x)
 - Returns the adress at the beginning of the allocation
 - Returns a void * , always typecast to the correct pointer type
 
+
 ```c
 int *p;
 p = (int *)malloc(5 * sizeof(int));
 ```
-
 
 ```c
 free(void *ptr)
@@ -28,6 +28,7 @@ free(void *ptr)
 ```c
 int *p;
 p = (int *)malloc(20);
+free(p);
 ```
 
 --------------------------------------------------------------------------------
