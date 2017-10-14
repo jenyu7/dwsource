@@ -16,6 +16,7 @@ int *p;
 p = (int *)malloc(5 * sizeof(int));
 ```
 
+
 ```c
 free(void *ptr)
 ```
