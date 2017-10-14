@@ -1,3 +1,38 @@
+## Thursday, 10/12: "Malloc & Free: The dynamic duo" by Alexander Shevchenko
+
+**Interesting Tech News:** [Facebook has launcehd a service through which its users can order food online] 
+(https://www.reuters.com/article/us-facebook-food/facebook-launches-u-s-food-order-and-delivery-service-idUSKBN1CI1UU)
+
+Dynamic memory allocation:
+
+```c
+malloc(size_t x)
+```
+- Allocates x bytes of memory (from the heap)
+- Returns the adress at the beginning of the allocation
+- Returns a void * , always typecast to the correct pointer type
+
+```c
+int *p;
+p = (int *)malloc(5 * sizeof(int));
+```
+
+```c
+free(void *ptr)
+```
+
+- Releases dynamically allocated memory
+- Takes one parameter, a pointer to the beginning of a dynamically allocated block of memory
+- Every call to malloc/calloc should have a corresponding call to free
+
+```c
+int *p;
+p = (int *)malloc(20);
+```
+
+--------------------------------------------------------------------------------
+
+
 ## Wednesday, 10/11: "If you don't pay attention you'll get into a heap of trouble" by Jeffrey Lin
 
 **Interesting Tech News:** [Google Will Hit 100% Renewable Energy this Year](https://web.archive.org/web/20171011014233/https://www.inverse.com/article/37308-google-renewable-energy-goal)
