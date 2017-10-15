@@ -1,3 +1,33 @@
+## Spooky Friday, 10/13: calloc & realloc by Brian Leung
+###### **Tech News** [New Ion Thruster Prototype Breaks Records in Tests, Can Help in Journey to Mars](https://www.space.com/38444-mars-thruster-design-breaks-records.html)
+
+## calloc
+```c
+void *calloc (size_t num, size_t size);
+```
+###### `calloc` dynamically allocates memory, like `malloc`. They're very similar except in 2 ways:
+* All of the allocated memory is initialized as 0.
+* It takes 2 arguments: num & size. It allocates a space of *num* * *size* bytes.
+
+#### Example of use:
+```c
+p = (int *) calloc(5, sizeof(int)); 
+```
+
+## realloc
+```c
+void *realloc(void *ptr, size_t size)
+```
+###### `realloc` attempts to resize the memory block associated with a pointer.
+If `size` is smaller than the original size, the extra bytes will be released.
+If `size` is greater than the original size, the allocation will be increased, or a new allocation will be made to accomodate the larger block. If something goes wrong, it returns NULL.
+
+#### Example of use:
+```c
+ptr = (int *) realloc(ptr, sizeof(int)*3);
+```
+
+---
 ## Thursday, 10/12 malloc & free: The dynamic duo! by Victor Teoh
 **Tech News:** [Google commits $1 billion in grants to train U.S. workers for high-tech jobs](https://techcrunch.com/2017/10/12/google-commits-1-billion-in-grants-to-train-u-s-workers-for-high-tech-jobs/)
 #### malloc 
@@ -18,7 +48,7 @@ Unlike in java we must release our dynamicaly allocated memory when we are done 
 ```c
 void free(void *ptr);
 ```
-`free` takes a pointer to the beggining of dunamicaly allocaterd memory and releases it.
+`free` takes a pointer to the beggining of dynamicaly allocated memory and releases it.
 
 ```c
 short* p;
