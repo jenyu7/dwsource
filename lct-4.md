@@ -20,7 +20,7 @@ void *realloc(void *p, size_t x);
 * changes the amount of memory allocated to a given block (x is the new size)
 * p must be a pointer to the beginning of an allocated block of memory, but it does not have to be the original pointer
 * if x is smaller than the original size of the allocation, the extra bytes will be released
-*Example code:
+* Example code:
 ```C
 int *p;
 p = (int *)malloc(20);
