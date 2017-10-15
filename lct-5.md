@@ -24,10 +24,10 @@ realloc(void *p, size_t x);
 - Like free, p must point to the beginning of the block
 - If x is smaller than the original size of the allocation, the extra bytes will be released
 - If x is larger than the original size of size then:
-  <o1>
-  <li> If there is enough space at the end of the original allocation, the original allocation will be updated</li>
-  <li> If there is not enough space, a new allocation will be created, containing the orginal values (copied over). The orginal allocation will be freed.</li>
-  </ol>
+ <p> 1. If there is enough space at the end of the original allocation, the original allocation will be updated </p>
+OR
+<p> 2. If there is not enough space, a new allocation will be created, containing the orginal values (copied over). The orginal allocation will be freed. </p>
+  
 ```c
 int *p;
 p = (int *) malloc(10);
