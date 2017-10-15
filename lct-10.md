@@ -20,7 +20,10 @@ void *realloc(void *ptr, size_t size)
 ```
 ###### `realloc` attempts to resize the memory block associated with a pointer.
 If `size` is smaller than the original size, the extra bytes will be released.
-If `size` is greater than the original size, the allocation will be increased, or a new allocation will be made to accomodate the larger block. If something goes wrong, it returns NULL.
+
+If `size` is greater than the original size, the allocation will be increased, or a new allocation will be made to accomodate the larger block. 
+
+If you run out of memory, it returns NULL.
 
 #### Example of use:
 ```c
