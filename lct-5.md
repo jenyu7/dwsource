@@ -1,3 +1,42 @@
+## Friday, 10/13: Calloc and Realloc by Judy Liu
+
+**Interesting Tech News:**[VR could trick stoke victims' brains toward recovery] (https://www.cnet.com/news/vr-could-trick-stroke-victims-brains-toward-recovery/)
+
+Calloc - clear allocation
+```c
+calloc (size_t n, size_t x);
+``` 
+- Allocates n*x bytes of memory
+- Ensures that each bit is set to 0
+- Works like malloc in all other ways
+
+```c
+int *p;
+p = (int*) calloc (5, sizeof(int));
+```
+
+Realloc
+```c
+realloc(void *p, size_t x);
+```
+
+- Changes the amount of memory allocated in a given block
+- Like free, p must point to the beginning of the block
+- If x is smaller than the original size of the allocation, the extra bytes will be released
+- If x is larger than the original size of size then:
+  <o1>
+  <li> If there is enough space at the end of the original allocation, the original allocation will be updated</li>
+  <li> If there is not enough space, a new allocation will be created, containing the orginal values (copied over). The orginal allocation will be freed.
+
+```c
+int *p;
+p = (int *) malloc(10);
+p = (int *) realloc(p,40);
+```
+
+--------------------------------------------------------------------------------
+
+
 ## Thursday, 10/12: "Malloc & Free: The dynamic duo" by Alexander Shevchenko
 
 **Interesting Tech News:** [Facebook has launcehd a service through which its users can order food online](https://www.reuters.com/article/us-facebook-food/facebook-launches-u-s-food-order-and-delivery-service-idUSKBN1CI1UU)
