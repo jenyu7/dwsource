@@ -26,7 +26,7 @@ realloc(void *p, size_t x);
 - If x is larger than the original size of size then:
   <o1>
   <li> If there is enough space at the end of the original allocation, the original allocation will be updated</li>
-  <li> If there is not enough space, a new allocation will be created, containing the orginal values (copied over). The orginal allocation will be freed.
+  <li> If there is not enough space, a new allocation will be created, containing the orginal values (copied over). The orginal allocation will be freed.</li>
   </ol>
 ```c
 int *p;
