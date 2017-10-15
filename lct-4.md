@@ -1,3 +1,34 @@
+## Friday, 10/13 calloc & realloc by Fabiola Radosav
+**Tech News:** [Can we teach robots ethics?](http://www.bbc.com/news/magazine-41504285)
+
+**calloc**
+```C
+void *calloc(size_t n, size_t x);
+```
+* like malloc but initializes memory to 0 (clears allocation)
+* allocates n * x bytes of memory
+* Example code:
+```C
+int *p;
+p = (int *)calloc(5, sizeof(int));
+```
+
+**realloc**
+```C
+void *realloc(void *p, size_t x);
+```
+* changes the amount of memory allocated to a given block (x is the new size)
+* p must be a pointer to the beginning of an allocated block of memory, but it does not have to be the original pointer
+* if x is smaller than the original size of the allocation, the extra bytes will be released
+*Example code:
+```C
+int *p;
+p = (int *)malloc(20);
+p = (int *)realloc(p, 40);
+```
+
+---
+
 ## Thursday, 10/12 malloc & free: the dynamic duo! by Penn Wu
 **Tech News:** [Bitcoin rockets above $5,000 to all-time high](https://www.reuters.com/article/us-global-markets-bitcoin/bitcoin-rockets-above-5000-to-all-time-high-idUSKBN1CH0YQ)
 
