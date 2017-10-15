@@ -1,6 +1,6 @@
 ## Friday, 10/13: Calloc and Realloc by Judy Liu
 
-**Interesting Tech News:**[VR could trick stoke victims' brains toward recovery] (https://www.cnet.com/news/vr-could-trick-stroke-victims-brains-toward-recovery/)
+**Interesting Tech News:**[VR could trick stoke victims' brains toward recovery](https://www.cnet.com/news/vr-could-trick-stroke-victims-brains-toward-recovery/)
 
 Calloc - clear allocation
 ```c
