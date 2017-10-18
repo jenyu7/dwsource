@@ -1,3 +1,24 @@
+## Wednesday, 10/18: Getting Back on the Grind
+**Tech News** [DeepMind’s Go-playing AI doesn’t need human help to beat us anymore](https://www.theverge.com/2017/10/18/16495548/deepmind-ai-go-alphago-zero-self-taught)
+
+## valgrind
+* Valgrind is a tool for debugging memory issues in C programs
+* You must compile with -g in order to valgrind (and use similar tools)
+
+**example**
+```
+$ gcc -g foo.c
+$ valgrind--leak-check=yes ./a.out
+```
+This will give you a better description of the errors and memory management within your code.
+Even if the error itself is indecipherable, valgrind gives you the line at which it occurs (not just SegFault!)
+
+One final thing to mention is when running valgrind on machines in the csDojo, the memory management will only show
+you the things that you malloc, calloc, realloc, and free. Macs run on a different OS, though, and show the memory used
+in underlying processes that you may not have personally accessed. Some advice is to just make sure that you haven't 
+"definitely lost" memory in your program.
+
+---
 ## Spooky Friday, 10/13: calloc & realloc by Brian Leung
 ###### **Tech News** [New Ion Thruster Prototype Breaks Records in Tests, Can Help in Journey to Mars](https://www.space.com/38444-mars-thruster-design-breaks-records.html)
 
