@@ -8,7 +8,7 @@
 **example**
 ```
 $ gcc -g foo.c
-$ valgrind--leak-check=yes ./a.out
+$ valgrind --leak-check=yes ./a.out
 ```
 This will give you a better description of the errors and memory management within your code.
 Even if the error itself is indecipherable, valgrind gives you the line at which it occurs (not just SegFault!)
