@@ -1,3 +1,19 @@
+## Wednesday, 10/18 valgrind by Herman Lin
+**Tech News:** [LIGO Detects Fierce Collision of Neutron Stars for the First Time] (https://www.nytimes.com/2017/10/16/science/ligo-neutron-stars-collision.html)
+
+**valgrind**
+* tool for debugging memory issues in C programs
+* You must compile with -g in order to use valgrind (and other similar tools)
+```C
+gcc -g foo.c
+```
+* Usage:
+```C
+$ valgrind --leak-check=yes <program>
+```
+
+---
+
 ## Friday, 10/13 calloc & realloc by Fabiola Radosav
 **Tech News:** [Can we teach robots ethics?](http://www.bbc.com/news/magazine-41504285)
 
