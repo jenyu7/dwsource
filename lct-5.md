@@ -1,3 +1,21 @@
+## Wednesday, 10/18: back to the grind by Jasper Cheung
+**Interesting Tech News:** [giant robot battle!!! WOW!](https://www.cnet.com/news/robots-megabots-twitch-suidobashi-battle-japan-usa/) [(vid)](https://www.youtube.com/watch?v=Z-ouLX8Q9UM) 
+
+Valgrind
+- tool for debugging memory issues in C
+- (e.g. memory leaks, accessing freed memory, use of intialized memory) 
+- You must complie with -g to use valgrind (and other similar tools)
+``` 
+gcc -g foo.c
+```
+- then you call valgrind when running the executable
+```
+valgrind --leak-check=yes ./a.out
+```
+- you may see different results when running valgrind on different OSs
+
+---
+
 ## Friday, 10/13: Calloc and Realloc by Judy Liu
 
 **Interesting Tech News:**[VR could trick stoke victims' brains toward recovery](https://www.cnet.com/news/vr-could-trick-stroke-victims-brains-toward-recovery/)
