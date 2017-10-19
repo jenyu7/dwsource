@@ -1,5 +1,5 @@
 ## Wednesday, 10/18 valgrind by Herman Lin
-**Tech News:** [LIGO Detects Fierce Collision of Neutron Stars for the First Time] (https://www.nytimes.com/2017/10/16/science/ligo-neutron-stars-collision.html)
+**Tech News:** [LIGO Detects Fierce Collision of Neutron Stars for the First Time](https://www.nytimes.com/2017/10/16/science/ligo-neutron-stars-collision.html)
 
 **valgrind**
 * tool for debugging memory issues in C programs
