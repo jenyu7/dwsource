@@ -4,7 +4,7 @@
 Valgrind
 - tool for debugging memory issues in C
 - (e.g. memory leaks, accessing freed memory, use of intialized memory) 
-- You must complie with -g to use valgrind
+- You must complie with -g to use valgrind (and other similar tools)
 ``` 
 gcc -g foo.c
 ```
