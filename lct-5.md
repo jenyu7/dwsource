@@ -1,3 +1,33 @@
+## Thursday, 10/19 : Get Dem Bugs by John Lin
+**Interesting Tech News:** [Intel says Nervana computer chips will accelerate AI Revolution](https://www.cnet.com/news/intel-says-its-computer-chips-will-accelerate-ai-revolution/)
+
+GDB
+- Stands for GNU Debugger
+- Tool for debugging a C program
+- First compile the program, then call the gdb on the executable
+```
+gcc broken.c
+gdb ./a.out
+```
+- In the GDB, you can start running the program by calling
+```
+run
+```
+- You can place a break point in the program by calling 
+``` 
+break line_number
+```
+- You can print the value of a variable by calling
+```
+print variable_name
+```
+- When a program stops at a break point, you can continue executing the program until the next break point by calling
+```
+continue
+```
+
+--------------------------------------------------------------------------------
+
 ## Wednesday, 10/18: back to the grind by Jasper Cheung
 **Interesting Tech News:** [giant robot battle!!! WOW!](https://www.cnet.com/news/robots-megabots-twitch-suidobashi-battle-japan-usa/) [(vid)](https://www.youtube.com/watch?v=Z-ouLX8Q9UM) 
 
