@@ -1,3 +1,56 @@
+## Thursday, 10/19: More ways to kill bugs by Jensen Li
+**Tech News** [Google adds ‘try now’ button on Play Store listings to highlight Android Instant Apps](https://www.theverge.com/2017/10/19/16502198/google-android-instant-apps-play-store-try-it-now-button)
+
+###GDB (Gnu DeBugger)
+To use:
+1. Compile the program
+2. Call the gdb on the executable
+**example**
+```
+gcc somefile.c
+gdb ./a.out
+```
+
+The GDB provides an interactive shell
+Some commands you can use in the shell involve:
+```
+run
+```
+* runs the program until it ends/crashes
+``` 
+list
+```
+* lists the lines of code run around a crash
+``` 
+print <VAR>
+```
+* print a variable
+``` 
+backtrace
+```
+* show the current stack
+```
+break <line number>
+```
+* creates a breakpoint at the given line
+
+You can also run the program in pieces using the shell with commands like:
+``` 
+continue
+```
+* continues to run the program until the next breakpoint
+``` 
+next
+```
+* only runs the next line of the program
+```
+step
+```
+* runs next line of program
+* will run function’s first line but that’s it
+
+---
+
 ## Wednesday, 10/18: Getting Back on the Grind
 **Tech News** [DeepMind’s Go-playing AI doesn’t need human help to beat us anymore](https://www.theverge.com/2017/10/18/16495548/deepmind-ai-go-alphago-zero-self-taught)
 
