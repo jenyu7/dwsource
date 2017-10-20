@@ -1,7 +1,8 @@
 ## Thursday, 10/19: More ways to kill bugs by Jensen Li
 **Tech News** [Google adds ‘try now’ button on Play Store listings to highlight Android Instant Apps](https://www.theverge.com/2017/10/19/16502198/google-android-instant-apps-play-store-try-it-now-button)
 
-###GDB (Gnu DeBugger)###
+### GDB (Gnu DeBugger) ###
+
 To use:
 1. Compile the program
 2. Call the gdb on the executable
@@ -14,7 +15,7 @@ gdb ./a.out
 
 The GDB provides an interactive shell
 
-##Shell commands:##
+## Shell commands: ##
 ```
 run
 ```
