@@ -1,3 +1,55 @@
+## Thursday, 10/19 Get Dem Bugs by Xing Tao Shi
+**Tech News:** [Samsung to Give Linux Desktop Experience to Smartphone Users](https://www.technewsworld.com/story/Samsung-to-Give-Linux-Desktop-Experience-to-Smartphone-Users-84896.html)
+
+**GDB**
+* stands for GNU debugger
+* You must compile with -g in order to use GDB
+```C
+gcc -g foo.c
+```
+* Usage:
+```C
+$ gdb ./a.out
+```
+There are many things you can do with GDB such as:
+Run the program
+```C
+run
+```
+Place a break point at a line, this essential makes it so that when you run the program it stops here
+```C
+break line_number
+```
+Place a break point at a function, this essential makes it so that when you run the program it stops here
+```C
+break func_name
+```
+To continue from a break point until the next break point you can
+```C
+continue
+```
+To continue from a break point and execute the next line you can
+```C
+next
+```
+To continue from a break point and execute the next line or the next line of the function located in the next line you can
+```C
+step
+```
+Print a variable
+```C
+print variable
+```
+Show the broken code
+```C
+list
+```
+Quit the GDB shell
+```C
+quit
+```
+---
+
 ## Wednesday, 10/18 valgrind by Herman Lin
 **Tech News:** [LIGO Detects Fierce Collision of Neutron Stars for the First Time](https://www.nytimes.com/2017/10/16/science/ligo-neutron-stars-collision.html)
 
