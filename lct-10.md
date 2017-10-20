@@ -37,7 +37,7 @@ break <line number>
 ```
 * creates a breakpoint at the given line
 
-You can also run the program in pieces using the shell with commands like:
+## You can also run the program in pieces using the shell with commands like: ##
 ``` 
 continue
 ```
