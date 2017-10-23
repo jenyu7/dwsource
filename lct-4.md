@@ -46,6 +46,16 @@ Now, suppose we have
 `a & b` would be `00010100`.  
 `a ^ b` would be `11101011`.  
 
+
+At the end of class, a swap algorithm using xor was given.  
+Given the integers `a` and `b`:
+```C
+a = a ^ b;
+b = a ^ b;
+a = a ^ b;
+```
+swaps the values of `a` and `b`.
+
 ---
 
 ## Thursday, 10/19 Get Dem Bugs by Xing Tao Shi
