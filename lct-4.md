@@ -1,3 +1,53 @@
+## Monday, 10/23 A bit of wisdom by Kenny Chen
+**Tech News:** [Should We Fear the Rise of Intelligent Robots?](https://www.livescience.com/59802-should-we-fear-intelligent-robots.html)
+
+Today we discussed a few more `printf` formatting options for printing integers in different bases, ways to represent an integer in different bases, and bitwise operators.
+
+**Different Bases**
+
+`"%o"` prints an integer in **octal**, and `"%x"` prints an integer in **hexadecimal**. (Correspondingly, `"%d"` prints an integer in **decimal**. There is no formatting character for binary.)  
+So, for example, printing 13 with:  
+`"%d"` results in `13`  
+`"%o"` results in `15`  
+`"%x"` results in `d`  
+
+We can also represent integers in different bases:  
+In **binary**, we precede the digits with `0b`.  
+In **octal**, we precede the digits with `0`.  
+In **hexadecimal**, we precede the digits with `0x`.  
+```C
+int b = 0b1011; //11
+int o = 0122; //82
+int x = 0xa3; //163
+```
+These integers are all stored the same way; that is,  
+`0b1011`, `013`, `0xb`, and `11` are all the same.  
+
+**Bitwise Operators**
+
+`>>` is the right shift. It moves all the bits once to the right, and adds 0s to the front.  
+`<<` is the left shift. It moves all the bits once to the left, and adds 0s to the end.  
+Right shift and left shift do not affect memory outside of the integer.  
+
+So, if `char b = 0b1011;` (that is, `b`'s bits are `00001011`, then  
+`b = b >> 1;` would have `b` be the same as `00000101`. Then,  
+`b = b << 1;` would have `b` be the same as `00001010`.  
+
+`~` is negation. It flips every bit.  
+`|` is or. It performs or for each pair of bits.  
+`&` is and. It performs and for each pair of bits.  
+Lastly, `^` is xor. It performs xor for each pair of bits.  
+
+Now, suppose we have  
+`unsigned char a = 0b10110111;` and  
+`unsigned char b = 0b01011100;`. Then:  
+`~a` would be `01001000`.  
+`a | b` would be `11111111`.  
+`a & b` would be `00010100`.  
+`a ^ b` would be `11101011`.  
+
+---
+
 ## Thursday, 10/19 Get Dem Bugs by Xing Tao Shi
 **Tech News:** [Samsung to Give Linux Desktop Experience to Smartphone Users](https://www.technewsworld.com/story/Samsung-to-Give-Linux-Desktop-Experience-to-Smartphone-Users-84896.html)
 
