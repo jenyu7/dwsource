@@ -30,7 +30,7 @@ a = 0b10111;
 a = a >> 1;
 a = a << 1;
 ```
-After running this code, a is now 10110. The one at the end was lost by the left bitshift, and was replaced with a 0 by the right bitshift.
+After running this code, a is now `10110`. The one at the end was lost by the left bitshift, and was replaced with a 0 by the right bitshift.
 
 ### Bit Logic! ###
 Much like booleans, we have logic that works on bits (if you still haven't caught on, 1 is true and 0 is false!)
