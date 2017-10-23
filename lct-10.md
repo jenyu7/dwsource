@@ -44,7 +44,7 @@ Fun/Super useful fact: You can swap two variables without using a third with bit
 b = a ^ b
 a = a ^ b
 '''
-
+---
 ## Thursday, 10/19: More ways to kill bugs by Jensen Li
 **Tech News** [Google adds ‘try now’ button on Play Store listings to highlight Android Instant Apps](https://www.theverge.com/2017/10/19/16502198/google-android-instant-apps-play-store-try-it-now-button)
 
