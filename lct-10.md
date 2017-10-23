@@ -1,3 +1,50 @@
+## Monday, 10/23: A bit o' wisdom
+**Tech News ** [They're... NOT taking our jobs!(Robots and people working together at Boxed)](https://www.cnet.com/news/boxed-retailer-got-robots-automation-humans-jobs/)
+
+### %o and %x ###
+These are two integer specifiers, however they work a little differently than %d.
+%d represents integers in **base 10**, while %o represents them in **base 8** and %x represents them in **base 16** (o is for Octal, x is for heXadecimal)
+
+We can also work with these formats in our code, by prefixing our integer literals with :
+- 0b for binary
+- 0 for octal
+- 0x for hexadecimal
+Keep in mind, that no matter how a number is represented - it's still the same number. The base 10 number 11 is 1011 in binary, 13 in octal and B in hexadecimal. Therefore:
+** 11 == 0b1011 == 013 == 0xB **
+
+### Bitwise Operators!! ###
+Bitwise operators are operations that get applied to the individual bits of a data type.
+
+The first kind is bitwise shifting. What this does is move the bits over, either left or right. The operation is symbolized with either >> or << depending on the direction you're shifting.
+
+x >> 1 - a right shift by 1.
+	**ex** if a is 1 0 1 1 0 1, after the shift a is 0 1 0 1 1 0.
+x << 1 - a left shift by 1.
+	**ex** if a is 0 1 0 1 1 0 1, after the shift a is 1 0 1 1 0 1.
+
+In general, a right/left bitshift moves all bits to the right or left (respectively) and adds 0s in the front or back (respectively). Any values that get "carried over the edge" are simply deleted. These operations always work, so no memory issues here!
+
+Note that these operations are not inverses:
+'''
+a = 0b10111;
+a = a >> 1;
+a = a << 1;
+'''
+After running this code, a is now 10110. The one at the end was lost by the left bitshift, and was replaced with a 0 by the right bitshift.
+
+### Bit Logic! ###
+Much like booleans, we have logic that works on bits (if you still haven't caught on, 1 is true and 0 is false!)
+- Negation! The tilde (~) acts to negate a bit (0 to 1 or 1 to 0);
+- Or! Much like the boolean or, this is done with the | symbol, but only one. a | b returns 1 when one of the bits is 1.
+- And! Again, like the boolean and but only one &. a & b returns 1 when both bits are 1.
+- Xor! A single carrot (^) represents the xor. a ^ b returns when only one of the two bits is 1.
+
+Fun/Super useful fact: You can swap two variables without using a third with bit xor'ing!
+'''
+b = a ^ b
+a = a ^ b
+'''
+
 ## Thursday, 10/19: More ways to kill bugs by Jensen Li
 **Tech News** [Google adds ‘try now’ button on Play Store listings to highlight Android Instant Apps](https://www.theverge.com/2017/10/19/16502198/google-android-instant-apps-play-store-try-it-now-button)
 
@@ -20,15 +67,15 @@ The GDB provides an interactive shell
 run
 ```
 * runs the program until it ends/crashes
-``` 
+```
 list
 ```
 * lists the lines of code run around a crash
-``` 
+```
 print <VAR>
 ```
 * print a variable
-``` 
+```
 backtrace
 ```
 * show the current stack
@@ -38,11 +85,11 @@ break <line number>
 * creates a breakpoint at the given line
 
 ## You can also run the program in pieces using the shell with commands like: ##
-``` 
+```
 continue
 ```
 * continues to run the program until the next breakpoint
-``` 
+```
 next
 ```
 * only runs the next line of the program
@@ -71,7 +118,7 @@ Even if the error itself is indecipherable, valgrind gives you the line at which
 
 One final thing to mention is when running valgrind on machines in the csDojo, the memory management will only show
 you the things that you malloc, calloc, realloc, and free. Macs run on a different OS, though, and show the memory used
-in underlying processes that you may not have personally accessed. Some advice is to just make sure that you haven't 
+in underlying processes that you may not have personally accessed. Some advice is to just make sure that you haven't
 "definitely lost" memory in your program.
 
 ---
@@ -88,7 +135,7 @@ void *calloc (size_t num, size_t size);
 
 #### Example of use:
 ```c
-p = (int *) calloc(5, sizeof(int)); 
+p = (int *) calloc(5, sizeof(int));
 ```
 
 ## realloc
@@ -98,7 +145,7 @@ void *realloc(void *ptr, size_t size)
 ###### `realloc` attempts to resize the memory block associated with a pointer.
 If `size` is smaller than the original size, the extra bytes will be released.
 
-If `size` is greater than the original size, the allocation will be increased, or a new allocation will be made to accomodate the larger block. 
+If `size` is greater than the original size, the allocation will be increased, or a new allocation will be made to accomodate the larger block.
 
 If you run out of memory, it returns NULL.
 
@@ -110,7 +157,7 @@ ptr = (int *) realloc(ptr, sizeof(int)*3);
 ---
 ## Thursday, 10/12 malloc & free: The dynamic duo! by Victor Teoh
 **Tech News:** [Google commits $1 billion in grants to train U.S. workers for high-tech jobs](https://techcrunch.com/2017/10/12/google-commits-1-billion-in-grants-to-train-u-s-workers-for-high-tech-jobs/)
-#### malloc 
+#### malloc
 ```c
 void *malloc(size_t size);
 ```
@@ -255,7 +302,7 @@ struct node* add_to_front(struct node *head) {
 	struct node new;	//(1)
 	new.data = 42;
 	new.next = head;
-	
+
 	return &new;		//(2)
 }
 ```
@@ -369,7 +416,7 @@ We spent the class introducing the various string.h functions that we were assig
 ##### `strcpy( char * dest, char * src );`
 ##### `strncpy( char * dest, char * src, int n);`
 
-These two functions are made for copying strings. They both work by copying the `src` into `dest`. However, `strncpy` only copies the first `n` characters of `src`. Note that these functions change `dest`, so `dest` cannot be immutable, but `src` can. 
+These two functions are made for copying strings. They both work by copying the `src` into `dest`. However, `strncpy` only copies the first `n` characters of `src`. Note that these functions change `dest`, so `dest` cannot be immutable, but `src` can.
 
 ```C
 #include <string.h>
@@ -378,7 +425,7 @@ int main() {
   char str1[] = "hello";
   char str2[20];
   char str3[2];
-  
+
   printf("%s\n", * strcpy( str2, str1 )); // will result in "hello" being printed
 ```
 Note that for the first usage of `strcpy`, the first argument, "hello", is smaller in size than the second argument, which will allow for the copying to take place.
@@ -388,7 +435,7 @@ Note that for the first usage of `strcpy`, the first argument, "hello", is small
 ```
 Don't copy strings that are larger than the destination string.
 
-`strncpy` is like strcpy, but safer. You should probably use `strncpy` anytime you want to copy strings, regardless of how much of the string you want to copy over. 
+`strncpy` is like strcpy, but safer. You should probably use `strncpy` anytime you want to copy strings, regardless of how much of the string you want to copy over.
 
 ```C
   printf("%s\n", * strncpy( str3, str1, 1 )); // will result in "h" being printed
@@ -413,7 +460,7 @@ int main() {
 
   char str1[16] = "h";
   char * str2 = "ello";
-  
+
   printf("%s\n",  * strcat( str1, str2 )); // will result in "hello" being printed
 ```
 Note that the size of `str1` has to be large enough for the size of `str1` + the size of `str2`. Like `strcpy` and `strncpy`, the destination string can't be immutable, but the source can.
@@ -421,7 +468,7 @@ Note that the size of `str1` has to be large enough for the size of `str1` + the
 ```C
   printf("%s\n",  * strncat( str1, str2, 3 )); // will result in "hell" being printed
 ```
-`strncat` will take the number of chars specificed, in this case 3, and concatenate to the destination string. 
+`strncat` will take the number of chars specificed, in this case 3, and concatenate to the destination string.
 
 #### `strcmp` and `strncmp`
 ##### `strcmp( char * s1, char * s2 );`
@@ -435,9 +482,9 @@ int main() {
   printf("%d\n", strcmp("A", "a")); // will print -1
   printf("%d\n", strcmp("A", "A")); // will print 0
   printf("%d\n", strcmp("a", "A")); // will print 1
-  
+
   printf("%d\n", strncmp("aA", "Aa", 1)); // compares "a" with "A" -- prints 1
-  
+
   return 0;
 }
 ```
@@ -453,10 +500,10 @@ int main() {
   printf("%p\n", strchr("hello", 'e')); // will return pointer to 'e'
   printf("%c\n", * strchr("hello", 'e')); // will print 'e'
   printf("%p\n", strchr("hello", 'a')); // will return null pointer
-    
+
   printf("%p\n", strstr("hello", "el")); // will return pointer to 'e'
   printf("%p\n", strstr("hello", "abc")); // will return null pointer
-  
+
   return 0;
 }
 ```
@@ -469,7 +516,7 @@ int main() {
 
 *DO NOW: Write a function to find length of strings.*
 
-One possible way: 
+One possible way:
 ```C
 int str_length (char *point) { //note, NOT char s[]
   int len = 0;
@@ -575,7 +622,7 @@ s2[2] = '!';
 printf("s2: %s\n", s2);
 ```
 
-Will be continued tomorrow. 
+Will be continued tomorrow.
 
 
 ---
