@@ -1,5 +1,5 @@
 ## Monday, 10/23: A bit o' wisdom
-**Tech News ** [They're... NOT taking our jobs!(Robots and people working together at Boxed)](https://www.cnet.com/news/boxed-retailer-got-robots-automation-humans-jobs/)
+**Tech News** [They're... NOT taking our jobs!(Robots and people working together at Boxed)](https://www.cnet.com/news/boxed-retailer-got-robots-automation-humans-jobs/)
 
 ### %o and %x ###
 These are two integer specifiers, however they work a little differently than %d.
