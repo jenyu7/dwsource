@@ -1,3 +1,39 @@
+## Monday, 10/23 : The Missing Bits and Pieces by Ashneel Das
+**Interesting Tech News:** [AI exhibits bias towards men in many cases, including autonomous vehicles](https://www.technologyreview.com/s/609129/the-dangers-of-tech-bro-ai/)
+
+Integers can be represented in base 2, 8, and 16 by using the following prefixes: 
+- Binary: 0b
+- Octal: 0
+- Hexadecimal: 0x
+
+There is NO difference between the values of these integers. 
+```c
+0b1011 == 013 == 0xB == 11
+```
+Arithmetic in different bases also works.
+There are certain operators that can be used on values that are evaluated on each individual bit, known as bitwise operators. 
+
+```c
+unsigned char c = 0b10110011;
+```
+Right shift moves all the bits to the right and adds 0s to the front. 
+```c
+c >> 1
+```
+This makes the value of c 01011001. 
+Left shift moves all bits to the left and adds 0s to the end. 
+```c
+c << 1
+```
+This makes the value of c (after the right shift AND left shift) 10110010. 
+Other bitwise operators are negation, or, and, xor. 
+- ~: Negation flips every bit. 0s become 1s, and 1s become 0s. 
+- |: Performs the or operator on every pair of bits in the two numbers. 
+- &: Performs the and operator on every pair of bits in the two numbers. 
+- ^: Performs the exclusive or operator on every pair of bits in the two numbers. 
+
+--------------------------------------------------------------------------------
+
 ## Thursday, 10/19 : Get Dem Bugs by John Lin
 **Interesting Tech News:** [Intel says Nervana computer chips will accelerate AI Revolution](https://www.cnet.com/news/intel-says-its-computer-chips-will-accelerate-ai-revolution/)
 
