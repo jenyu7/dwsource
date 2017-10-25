@@ -1,3 +1,37 @@
+## Tuesday, 10/24: File This Under Useful Information by Anish Shenoy
+
+**Tech News** [Google Is Creating its Own Neighborhood](http://www.independent.co.uk/life-style/gadgets-and-tech/news/google-quayside-toronto-plans-sidewalk-labs-canada-eastern-waterfront-weather-control-loft-buildings-a8015866.html)
+
+### Three Kinds of File Permissions
+* Read [r]: File is readable
+* Write [w]: File is writeable
+* Executable [x]: File is executable
+* These three permissions can be represented as 3-digit binary numbers or 1-digit octals (0b denotes binary 0 denotes octal)
+	- 0b100 <==> 04 => Read-Only
+	- 0b111 <==> 07 => Read, Write, Execute
+	- 0b101 <==> 05 => Read, Execute
+
+### Three Permission 'Areas'
+There are three permission "areas"
+* User, Group, Others
+* Others does NOT refer to everyone, it refers to everyone besides User and Group
+* Each area can have its own permissions
+	- ex: 0644 <=> 101100100 => User can read/write, group can only read, others can only read.
+
+### Viewing and Changing Permissions
+* Permissions can be viewed by using the `ls -l` command
+* Permissions can be changed with the `chmod` command
+	- ex: `chmod 664 broken.c` sets the permissions of broken.c to 664
+	- This is a more useful alternative to the `chmod +` command we were used to using
+* The Owner can always change the permissions of a file
+
+### Metadata
+* The Metadata of a file stores information about the file
+	- This information can include things like file size, and permissions
+
+
+--------------------------------------------------------------------------------
+
 ## Monday, 10/23 : The Missing Bits and Pieces by Ashneel Das
 **Interesting Tech News:** [AI exhibits bias towards men in many cases, including autonomous vehicles](https://www.technologyreview.com/s/609129/the-dangers-of-tech-bro-ai/)
 
