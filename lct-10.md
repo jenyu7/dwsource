@@ -8,13 +8,14 @@
 There are three types of permissions
 * Read [r]: File can be read
 * Write [w]: File can be written to
-* Executable [x]: File can be executed
-Permissions can be represented as 3 digit binary numbers or as a single digit octal.
+* Executable [x]: File can be executed  
+
+Permissions can be represented as 3 digit binary numbers or as a single digit octal.  
 * 0b100 <=> 04 => Read-Only
 * 0b111 <=> 07 => Read, Write, and Executable
 
 ### Permission 'Areas' (On Unix systems)
-There are three permission "areas"
+There are three permission "areas"  
 * User: Determines what actions the 'owner' of the file can perform on a file.
 * Group: Determines what actions a member of the 'group' the file belongs to can perform on a file.
 * Other: Determines what actions all others (**excluding User and Group**) can perform on a file.
@@ -36,7 +37,7 @@ total 16
 -rw-rw-r-- 1 thisname thisname  986 Oct 23 14:16 main.c
 -rwxrwxr-x 1 thisname thisname 8744 Oct 23 14:16 test
 ```
-In this example, data is shown in the format `permissions hard-link-count owner owner-group filesize last-modified file/directory name`.
+In this example, data is shown in the format `permissions hard-link-count owner owner-group filesize last-modified file/directory name`.  
 * The hard-link-count of a file is typically 1 while a directory is typically > 1.
 
 The permissions for `main.c` in this example are shown as `-rw-rw-r--`. 
