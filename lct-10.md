@@ -1,3 +1,72 @@
+## Tuesday, 10/23: File this under useful information. (By Kyle Lin)
+
+**Tech News** [Saudi Arabian Crown Prince's proposed city, 'NEOM' or Not Even an Oranizable Mess?](https://www.bloomberg.com/news/articles/2017-10-24/saudi-arabia-to-build-new-mega-city-on-country-s-north-coast)
+
+&nbsp;
+
+### File Permissions
+There are three types of permissions
+* Read [r]: File can be read
+* Write [w]: File can be written to
+* Executable [x]: File can be executed
+Permissions can be represented as 3 digit binary numbers or as a single digit octal.
+* 0b100 <=> 04 => Read-Only
+* 0b111 <=> 07 => Read, Write, and Executable
+
+### Permission 'Areas' (On Unix systems)
+There are three permission "areas"
+* User: Determines what actions the 'owner' of the file can perform on a file.
+* Group: Determines what actions a member of the 'group' the file belongs to can perform on a file.
+* Other: Determines what actions all others (**excluding User and Group**) can perform on a file.
+Each area can have its own permissions
+* ex: 0644 <=> 0b101100100 => User can read/write, group can only read, other can only read.
+
+### Looking at Permissions
+The permissions can be modified easily through the terminal.
+In an example, a `ls` list files command with the `-l` flag displays the `long format listing`.
+In other words, it displays metadata information about the files.
+* Metadata is data about the data of a file, hence the meta prefix.
+* Metadata is not stored with the file, although it may be stored in adjacent memory.
+* Metadata therefore doesn't add to the file size.
+* Metadata is handled by the OS and contains the information given when running `ls` with the `-l` flag.
+
+```bash
+thisname@iscensored:~/Desktop/Stuy/Systems/removechar$ ls -l
+total 16
+-rw-rw-r-- 1 thisname thisname  986 Oct 23 14:16 main.c
+-rwxrwxr-x 1 thisname thisname 8744 Oct 23 14:16 test
+```
+In this example, data is shown in the format `permissions hard-link-count owner owner-group filesize last-modified file/directory name`.
+* The hard-link-count of a file is typically 1 while a directory is typically > 1.
+
+The permissions for `main.c` in this example are shown as `-rw-rw-r--`. 
+This means that the owner can read/write, the owner's group can read/write, but others can only read.
+
+In the case of a directory being in the file list:
+```bash
+drwxrwxr-x 2 thisname thisname 4096 Oct 23 14:16 removechar
+```
+The initial character `d` indicates it is a directory. `rwxrwxr-x` indicates that the owner & owner group can read/write/execute the directory while others can only read or execute and not write. Note that the hard-link-count of the directory is 2 (and there are 2 files inside that directory as indicated in the code block located above).
+
+### Modifying Permissions
+To modify permissions, the terminal command `chmod` can be used.
+Initial details:
+```bash
+-rw-rw-r-- 1 thisname thisname  986 Oct 23 14:16 main.c
+```
+After running `chmod 754 main.c`:
+```bash
+thisname@iscensored:~/Desktop/Stuy/Systems/removechar$ chmod 754 main.c
+thisname@iscensored:~/Desktop/Stuy/Systems/removechar$ ls -l
+total 16
+-rwxr-xr-- 1 thisname thisname  986 Oct 23 14:16 main.c
+-rwxrwxr-x 1 thisname thisname 8744 Oct 23 14:16 test
+thisname@iscensored:~/Desktop/Stuy/Systems/removechar$ 
+```
+The permissions for main.c have been changed from 664 or `read-write-null-read-write-null-read-null-null` to 754 or `read-write-execute-read-null-execute-read-null-null`. (Note that each digit is an individual octal number).
+
+---
+
 ## Monday, 10/23: A bit o' wisdom
 **Tech News** [They're... NOT taking our jobs! (Robots and people working together at Boxed)](https://www.cnet.com/news/boxed-retailer-got-robots-automation-humans-jobs/)
 
