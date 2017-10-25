@@ -1,4 +1,4 @@
-## Tuesday, 10/23: File this under useful information. (By Kyle Lin)
+## Tuesday, 10/24: File this under useful information. (By Kyle Lin)
 
 **Tech News** [Saudi Arabian Crown Prince's proposed city, 'NEOM' or Not Even an Oranizable Mess?](https://www.bloomberg.com/news/articles/2017-10-24/saudi-arabia-to-build-new-mega-city-on-country-s-north-coast)
 
