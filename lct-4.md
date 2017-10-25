@@ -7,7 +7,7 @@ We started off by linking octal to the file permissions (read, write and execute
 * there is 8 total combinations for those permissions
 * permissions could be represented by a single digit in octal
   - this stems from a 3 digit binary representation in which a 1 represents permission given and 0 represents permission denied
-  - 6 will get converted to 110 
+  - 6 will get converted to 110 which cross referenced with rwx means read and write permissions
 * there are 3 sets of permissions; one for user, one for group, and one for others
   - others does NOT refer to everyone, but everyone not included by user and group
   - you can view file permissions in the terminal with the 'ls -l' or 'll' command (long format listing), which shows metadata
