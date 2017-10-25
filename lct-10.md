@@ -1,6 +1,6 @@
 ## Tuesday, 10/24: File this under useful information. (By Kyle Lin)
 
-**Tech News** [Saudi Arabian Crown Prince's proposed city, 'NEOM' or Not Even an Oranizable Mess?](https://www.bloomberg.com/news/articles/2017-10-24/saudi-arabia-to-build-new-mega-city-on-country-s-north-coast)
+**Tech News** [Porsche built a Cayman electric car concept that's suprisingly quick](https://www.cnet.com/roadshow/news/porsche-built-an-electric-cayman-concept-thats-surprisingly-quick/)
 
 &nbsp;
 
@@ -19,6 +19,7 @@ There are three permission "areas"
 * User: Determines what actions the 'owner' of the file can perform on a file.
 * Group: Determines what actions a member of the 'group' the file belongs to can perform on a file.
 * Other: Determines what actions all others (**excluding User and Group**) can perform on a file.
+
 Each area can have its own permissions
 * ex: 0644 <=> 0b101100100 => User can read/write, group can only read, other can only read.
 
