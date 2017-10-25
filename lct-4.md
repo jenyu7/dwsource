@@ -1,3 +1,23 @@
+## Tuesday, 10/24 File This Under Useful Information by Charles Weng
+**Tech News:** [Does the 3DS have a Future?](https://arstechnica.com/gaming/2017/04/after-nintendo-switch-does-the-3ds-have-a-future/)
+
+Today was mostly a review of file permissions that we covered back in intro.
+
+We started off by linking octal to the file permissions (read, write and execute, abbreviated to rwx respectively) and went over the following:
+* there is 8 total combinations for those permissions
+* permissions could be represented by a single digit in octal
+  -
+* there are 3 sets of permissions; one for user, one for group, and one for others
+  - others does NOT refer to everyone, but everyone not included by user and group
+  - you can view file permissions in the terminal with the 'ls -l' or 'll' command (long format listing), which shows metadata
+* this is used by the terminal command chmod to more easily modify file permissions for a file
+  - 644 is default
+  - `chmod 644 name.c` as opposed to `chmod u=rw,g=r,o=r name.c` or using separate flags
+
+We then went on to talk about the first character that we saw in `drw-r--r--` which denoted the file as a file descriptor or a directory. This was just a file that listed out the pointer to and names of other files and is used in GUIs for organization.
+
+We also talked about how this relates to c with file interactions through stdio.h and how when you shouldn't be complaining about the limit on the amount of files you can have open (256). A relevant function for this is `getdtablesize()` which returns the first power of two greater than your tablesize
+
 ## Monday, 10/23 A bit of wisdom by Kenny Chen
 **Tech News:** [Should We Fear the Rise of Intelligent Robots?](https://www.livescience.com/59802-should-we-fear-intelligent-robots.html)
 
@@ -186,7 +206,7 @@ void free(void *p);
 ## Tuesday, 10/10 and Wednesday 10/11 If you don't pay attention you'll get into a heap of trouble! by William Hong
 **Tech News:** [More Governments Test Out Cryptocurrency](http://www.investopedia.com/news/more-governments-test-out-cryptocurrencies/)
 
-### AIM: If you don't pay attention you'll get into a heap of trouble! 
+### AIM: If you don't pay attention you'll get into a heap of trouble!
 
 We briefly discussed structs, below is prototyping a struct
 #### struct
@@ -217,11 +237,11 @@ Structs can contain variables and even more structs. You can also have a pointer
 struct foo{
     //variables, etc
     struct foo *next;
-}; 
+};
 ```
 
 Note: even if we use a struct in the parameter of a function, it is stilled passed by value, which means a copy of the argument is made. Do this instead...
-```C 
+```C
 void foo_stuff(struct foo *s); //as opposed to void foo_stuff(struct foo s)
 ```
 
@@ -234,7 +254,7 @@ p = &s;
 Additional note: anything you do to p will modify whatever's going on in x
 
 IMPORTANT: to access data from a struct pointer, you can also use ->
-```C 
+```C
 p->x; //this is the same as (*p).x
 ```
 If there's a pointer inside a struct with another pointer to another struct, you can chain the arrows
