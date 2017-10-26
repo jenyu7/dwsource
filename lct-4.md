@@ -52,7 +52,7 @@ We started off by linking octal to the file permissions (read, write and execute
 
 We then went on to talk about the first character that we saw in `drw-r--r--` which denoted the file as a file descriptor or a directory. This was just a file that listed out the pointer to and names of other files and is used in GUIs for organization.
 
-We also talked about how this relates to c with file interactions through stdio.h and how when you shouldn't be complaining about the limit on the amount of files you can have open (256). A relevant function for this is `getdtablesize()` which returns the first power of two greater than your table size. More on this tomorrow.
+We also talked about how this relates to c with file interactions through stdio.h and how when you shouldn't be complaining about the limit on the amount of files you can have open (256). A relevant function for this is `getdtablesize()` which returns the first power of two greater than your table size. There will always be 3 files in the table: STDIN_FILENO: stdin, STDOUT_FILENO: stdout, and STDERR_FILENO: stderr
 
 ## Monday, 10/23 A bit of wisdom by Kenny Chen
 **Tech News:** [Should We Fear the Rise of Intelligent Robots?](https://www.livescience.com/59802-should-we-fear-intelligent-robots.html)
