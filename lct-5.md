@@ -1,3 +1,140 @@
+## Thursday, 10/26: Read your writes! by Matteo Wong
+
+**Interesting Tech News:** [Twitter Bans Russian News Outlets](https://www.nytimes.com/2017/10/26/technology/twitter-russia-today-sputnik.html?rref=collection%2Fsectioncollection%2Ftechnology)
+
+**Interesting Tech News 2, related(-ish) to first:** [Reddit bans Nazis](https://www.nytimes.com/2017/10/26/us/reddit-violence-policy.html?rref=collection%2Fsectioncollection%2Ftechnology)
+
+I am including two pieces of tech news because they are both related to the regulation of what many perceive as dangerous content on the internet
+
+**Not News but very interesting and related to news of a few days ago about racism in driverless cars:** [Radiolab podcast on ethics of driverless cars](http://www.radiolab.org/story/driverless-dilemma/)
+
+### First we learned about the different *flags* for the `open()` function. They are:
+* O_RDONLY
+* O_WRONLY
+* O_RDWR
+* O_APPEND — start at the end of the file.
+* O_TRUNC — start at the beginning of the file. If you open a file with the ability to write and with the O_TRUNC flag, it will effectively erase the rest of the contents (truncate them)
+* O_CREAT
+* O_EXCL — when combined with O_CREAT will return an error if the file exists
+
+Each flag is a number and can be combined with bitwise OR:
+
+O_WRONLY = 1 = 		00000001
+
+O_APPEND = 8 = 		00001000
+
+O_WRONLY | O_APPEND =	00001001 
+
+
+### errno — <errno.h>
+errno is an integer that corresponds to an error message. If `open()`, `read()`, `write()`, or `close()` fails, it will update errno.
+
+To access the error message, use `strerror(errno)`
+
+strerror() is in <string.h>
+	
+For example, of errno==2, `strerror(errno)` returns "No such file or directory"
+
+
+### umask — <sys/stat.h>
+
+We noticed that when creating a file, the permissions don't always come out as we specified. For instance:
+
+```c
+int fd;
+fd=open("foo",O_CREAT | O_EXCL, 0666);
+```
+
+We would expect the permissions of 0666 to be `rw-rw-rw-`
+
+Instead, they are: `rw-rw-r--`, which corresponds to 0664, not 0666.
+
+This is because by default files aren't give nthe exact permissions provided. There is a **mask** designed to make sure you don't give permissions that are safety concerns (ie. giving everyone writing permission).
+
+The default value of the **mask** on linux/unix is 0002.
+
+The mask is applied in the following way:
+
+`new-permissions=~mask & mode`
+
+Ex:
+	mask = 0002 = 000 000 010
+	
+	mode = 0666 = 110 110 110
+	
+	~mask= n/a  = 000 000 101
+     
+	~mask & mode = 110 110 100
+
+You can manually set the mask with
+```c
+umask(<MASK>);
+```
+which will define mask with a 3 digit octal number.
+
+
+### close(int fd) — <unistd.h>
+takes a file descriptor and removes fd from the file table
+
+returns 0 if successful and -1 if it fails (as well as setting errno)
+
+
+### read — <unistd.h>
+Read in data from a file
+
+read(<file descriptor>, <buffer>, <amount>)
+	
+read(fd,buff,n)
+
+read n bytes from the file at fd in the file table and put that data in tbe buffer
+	
+buff must be a pointer
+	
+returns the number of bytes actually read. returns -1 and sets errno if unsuccessful
+
+
+### write — <unistd.h>
+
+write data to a file, reverse of read
+
+write(<file descriptor>, <buffer>, <amount>)
+	
+write(fd,buff,n)
+
+write n bytes from buff to file at fd
+	
+buff must be a pointer
+	
+returns the number of bytes written, or -1 and sets errno if unsuccessful
+	
+At the end of class we saw that you are not limited to writing strings, eg:
+
+```c
+	...
+	int fd;
+	fd=open("foo",O_WRONLY);
+	char s[]="Hello there!"
+	write(fd,s,sizeof(s));
+	...
+```
+`cat foo` will give `hello there`
+
+BUT
+
+```C
+	...
+	int fd;
+	fd=open("foo",O_WRONLY);
+	int ia[]={1,2,3,4};
+	write(fd,s,sizeof(ia));
+	...
+```
+
+`cat foo` will print a bunch of strange characters because the shell is evaluating the ASCII values of the digits you are writing into foo.
+
+
+---
+
 ## Wendnesday, 10/25: open/close read/write files by Edmond Wong
 **Tech news:[robot bees can now break free of surface tension and get out of water](https://www.theverge.com/2017/10/25/16544996/robot-bees-harvard-fly-swim-water-rocket)
 
