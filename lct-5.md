@@ -1,3 +1,55 @@
+## Wendnesday, 10/25: open/close read/write files by Edmond Wong
+**Tech news:[robot bees can now break free of surface tension and get out of water](https://www.theverge.com/2017/10/25/16544996/robot-bees-harvard-fly-swim-water-rocket)
+
+we learned 4 new functions today
+
+```c
+#include <fcntl.h>
+int open( char * filename, int access_mode, int permission );
+```
+this opens a file and returns a number to referecne it in the file table
+most computers have file tables the size of 256
+
+access modes:
+
+O_RDONLY - read only
+O_WRONLY - write only
+O_RDWR   - read or write
+O_APPEND - append to end of file
+
+permissions: (this parameter is only nessary when a file is being created) so open(<filename>,<accessmode>) works too
+
+we did not go over these permissions in class yet
+
+S_IWRITE
+S_IREAD
+S_IWRITE | S_IREAD
+
+```c
+#include <fcntl.h>
+int read( int handle, void * buffer, int nbyte);
+```
+
+read reads nbytes from the file and places the read data into buffer.
+read returns the number of bytes read and -1 in the case of an error.
+handle is the number that open() returns
+
+```c
+#include <fcntl.h>
+int write( int handle, void * buffer, int nbyte);
+```
+
+writes writes from buffer to the file referenced with handle
+write returns the number of bytes written and returns -1 if there is an error
+
+```c
+#include <fcntl.h>
+int close(int handle);
+```
+close closes the file. it returns 0 if successful and -1 if there was an error.
+
+______________________________________________________________________________
+
 ## Tuesday, 10/24: File This Under Useful Information by Anish Shenoy
 
 **Tech News** [Google Is Creating its Own Neighborhood](http://www.independent.co.uk/life-style/gadgets-and-tech/news/google-quayside-toronto-plans-sidewalk-labs-canada-eastern-waterfront-weather-control-loft-buildings-a8015866.html)
