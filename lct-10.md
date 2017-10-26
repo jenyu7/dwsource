@@ -1,3 +1,41 @@
+## Wednesday, 10/25: Opening up a world of possibilities by Ryan Siu
+
+**Tech News:** [Who gets to choose the type of ads we see online?](http://www.businessinsider.com/google-chrome-ad-blocking-forces-ad-tech-cos-to-abandon-business-2017-10)
+
+### File Table
+- A list of all files being used by a program while it is running.
+- Contains basic information like the file’s location and size.
+- The file table has a limited size, which is a power of 2 and commonly 256
+- ```getdtablesize()``` will return the size
+
+- Integer index of file tables is the file descriptor (fd)
+
+- There are 3 files always open in the table:
+  - 0 or ```STDIN_FILENO```: stdin
+  - 1 or ```STDOUT_FILENO```: stdout
+  - 2 or ```STDERR_FILENO```: stderr
+
+### Open
+- Contained in <fcntl.h>
+- Add a file to the file table and returns its file descriptor
+- If open fails, -1 is returned, extra error info can be found in errno
+  - ```errno``` is an int variable that can be found in <errno.h>, using ```strerror()``` (in <string.h>) on ```errno``` will return a string description of the error
+
+<strong>Usage</strong>:
+```
+open( <PATH>, <FLAGS>, <MODE> )
+```
+- mode: only user when creating a file, set the permissions using a 3 digit octal #
+- flags: determine what you plan to do with the file
+  - constants: O_RDONLY, O_WRONLY
+  - Each flag is a number, to combine flags use bitwise OR like the following:
+```		
+O_WRONLY = 1		00000001
+O_APPEND = 8		00001000
+O_WRONLY | O_APPEND =	00001001
+```
+---
+
 ## Tuesday, 10/24: File this under useful information. (By Kyle Lin)
 
 **Tech News** [Porsche built a Cayman electric car concept that's suprisingly quick](https://www.cnet.com/roadshow/news/porsche-built-an-electric-cayman-concept-thats-surprisingly-quick/)
