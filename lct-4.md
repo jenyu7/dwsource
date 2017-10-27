@@ -1,3 +1,35 @@
+## Thursday, 10/26 Read your writes! by Henry Zheng
+**Tech News:** [Amazon Key is a new service that lets couriers unlock your front door](https://www.theverge.com/2017/10/25/16538834/amazon-key-in-home-delivery-unlock-door-prime-cloud-cam-smart-lock)
+
+Today, we learned about umask and read/write file commands.
+
+**umask - <sys/stat.h>**
+* Sets the file creation permission mask
+* By default, created files are not given the exact permissions provided in the mode argument to open. Some permissions are automatically shut off.
+* Umask is applied in the following way:
+	- new_permissions = ~mask & mode;
+* The default mask is 0002.
+* `umask( <MASK> );`
+	- You can define the umask using a 3 digit octal #
+	- `umask(0000);`
+
+**read - <unistd.h>**
+* Read in data from a file
+* `read( <FILE DESCRIPTOR>, <BUFFER>, <AMOUNT> );`
+* `read( fd, buff, n );`
+	- Read n bytes from the fd's file and put that data into buff
+* Returns the number of bytes actually read. Returns -1 and sets errno if unsuccessful
+* BUFFER must be a pointer
+
+**write - <unistd.h>**
+* Write data to a file
+* `write( <FILE DESCRIPTOR>, <BUFFER>, <AMOUNT> );`
+* `write( fd, buff, n );`
+	- Write n bytes from buff into fd's file
+* Returns the number of bytes actually written. Returns -1 and sets errno if unsuccessful
+
+---
+
 ## Wednesday, 10/25 Opening up a world of possibilities by Sonal Parab
 **Tech News:** [High-tech Mirror for cancer patients only works if you smile](http://money.cnn.com/2017/10/24/technology/smile-mirror-cancer-patients/index.html)
 
