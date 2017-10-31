@@ -1,3 +1,40 @@
+## Monday, 10/30: Seek and ye shall find, by Ida Wang
+
+**Interesting tech news**: [YouTube tweaks advertising algorithm](http://www.bbc.com/news/technology-41801705) (again).
+
+### lseek - `<unistd.h>`  
+- set the current position in an open file
+- returns the number of bytes the current position is from the beginning of the file, or -1 (errno).
+
+#### `lseek(<FILE DESCRIPTOR>, <OFFSET>, <WHENCE>)`  
+OFFSET: The number of bytes to move the position by (can be negative)  
+WHENCE: where to measure the offset from
+- `SEEK_SET`: offset is evaluated from the beginning of the file
+- `SEEK_CUR`: offset is relative to the current position in the file
+- `SEEK_END`: offset is evaluated from the end of the file
+
+Application in our last assignment (dev-random): instead of closing the file and reopening to move from write to read, use `lseek` to set the position to the beginning of the file again.
+
+### stat - `<sys/stat.h>`
+- get information about a file (metadata)
+- `stat(<PATH>, <STAT BUFFER>)`
+```c
+struct stat sb;
+stat("foo", &sb);
+```
+PATH: file path (no file descriptor required because you can stat a file without opening it)
+
+STAT BUFFER: must be a pointer to a struct stat
+- All the file information gets put into the stat buffer.
+
+Some of the fields in struct stat:
+- `st_size`: file size in bytes
+- `st_uid, st_gid`: user ID, group ID
+- `st_mode`: file permissions
+- `st_atime, st_mtime`: last access, last modification
+
+---
+
 ## Thursday, 10/26 Read your writes! by Henry Zheng
 **Tech News:** [Amazon Key is a new service that lets couriers unlock your front door](https://www.theverge.com/2017/10/25/16538834/amazon-key-in-home-delivery-unlock-door-prime-cloud-cam-smart-lock)
 
