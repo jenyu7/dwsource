@@ -1,4 +1,4 @@
-## Monday, 10/30: lseek and ye shall receive by Adris Jautakas
+## Monday, 10/30 | lseek and ye shall receive | Adris Jautakas
 
 **Tech news**: [What Virtual Reality Can Teach a Driverless Car](https://www.nytimes.com/2017/10/29/business/virtual-reality-driverless-cars.html?rref=collection%2Fsectioncollection%2Ftechnology)
 
