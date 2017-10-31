@@ -1,4 +1,4 @@
-## Monday, 10/30: See and ye shall find! by Othman "Monty" Bichouna
+## Monday, 10/30: Seek and ye shall find! by Othman "Monty" Bichouna
 
 **Humorous Tech News:** [Microsoft Employee has to Install Google Chrome to Finish Presentation](https://thenextweb.com/microsoft/2017/10/30/microsoft-engineer-chrome-edge-google/)
 
