@@ -2,6 +2,8 @@
 
 **Interesting tech news**: [YouTube tweaks advertising algorithm](http://www.bbc.com/news/technology-41801705) (again).
 
+We learned about `lseek` and `stat`.
+
 ### lseek - `<unistd.h>`  
 - set the current position in an open file
 - returns the number of bytes the current position is from the beginning of the file, or -1 (errno).
