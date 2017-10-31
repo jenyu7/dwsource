@@ -1,3 +1,67 @@
+##Monday, 10/30: lseek and ye shall receive by Adris Jautakas
+
+**Tech news**: [What Virtual Reality Can Teach a Driverless Car](https://www.nytimes.com/2017/10/29/business/virtual-reality-driverless-cars.html?rref=collection%2Fsectioncollection%2Ftechnology)
+
+Hello Mr. D.W. and that one person who was absent today! Here's what we learned while you were either teaching the class or were absent from it 
+
+###lseek and FIle bookmarks
+When reading or writing to files, the file is iterated through via a "bookmark" index that is incremented to pass through each byte of data in the file. To read the entirety of a file, that bookmark must be set back to the start of the file. This bookmark can be adjusted manually with the `lseek` command.
+
+####Usage:
+```c
+#include<unistd.h>
+lseek(File Descriptor, Offset, Whence);
+```
+
+####Arguments:
+
+`File Descriptor`: The file descriptor,
+
+`Offset`: How many bytes to offset our bookmark. Negative values are acceptable.
+
+`Whence`: Where to start the offset from.
+
+Whence has three different parameters:
+
+* `SEEK_SET`: Offset from the start of the file
+* `SEEK_CUR`: Offset from the current index of our bookmark
+* `SEEK_END`: Offset from the end of the file
+
+For example, if you call lseek by passing `SEEK_CUR` as the Whence argument, you will move ahead in the file by the Offset argument's value, potentially skipping over a number of bytes of data.
+
+####Returns:
+the absolute position of the file's bookmark relative to the start of the file, or -1 if there is an error. (If there is an error, errno is set) 
+
+###stat
+stat allows us to access a file's metadata
+
+####Usage:
+```c
+#include<sys/stat.h>
+stat(Path, Stat Buffer);
+```
+
+####Arguments:
+`Path`: The file path. Note, the file does not need to be opened to grab its metadata, hence why we're using its file path and not a file descriptor.
+
+`Stat Buffer`: A pointer to an instance of a special buffer struct that can hold metadata.
+
+####Returns:
+0 upon successful completion, -1 if unsuccessful and errno is set.
+
+####Example:
+```c
+xstruct stat yay_college_essays;
+stat("foo_file", &yay_college_essays);
+// Access the metadata somehow!
+```
+
+We didn't go over the variables that the stat struct holds, but here's a link that I found which shows you the contents of struct stat: [stat.h Programming Help](https://en.wikibooks.org/wiki/C_Programming/stat.h#Member_types)
+
+Stay frosty.
+
+---
+
 ## Wednesday, 10/25: Opening up a world of possibilities by Ryan Siu
 
 **Tech News:** [Who gets to choose the type of ads we see online?](http://www.businessinsider.com/google-chrome-ad-blocking-forces-ad-tech-cos-to-abandon-business-2017-10)
