@@ -1,3 +1,62 @@
+## Monday, 10/30: See and ye shall find! by Othman "Monty" Bichouna
+
+**Humorous Tech News:** [Microsoft Employee has to Install Google Chrome to Finish Presentation](https://thenextweb.com/microsoft/2017/10/30/microsoft-engineer-chrome-edge-google/)
+
+**Not so Humorous Tech News:** [Is the FCC Purposefully Screwing up US School Broadband Projects?](https://www.theregister.co.uk/2017/10/27/fcc_school_broadband/)
+
+### LSEEK
+
+We learned about the *lseek* function:
+*lseek* sets the current position in an open file.
+
+**Returns:** the number of bytes from the current position to the beginning of the file, or -1 (errno)
+
+```c
+#include<unistd.h>
+lseek(<file Descriptor>, <offset>, <whence>);
+```
+
+### Arguments:
+
+`file Descriptor`: The file descriptor of the pointer that is going to be moved
+
+`offset`: The number of bytes to move the position by. This can be negative
+
+`whence`: Where to measure the offset from
+
+* `SEEK_SET`: Offset from the start of the file
+* `SEEK_CUR`: Offset from the current index of our bookmark
+* `SEEK_END`: Offset from the end of the file
+
+### STAT
+
+The *stat* function will get information about a file, AKA its metadata
+
+```c
+#include<sys/stat.h>
+stat(<path>, <stat buffer>);
+```
+
+### Arguments
+
+`path`: The path of the file that we want the metadata of
+
+`stat buffer`: A pointer to a struct stat
+
+```c
+struct stat sb;
+stat("foo", &sb");
+```
+
+All the metadata gets put into the stat buffer
+
+Some of the fields inside the stat struct include:
+
+- `st_size`: File size in bytes
+- `st_uid, st_gid`: User ID, Group ID
+- `st_mode`: File permissions
+- `st_atime, st_mtime`: Last access, Last modification
+
 ## Thursday, 10/26: Read your writes! by Matteo Wong
 
 **Interesting Tech News:** [Twitter Bans Russian News Outlets](https://www.nytimes.com/2017/10/26/technology/twitter-russia-today-sputnik.html?rref=collection%2Fsectioncollection%2Ftechnology)
