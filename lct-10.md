@@ -1,19 +1,19 @@
-##Monday, 10/30: lseek and ye shall receive by Adris Jautakas
+## Monday, 10/30: lseek and ye shall receive by Adris Jautakas
 
 **Tech news**: [What Virtual Reality Can Teach a Driverless Car](https://www.nytimes.com/2017/10/29/business/virtual-reality-driverless-cars.html?rref=collection%2Fsectioncollection%2Ftechnology)
 
 Hello Mr. D.W. and that one person who was absent today! Here's what we learned while you were either teaching the class or were absent from it 
 
-###lseek and FIle bookmarks
+### lseek and FIle bookmarks
 When reading or writing to files, the file is iterated through via a "bookmark" index that is incremented to pass through each byte of data in the file. To read the entirety of a file, that bookmark must be set back to the start of the file. This bookmark can be adjusted manually with the `lseek` command.
 
-####Usage:
+#### Usage:
 ```c
 #include<unistd.h>
 lseek(File Descriptor, Offset, Whence);
 ```
 
-####Arguments:
+#### Arguments:
 
 `File Descriptor`: The file descriptor,
 
@@ -29,27 +29,27 @@ Whence has three different parameters:
 
 For example, if you call lseek by passing `SEEK_CUR` as the Whence argument, you will move ahead in the file by the Offset argument's value, potentially skipping over a number of bytes of data.
 
-####Returns:
+#### Returns:
 the absolute position of the file's bookmark relative to the start of the file, or -1 if there is an error. (If there is an error, errno is set) 
 
-###stat
+### stat
 stat allows us to access a file's metadata
 
-####Usage:
+#### Usage:
 ```c
 #include<sys/stat.h>
 stat(Path, Stat Buffer);
 ```
 
-####Arguments:
+#### Arguments:
 `Path`: The file path. Note, the file does not need to be opened to grab its metadata, hence why we're using its file path and not a file descriptor.
 
 `Stat Buffer`: A pointer to an instance of a special buffer struct that can hold metadata.
 
-####Returns:
+#### Returns:
 0 upon successful completion, -1 if unsuccessful and errno is set.
 
-####Example:
+#### Example:
 ```c
 xstruct stat yay_college_essays;
 stat("foo_file", &yay_college_essays);
