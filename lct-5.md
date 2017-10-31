@@ -57,6 +57,8 @@ Some of the fields inside the stat struct include:
 - `st_mode`: File permissions
 - `st_atime, st_mtime`: Last access, Last modification
 
+---
+
 ## Thursday, 10/26: Read your writes! by Matteo Wong
 
 **Interesting Tech News:** [Twitter Bans Russian News Outlets](https://www.nytimes.com/2017/10/26/technology/twitter-russia-today-sputnik.html?rref=collection%2Fsectioncollection%2Ftechnology)
