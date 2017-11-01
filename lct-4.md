@@ -1,3 +1,38 @@
+## Wednesday, 11/01: Where do doctors keep their files? by Shakil Rafi
+**Interesting tech news**: [Intel 8th generation processors are out with ~60% performance boost](http://www.trustedreviews.com/news/intel-8th-gen-cpus-release-date-specs-price-2952599)
+
+We learned about interacting with directory files using `dirent.h` functions
+
+### What is a directory actually?
+* A directory is a list of filenames for all files that reside in the directory
+* It also holds some basic info about the file like filetype and size
+* Moving a file just moves the filename to another directory file (doesn't copy bytes)
+* Linux directories are 4096 bytes (or 4 kilobytes)
+
+### opendir - <dirent.h>
+* usage: `opendir(<path>)`
+* opens a directory file
+* does not change current working directory
+* does not create a directory
+* cannot write to directory (only read)
+* returns pointer to directory stream (`DIR*`)
+* directory streams pass info from given directory
+* does not require a call to `malloc()`
+    * also don't `free()` this
+
+### closedir - <dirent.h>
+* usage: `closedir(<dir stream>)`
+* closes directory stream
+
+### readdir - <dirent.h>
+* usage: `readdir(<dir stream>)`
+* returns next file in dir as a `struct dirent` or `NULL` if nothing left
+
+### struct dirent - <sys/types.h>
+* contains info about directory file
+* `d_name`: name of file
+* `d_type`: filetype as int
+
 ## Monday, 10/30: Seek and ye shall find, by Ida Wang
 
 **Interesting tech news**: [YouTube tweaks advertising algorithm](http://www.bbc.com/news/technology-41801705) (again).
