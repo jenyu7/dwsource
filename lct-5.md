@@ -1,3 +1,47 @@
+## Wednesday, 11/01: Where do cs priests keep their files? (In directory!) by Nikita Borisov
+
+**Tech News:** [Strechy silicone sensors developed with NO WIRES inside](https://www.sciencedaily.com/releases/2017/10/171023131932.htm)
+
+### `*nix` directory files
+
+Is a file containing the names of the files within the directory along with 
+basic information about the files(like file type etc.) 
+
+When files are moved in and out of a directory, no data is moved(only change in directory files)
+
+Size of directory doesn't depend on size of files inside it(removing an empty file will change size of directory file).
+
+### `opendir - <dirent.h>`:
+
+Opens directory file w/o chaning cwd(current working directory)
+
+`opendir(<PATH TO DIR FILE>);` returns a pointer to a directory stream (`dir *`)
+
+### `closedir - <dirent.h>`:
+
+Closes directory stream and frees `dir *`
+
+`closedir(<DIRECTORY STREAM *>);` returns 0 on success and -1 on error(with `errno`)
+
+### `readdir - <dirent.h>`:
+
+Gives information about files inside directory file
+
+`readdir(<DIRECTORY STREAM *>);` returns pointer to next entry in a directory or NULL(when at the end of dir file)
+
+Can be used multiple times until desired file is reached
+
+Return pointer points to `struct dirent`...
+
+### `struct dirent - <sys/types.h>`
+
+Contains info about files
+
+* `d_name`: name of the file
+* `d_type`: file type
+
+---
+
 ## Monday, 10/30: Seek and ye shall find! by Othman "Monty" Bichouna
 
 **Humorous Tech News:** [Microsoft Employee has to Install Google Chrome to Finish Presentation](https://thenextweb.com/microsoft/2017/10/30/microsoft-engineer-chrome-edge-google/)
