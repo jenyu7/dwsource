@@ -1,3 +1,42 @@
+## Wednesday, 11/1 | Where do compsci priests keep their files? by Kevin Li
+
+**Tech news**: [Russia-Financed Ad Linked Clinton and Satan](https://www.nytimes.com/2017/11/01/us/politics/facebook-google-twitter-russian-interference-hearings.html?rref=collection%2Fsectioncollection%2Ftechnology&action=click&contentCollection=technology&region=rank&module=package&version=highlights&contentPlacement=1&pgtype=sectionfront)
+
+### Directories
+Linux and Unix directories are simply files that contain names of other files and basic information about them, like file type and size. This means that changing a directory, unless a file is being moved across drives, does not involve actually moving data-- rather, the directory files are just modified.
+
+We learned three ways that we can work with directory files in C:
+#### opendir - <dirent.h>
+* ```opendir (<PATH>);```
+* Opens a directory file without changing the current working directory (cwd)
+* You don't need to specify any permissions because directory files are read only
+* returns a pointer to directory stream (```DIR *```)
+
+#### closedir - <dirent.h>
+* ```closedir (<DIRECTORY STREAM *>);```
+* Closes the directory stream and the pointer associated with it
+
+#### readdir - <dirent.h>
+* ```readdir (<DIRECTORY STREAM *>);```
+* Returns a ```struct dirent``` to the next entry in a directory stream
+* If all the entries have been returned, will return NULL
+
+#### struct dirent - <sys/types.h>
+* contains information stored in a directory file
+* Some data members:
+	* ```d_name```: Name of file
+        * ```d_type```: File type as an int which matches a constant that you can find on the man page
+* An example:
+```c
+DIR * d;
+d = opendir (“somedir”);
+struct dirent *entry;
+entry = readdir (d);
+closedir(d);
+```
+
+---
+
 ## Monday, 10/30 | lseek and ye shall receive | Adris Jautakas
 
 **Tech news**: [What Virtual Reality Can Teach a Driverless Car](https://www.nytimes.com/2017/10/29/business/virtual-reality-driverless-cars.html?rref=collection%2Fsectioncollection%2Ftechnology)
