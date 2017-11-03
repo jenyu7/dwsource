@@ -1,3 +1,32 @@
+## Friday, 11/03: Input? Fgets about it! by Yedoh Kang
+**Interesting tech news**: [Logitech is experimenting with a keyboard built for VR](https://techcrunch.com/2017/11/02/logitech-is-experimenting-with-a-keyboard-built-for-virtual-reality/)
+
+We started off class by going over the two previous homeworks, stat and dirinfo. Mr. DW then went over his solutions to the homeworks, and showed us different ways to print out the permissions in ls -l form, including bitwise operators such as bit shifting and &(and).
+
+We then discussed different ways of getting input:
+
+**Command Line Argument**
+* `int main (int argc, char *argv[])` 
+* program name is considered the first command line argument: `argv[0]` 
+* argc: # of command line arguments
+* argv: array of command line arguments
+
+**scanf - <stdio.h>**
+* `scanf(<FORMAT STRING>, <VAR 1>, <VAR 2>, ...);`
+* reads in data from stdin using the format string to determine types
+* puts the data in each variable
+* variable must be a pointer
+* Example:
+`int x;
+ float f;
+ double d;
+ scanf("%d %f %lf", &x, &f, &d);
+`
+- Expects user to input in the variables in the EXACT format, including spaces
+- If not followed, it might lead to incorrect answers and possibly, errors
+
+---
+
 ## Wednesday, 11/01: Where do doctors keep their files? by Shakil Rafi
 **Interesting tech news**: [Intel 8th generation processors are out with ~60% performance boost](http://www.trustedreviews.com/news/intel-8th-gen-cpus-release-date-specs-price-2952599)
 
