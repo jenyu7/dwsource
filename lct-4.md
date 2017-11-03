@@ -17,13 +17,13 @@ We then discussed different ways of getting input:
 * puts the data in each variable
 * variable must be a pointer
 * Example:
-`int x;
+```int x;
  float f;
  double d;
  scanf("%d %f %lf", &x, &f, &d);
-`
-- Expects user to input in the variables in the EXACT format, including spaces
-- If not followed, it might lead to incorrect answers and possibly, errors
+```
+  * Expects user to input in the variables in the EXACT format, including spaces
+	* If not followed, it might lead to incorrect answers and possibly, errors
 
 ---
 
