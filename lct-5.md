@@ -1,3 +1,111 @@
+## Friday 11/03: Input? Fgets about it! by Md Abedin
+
+**Tech News:** [MIT wrote an A.I. that generates horror stories](http://boston.cbslocal.com/2017/10/31/artificial-intelligence-horror-stories-mit/)
+
+Today we went over the stat and dirinfo assignments and Mr. DW showed us how to code the extra features. We also learned some new functions like sprintf() and scanf(), and the syntax for command line arguments:
+
+**human readable size:**
+
+To print out the size of a file in human readable format, we learned how to use sprintf():
+
+```C
+sprintf(char * stringPointer, "Format string", value1, value2, ...)
+```
+
+This function takes a pointer to a string and fills it with a formatted string. The format string in the 2nd parameter can have formatting tags which are replaced by the values in the parameters following it.
+
+To get a string of a filesize in human readable format, you could use
+
+```C
+char *getSizeString(off_t s){
+    char *size = (char *)calloc(13, 1);
+    if (s>= 1000000000){
+        sprintf(size, "%0.2f GB", s/1000000000.0);
+    }
+    else if(s>=1000000){
+        sprintf(size, "%0.2f MB", s/1000000.0);
+    }
+    else if(s>1000){
+        sprintf(size, "%0.2f KB", s/1000.0);
+    }
+    else{
+        sprintf(size, "%lld B", s);
+    }
+    return size;
+ }
+```
+
+The %0.2f formatting code lets you print a float with 0 being the minimum characters displayed and 2 being the number of digits after the decimal point displayed.
+
+**human readable permissions:**
+
+To get the permissions of a file in a human readable format, you can use bitwise operators
+
+```C
+char * get_perm_string(mode_t mode){
+    mode_t perms[3];
+    int i;
+    char *perm_string = (char *)malloc(10);
+    perm_string[9]=0;
+ 
+    perms[0] = (mode & 0b111000000) >> 6;
+    perms[1] = (mode & 0b111000) >> 3;
+    perms[2] = (mode & 0b111);
+ 
+    for (i=0; i<3; i++){
+        if (perms[i] & 0b100){
+            perm_string[0+i*3]='r';
+        }
+        else{
+            perm_string[0+i*3]='-';
+        }
+
+        if (perms[i] & 0b010){
+            perm_string[1+i*3]='w';
+        }
+        else{
+            perm_string[1+i*3]='-';
+        }
+
+        if (perms[i] & 0b1){
+            perm_string[2+i*3]='x';
+        }else{
+            perm_string[2+i*3]='-';
+        }
+    }
+    return perm_string;
+}
+```
+
+This &'s the mode of a file with the binary representation of full rwx permissions for the each permission area, which results in the current active permissions for each area. It then bitshifts it to the right by a certain amount in order to get rid of the trailing 0s and just leave the 3 bits that represent the user's permissions.
+
+**Command Line Arguments:**
+
+```C
+int main(int argc, char *argv[])
+```
+
+agrc: number of command line arguments
+
+argv: array of command line arguments; the program name is the first element of the array
+
+You can name these parameters whatever you want, but it's best to use argc and argv to be descriptive and follow the standard.
+
+**scanf()**
+```C
+scanf( <FORMAT STRING>, <VAR 1>, <VAR 2> ... ): Included from <stdio.h>
+```
+
+Reads in data from stdin using the format string to determine types. Puts the data in each variable. Variables must be pointers	because C is a pass-by-value language
+Example:	
+
+```C
+int x; float f; double d;
+scanf("%d %f %lf", &x, &f, &d);
+```
+
+---
+
 ## Wednesday, 11/01: Where do cs priests keep their files? (In directory!) by Nikita Borisov
 
 **Tech News:** [Strechy silicone sensors developed with NO WIRES inside](https://www.sciencedaily.com/releases/2017/10/171023131932.htm)
