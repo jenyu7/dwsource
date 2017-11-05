@@ -1,3 +1,23 @@
+## Friday, 11/3 | Arguably, the main parts of the lesson by Brian Lim
+
+**Tech news**: [Sony's bringing its robotic dog, Aibo, back to the market](https://www.cnet.com/news/sony-brings-back-aibo-teaches-old-dog-new-tricks/)
+
+We spent a good amount of time reviewing the last assignments, dirinfo and stat. There were various approaches to those problems; make sure you have one that works.
+
+### main
+While we're used to writing `main` with no arguments, `main` can be defined alternatively as `int main(int argc, char *argv[]) {...}`, where the `argv` parameter itself can be written as `char **argv` or `char argv[][]`. This definition can be used to retrieve arguments from the command line.
+
+`argc` gives the number of arguments that were input, while `argv` gives a list of the arguments. `argc` and `argv` both count the program name as an argument.
+
+Ex:
+```./a.out ab cd```
+* `argc`     -> 3
+* `argv[0]`  -> "./a.out"
+* `argv[1]`  -> "ab"
+* `argv[2]`  -> "cd"
+
+---
+
 ## Wednesday, 11/1 | Where do compsci priests keep their files? by Kevin Li
 
 **Tech news**: [Russia-Financed Ad Linked Clinton and Satan](https://www.nytimes.com/2017/11/01/us/politics/facebook-google-twitter-russian-interference-hearings.html?rref=collection%2Fsectioncollection%2Ftechnology&action=click&contentCollection=technology&region=rank&module=package&version=highlights&contentPlacement=1&pgtype=sectionfront)
