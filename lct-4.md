@@ -1,3 +1,88 @@
+## Monday, 11/06: Are your processes running? Then you should go out and catch them! by Jan Kowalski
+**Actual tech news**: [Paradise Papers show Apple used tax havens](http://www.businessinsider.com/paradise-papers-apple-found-new-tax-haven-after-us-senate-tax-crackdown-2017-11)<br>
+**Interesting tech news**: [Star Citizen to release persistent universe](https://www.neowin.net/news/star-citizens-new-planet-sized-cities-unveiled-at-citizencon)<br>
+**Old tech news**: [Reflections on Trusting Trust](http://vxer.org/lib/pdf/Reflections%20on%20Trusting%20Trust.pdf)
+
+We completed the lesson on user input and began learning about processes.
+
+
+## **Input**
+### **fgets()** - `<stdio.h>`
+
+Read in from a file stream and store it in a string
+
+`fgets( <DESTINATION>, <BYTES>, <FILE POINTER>);`
+
+`fgets(s, n, f);`
+Reads at most n-1 characters from file stream f and stores it in s
+
+
+**File Pointer**
+- FILE * type, more complex than a file descriptor
+- stdin is a FILE * variable
+- fopen() returns a file pointer instead of a file descriptor, but does not handle sockets well (sockets not covered).
+- fgets() stops at newline, end of file, or the byte limit.
+- If applicable, keeps the newline character as part of the string, appends NULL after.
+
+`fgets(s, 256/sizeof(), stdin)`
+read a line of text from standard in
+
+fgets() meant to be used for strings, use open() for raw numerical data
+```C
+    char s[200];
+
+    printf("enter data: ");
+    fgets(s, sizeof(s), stdin);
+```
+
+
+
+### **sscanf** - `<stdio.h>`
+
+Scan a string and extract values based on a format string.
+
+`sscanf(<SOURCE STRING>, <FORMAT STRING>, <VAR 1>, <VAR 2>, ...);`
+
+```C
+    int i;
+    float f;
+    sscanf(s, "%d %f", &i, &f);
+```
+Returns the number of successful 'conversions' (i.e. the number of correct reads).
+
+
+## **Processes**
+Every running program is a process. A process can create subprocesses, but these are no different from regular processes.
+
+A processor can handle 1 process per cycle (per core)
+
+"Multitasking" appears to happen because the processor switches between all the active processes quickly
+
+**pid**
+- Every process has a unique identifier called the pid.
+- pid 1 is the init process
+- Every entry in the /proc directory is a current pid
+
+`$ ps`
+lists running processes 
+(that you own, that are attached to terminal)
+
+`$ ps -a`
+lists running processes
+(that are attached to terminal)
+
+`$ ps -ax`
+lists all running processes
+
+
+
+### Useful Notes
+- scanf() can result in overflows if the number of bytes passed is larger than destination.
+- gets() [is insecure](http://man7.org/linux/man-pages/man3/gets.3.html#BUGS), don't use it.
+- tty represents a terminal session that a process is attached to.
+
+---
+
 ## Friday, 11/03: Input? Fgets about it! by Yedoh Kang
 **Interesting tech news**: [Logitech is experimenting with a keyboard built for VR](https://techcrunch.com/2017/11/02/logitech-is-experimenting-with-a-keyboard-built-for-virtual-reality/)
 
@@ -62,6 +147,8 @@ We learned about interacting with directory files using `dirent.h` functions
 * contains info about directory file
 * `d_name`: name of file
 * `d_type`: filetype as int
+
+---
 
 ## Monday, 10/30: Seek and ye shall find, by Ida Wang
 
