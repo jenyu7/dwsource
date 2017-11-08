@@ -1,3 +1,86 @@
+## Monday, 11/6 | Are your processes running? Then you should go out and catch them! by Jawadul Kadir
+
+**Tech news**: [Razer made a smartphone, and it’s an all-black version of the Nextbit Robin](https://arstechnica.com/gadgets/2017/11/razer-uses-nextbit-knowledge-to-craft-its-own-gamer-friendly-smartphone/)
+
+We continued going over input functions, learning `fgets` and `sscanf`. We also went on to talk about what processors and processes are.
+
+### fgets - `<stdio.h>`
+Read in from a file stream and store it in a string
+
+#### Usage:
+`fgets(<DESTINATION>, <BYTES>, <FILE POINTER>)`
+
+#### Given `fgets(s,n,f);`:
+
+* Reads at most n-1 characters from file stream f and stores it in string s.
+* Stops at newline, end of file, or the byte limit.
+* If applicable, keeps the newline character as part of the string.
+* A terminating null is appended.
+
+##### File pointer
+
+`FILE *` type, more complex than a file descriptor.
+
+`stdin` is a `FILE *` variable that refers to standard in.
+
+#### Example:
+```c
+#include <stdio.h>
+
+int main(){
+  char s[200];
+  int i;
+  float f;
+
+  printf("enter data...");
+  fgets(s, sizeof(s), stdin);
+
+  printf("s: %s\n", s);
+  return 0;
+}
+```
+This example prompts the user to enter text, which `fgets` reads from `stdin` and copies it to s. Note that it will only read the first 199 characters, as `sizeof(s)` is 200, and there has to be room for the terminating null. It then prints out the value of s, which is the same as what the user inputted.
+
+#### Other notes on `fgets`:
+
+* NEVER USE `gets`! It does not have the byte limit that `fgets` has, which could lead to a buffer overflow.
+* Blocking is when the program is waiting. `fgets` blocks while it is waiting to read something.
+* Typing in the console does not get read until you hit enter, where the newline flushes the buffer.
+
+### sscanf - `<stdio.h>`
+Scan a string and extract values based on a format string. It returns the number of variables inputted.
+
+#### Usage:
+`sscanf(<SOURCE STRING>, <FORMAT STRING>, <VAR 1>, <VAR 2>�)`
+
+#### Example:
+```c
+#include <stdio.h>
+
+int main(){
+  int i;
+  float f;
+  sscanf("4 1.3", "%d %f", &i, &f);
+
+  printf("i: %d\n", i);
+  printf("f: %f\n", f);
+  return 0;
+}
+```
+This example reads the integer 4, then changes the value at the address of i to 4, then a space, then the float 1.3 then changes the value at the address of f to 1.3. It then prints the values of i and f, which are 4 and 1.3 respectively.
+
+### Processors
+* A processor reads a certain number of bits at a time, usually 64.
+* The processor does this several billions of times per second.
+* A computer doesn't really multi-task, rather it cycles between processes very quickly.
+
+### Processes
+* Use `ps` in the console to list processes
+* `ps` only displays processes that the user is the owner of and that are attached to a terminal session.
+
+
+---
+
 ## Friday, 11/3 | Arguably, the main parts of the lesson by Brian Lim
 
 **Tech news**: [Sony's bringing its robotic dog, Aibo, back to the market](https://www.cnet.com/news/sony-brings-back-aibo-teaches-old-dog-new-tricks/)
@@ -61,7 +144,7 @@ closedir(d);
 
 **Tech news**: [What Virtual Reality Can Teach a Driverless Car](https://www.nytimes.com/2017/10/29/business/virtual-reality-driverless-cars.html?rref=collection%2Fsectioncollection%2Ftechnology)
 
-Hello Mr. D.W. and that one person who was absent today! Here's what we learned while you were either teaching the class or were absent from it 
+Hello Mr. D.W. and that one person who was absent today! Here's what we learned while you were either teaching the class or were absent from it
 
 ### lseek and FIle bookmarks
 When reading or writing to files, the file is iterated through via a "bookmark" index that is incremented to pass through each byte of data in the file. To read the entirety of a file, that bookmark must be set back to the start of the file. This bookmark can be adjusted manually with the `lseek` command.
@@ -89,7 +172,7 @@ Whence has three different parameters:
 For example, if you call lseek by passing `SEEK_CUR` as the Whence argument, you will move ahead in the file by the Offset argument's value, potentially skipping over a number of bytes of data.
 
 #### Returns:
-the absolute position of the file's bookmark relative to the start of the file, or -1 if there is an error. (If there is an error, errno is set) 
+the absolute position of the file's bookmark relative to the start of the file, or -1 if there is an error. (If there is an error, errno is set)
 
 ### stat
 stat allows us to access a file's metadata
@@ -202,7 +285,7 @@ total 16
 In this example, data is shown in the format `permissions hard-link-count owner owner-group filesize last-modified file/directory name`.  
 * The hard-link-count of a file is typically 1 while a directory is typically > 1.
 
-The permissions for `main.c` in this example are shown as `-rw-rw-r--`. 
+The permissions for `main.c` in this example are shown as `-rw-rw-r--`.
 This means that the owner can read/write, the owner's group can read/write, but others can only read.
 
 In the case of a directory being in the file list:
@@ -224,7 +307,7 @@ thisname@iscensored:~/Desktop/Stuy/Systems/removechar$ ls -l
 total 16
 -rwxr-xr-- 1 thisname thisname  986 Oct 23 14:16 main.c
 -rwxrwxr-x 1 thisname thisname 8744 Oct 23 14:16 test
-thisname@iscensored:~/Desktop/Stuy/Systems/removechar$ 
+thisname@iscensored:~/Desktop/Stuy/Systems/removechar$
 ```
 The permissions for main.c have been changed from 664 or `read-write-null-read-write-null-read-null-null` to 754 or `read-write-execute-read-null-execute-read-null-null`. (Note that each digit is an individual octal number).
 
