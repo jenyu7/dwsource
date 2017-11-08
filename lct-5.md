@@ -1,3 +1,54 @@
+## Monday 11/06 Are your processes running? Then you should go out and catch them! By Inbar Pe’er
+** Tech News: ** [SONY resurrects robot pet Aibo which it “put down” in 2006]
+https://www.technewsworld.com/story/Sonys-Aibo-Resurrected-From-Robot-Pet-Cemetery-84929.html
+fgets - <stdio.h>
+	Read in from a file stream and store it in a string
+	```C
+	fgets(<DESTINATION>, <BYTES>, <FILE POINTER>)
+	fgets(s, n, f);
+	```
+		Reads at most n-1 characters from filestream f and stores it in s. 
+		Automatically puts in a terminating null at the end. 
+	File pointer
+		FILE * type, more complex than a file descriptor 
+		stdin is a FILE * variable
+	Stops at newline, end of file, or the byte limit.
+	If applicable, keeps the newline character as part of the string, appends NULL after. 
+fgets(s,256,stdin)
+	read a line of text from standard in
+```C
+Example:
+int main(){
+	char s[200];
+	int i;
+	float f;
+	printf(“enter data\n”);
+	fgets(s, sizeof(s), stdin);
+	printf(“s: %s \n”, s);
+	return 0;
+}
+```
+fgets call won't run until it knows that there is something in standard in to be read (BLOCKING)
+new line is a signal to send whatever was in standard out, out. (FLUSHING THE BUFFER)
+	easiest way to flush standard in buffer is to hit enter, but can do it manually
+sscanf - <stdio.h>
+	Scan a string and extract values based on a format string.
+	scanf(<SOURCE STRING>, <FORMAT STRING>, <VAR1>, <VAR 2>…)
+
+Processes
+Every program that is running is a process. A process can create subprocesses, but these are no different from regular processes
+A processor can handle one process per cycle (per core).
+“multitasking” appears to happen because the processor switches all the active processes quickly. 
+operating system needs to be designed to schedule things effectively between multiple cores
+Nowadays our OS’s are pretty good about this stuff (always getting better)
+pid 
+	Every process has a unique identifier called the pid.
+	pid 1 is the init processor 
+	ps - displays the processes currently running ( but only the ones you are the owner of and the ones attached to terminal sessions) 
+	ps -a (all the processes by everyone)
+	ps -aux (processes not attached to terminal windows)
+	first number is pid value
+
 ## Friday 11/03: Input? Fgets about it! by Md Abedin
 
 **Tech News:** [MIT wrote an A.I. that generates horror stories](http://boston.cbslocal.com/2017/10/31/artificial-intelligence-horror-stories-mit/)
