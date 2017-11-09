@@ -1,3 +1,45 @@
+## Thursday, 11/09: Execlp and Execvp, by Joshua Turcotti
+**Interesting tech news**: [Setback for SpaceX as its next-gen rocket explodes during testing (https://www.digitaltrends.com/cool-tech/spacex-rocket-explodes-during-testing/)
+
+We learned about executing processes from within a C program.
+
+#### What happens when you execute a process from within a C program?
+Your original processes (a.out or however you named it) is replaced by a new one that you specificy.
+
+#### How do you do this?
+`int execlp(const char *file, const char *arg, ...);` is a function that terminates the current process and spawns a new one. The name of this new one is sprovided by the frist arugment <file>, which is searched for in the path as if typed into a terminal. The remaining arugments, fed as a list, specificy the arguments (argv) passed to that new process, with argv[0] always set to the name of the process.
+`int execvp(const char *file, char *const argv[]);` is an alternative function in which the arguments are passed in a vector (array) as opposed to a list; it is often the more convenient notation.
+Both are found in `<unistd.h>`.
+	
+#### Examples
+```c
+#include <unistd.h>
+
+int main() {
+	execlp("ls", "ls", "-a", "/", NULL);
+}
+
+ALTERNATIVELY:
+
+int main() {
+	const char *args[8];
+	args[0] = "ls";
+	args[1] = "-a";
+	args[2] = "/";
+	args[3] = NULL;
+	
+	execvp(args[0], args);
+}
+
+```
+Note that in the both cases, the args must be terminated by NULL.
+
+#### A Few Final Notes
+* the 'p' stand for path, because the $PATH is searched for the names of the executables
+* it could be replaces by 'e', and you could provide your own environment
+* it could be ommitted entirely, and you would have to specify an explicit path
+
+---
 ## Wednesday, 11/08: Sending Mixed Signals, by Aryan Bhatt
 **Interesting tech news**: [Apple is Reportedly Launching New iPad](https://www.theverge.com/circuitbreaker/2017/11/8/16624842/apple-2018-ipad-face-id-no-home-button-rumor)
 
