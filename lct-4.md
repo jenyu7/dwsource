@@ -1,3 +1,47 @@
+## Wednesday, 11/08: Sending Mixed Signals, by Aryan Bhatt
+**Interesting tech news**: [Apple is Reportedly Launching New iPad](https://www.theverge.com/circuitbreaker/2017/11/8/16624842/apple-2018-ipad-face-id-no-home-button-rumor)
+
+We learned about signals today.
+
+#### So what is a signal in the first place?
+A signal is a limited way to send information to a process.
+Each of the 32 signals is represented by an int from 1-32
+
+#### Sending signals from the terminal
+`$ kill -<signal_int> <PID>` is a command line utility that allows you to sends the signal with flag <signal_int> to the process with the given PID. If you don't include an argument for the flag of the signal you want to send, the command will send a SIGTERM signal by default.
+
+`$ killall [-<signal int>] <program_name>` sends the signal with flag <signal_int> to all programs with the name <program_name> 
+
+#### Catching and Sending Signals from a C function
+`kill(PID, signal_int)` is the function form of the terminal kill command. Returns 0 when it's successful and -1 (errno) when it fails.
+To catch signals in your code, you write the sighandler function.
+```c
+static void sighandler(int signo){
+    if (signo == 11) {
+        printf("SEGFAULT received\n");
+    }
+    if (signo == 7) {
+    	printf("oh no another signal!\n");
+    }
+}
+```
+The name of the function and the argument can be changed, but conventionally, sighandler and signo are used.
+However, the function must be static and void and have a single int argument.
+In your main function, you need to include a line to check for each signal you want to catch -
+`signal(SIGNUMBER, sighandler);`
+This attaches sighandler to the function in the file.
+The argument sighandler is the name of the function that you defined to catch signals.
+
+#### A Few Final Notes
+* use `$ fg` to bring a process to the foreground
+* static functions can only be used in the file in which they're written, and they're not stored in stack memory
+* getpid() returns the PID of the current process
+* remember to `#include <signal.h>` at the beginning of your code
+* some signals, like SIGKILL and SIGSTOP can't be caught
+* you can add in `exit(1)` in the sighandler function to force an exit
+
+---
+
 ## Monday, 11/06: Are your processes running? Then you should go out and catch them! by Jan Kowalski
 **Actual tech news**: [Paradise Papers show Apple used tax havens](http://www.businessinsider.com/paradise-papers-apple-found-new-tax-haven-after-us-senate-tax-crackdown-2017-11)<br>
 **Interesting tech news**: [Star Citizen to release persistent universe](https://www.neowin.net/news/star-citizens-new-planet-sized-cities-unveiled-at-citizencon)<br>
