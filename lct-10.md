@@ -3,7 +3,7 @@
 
 Today we discussed signals in programs.
 
-####Processes
+#### Processes
 `$ ps` Lists your current processes.
 `$ ps -aux` Shows all processes with the username who started the process and the processes not associated with the terminal session. An example of the output can be seen below:
 
@@ -42,7 +42,7 @@ dr-xr-xr-x 2 root       root       0 Nov  8 19:06 tty
 -r--r--r-- 1 root       root       0 Nov  8 19:06 version_signature
 ```
 
-####What is a signal?
+#### What is a signal?
 A signal is a limited way to send information to a process. It sends an integer that tells the process to do something. Some important ones can be seen below, but all of them can be seen at `man 7 signal`
 
 SIGINT - 2 - Process interupt from keyboard (aka ctrl-c)
@@ -52,13 +52,13 @@ SIGCONT - 18 - Continues the program if it is stopped
 SIGSEGV - 11 - Invaliud memory address (aka segfault)
 SIGTERM - 15 - Termination signal
 
-####Kill all the processes!
+#### Kill all the processes!
 `$ kill <PID>` is a command line utility used to send a signal to the process associated with the PID
 By default it sends a SIGTERM signal, but you can send any signal you want by supplying it the flag of the desired signal
 `$ kill -<signal int> <PID>`
 Additionally you can use `$ killall <program>` to kill an entire program using its name.
 
-####Using Signals in C
+#### Using Signals in C
 `kill(PID, signal)` : This is the terminal program kill, just in a function form. Returns 0 on success, -1 on failure.
 `static void sighandler(int signo)` : A function YOU code in your C program to intercept signals for your program. Can handle all signals besides for SIGKILL and SIGSTOP. An example function could be:
 ```c
