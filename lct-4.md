@@ -1,5 +1,5 @@
 ## Thursday, 11/09: Execlp and Execvp, by Joshua Turcotti
-**Interesting tech news**: [Setback for SpaceX as its next-gen rocket explodes during testing] (https://www.digitaltrends.com/cool-tech/spacex-rocket-explodes-during-testing/)
+**Interesting tech news**: [Setback for SpaceX as its next-gen rocket explodes during testing](https://www.digitaltrends.com/cool-tech/spacex-rocket-explodes-during-testing/)
 
 We learned about executing processes from within a C program.
 
