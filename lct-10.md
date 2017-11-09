@@ -1,3 +1,44 @@
+## Thursday, 11/9 | Executive Decision by Marcus Ng
+
+**Tech news**: [Apple AR Headset](https://www.bloomberg.com/news/articles/2017-11-08/apple-is-said-to-ramp-up-work-on-augmented-reality-headset)
+
+We learned about using execlp() and execvp() to execute processes in a C program.
+
+#### int execlp(const char *file, const char *arg0...NULL);
+The first argument of the function is the name of an executable file, which is searched for in the $PATH. The $PATH lists all of the directories where there are known executable programs. The rest of the arguments make up the command that is executed to create the new process. The arguments must end with NULL to signal that the arguments have ended. If the new process is successful, the old PID is used for the new process, replacing the old process. However, if the new process fails, the function returns -1, and the global variable errno is modified to reflect the error.
+
+#### Example
+'''
+#include <unistd.h>
+
+int main() {
+    execlp("ls", "ls", "-a", "-l", NULL) // Remember to have NULL at the end of your args
+
+    return 0;
+}
+'''
+#### int execvp(const char *file, char *const argv[]);
+This function is similar to 'execlp()', except it takes an array of arguments following the name of the executable file instead of a list of individual arguments. The argument array must have NULL to signal that the arguments have ended.
+
+#### Example
+'''
+#include <unistd.h>
+
+int main() {
+    char *arg[5];
+    arg[0] = "ls";
+    arg[1] = "-a";
+    arg[2] = "-l";
+    arg[3] = NULL; // NULL Terminated
+  
+    execvp(arg[0], arg);
+
+    return 0;
+}
+'''
+
+---
+
 ## Wednesday, 11/8 | Mixed Signals by James Smith
 **Tech news**: [World's Fastest Rocket Car's First Test](https://www.cnet.com/news/bloodhound-ssc-rocket-car-finally-makes-its-first-move/)
 
