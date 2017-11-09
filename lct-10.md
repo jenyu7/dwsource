@@ -1,3 +1,78 @@
+## Wednesday, 11/8 | Mixed Signals by James Smith
+**Tech news**: [World's Fastest Rocket Car's First Test](https://www.cnet.com/news/bloodhound-ssc-rocket-car-finally-makes-its-first-move/)
+
+Today we discussed signals in programs.
+
+####Processes
+`$ ps` Lists your current processes.
+`$ ps -aux` Shows all processes with the username who started the process and the processes not associated with the terminal session. An example of the output can be seen below:
+
+```
+USER       PID %CPU %MEM    VSZ   RSS TTY      STAT START   TIME COMMAND
+root         1  0.0  0.0  10436   104 ?        Ss   19:06   0:00 /init
+Inquisi+     2  0.0  0.0  25688  2876 tty1     Ss   19:06   0:00 /bin/bash
+Inquisi+    38  0.0  0.0  41356  1844 tty1     R    19:23   0:00 ps -aux
+```
+
+The important thing here is the PID which stands for Process ID. This is how the computer identifies your processes. It gets this information from the /proc/ directory.
+
+What is /proc/ directory?
+It is a directory that contains folders for every process and inside each folder it has the executed code and statistics on the process. My /proc/ directory is below as an example:
+```
+total 0
+dr-xr-xr-x 7 root       root       0 Nov  8 19:22 1
+dr-xr-xr-x 7 Inquisitor Inquisitor 0 Nov  8 19:22 2
+dr-xr-xr-x 7 Inquisitor Inquisitor 0 Nov  8 19:27 56
+dr-xr-xr-x 2 root       root       0 Nov  8 19:06 bus
+-r--r--r-- 1 root       root       0 Nov  8 19:06 cgroups
+-r--r--r-- 1 root       root       0 Nov  8 19:06 cmdline
+-r--r--r-- 1 root       root       0 Nov  8 19:06 cpuinfo
+-r--r--r-- 1 root       root       0 Nov  8 19:06 filesystems
+-r--r--r-- 1 root       root       0 Nov  8 19:06 interrupts
+-r--r--r-- 1 root       root       0 Nov  8 19:06 loadavg
+-r--r--r-- 1 root       root       0 Nov  8 19:06 meminfo
+lrwxrwxrwx 1 root       root       0 Nov  8 19:06 mounts -> self/mounts
+lrwxrwxrwx 1 root       root       0 Nov  8 19:06 net -> self/net
+lrwxrwxrwx 1 root       root       0 Nov  8 19:06 self -> 56
+-r--r--r-- 1 root       root       0 Nov  8 19:06 stat
+dr-xr-xr-x 6 root       root       0 Nov  8 19:06 sys
+dr-xr-xr-x 2 root       root       0 Nov  8 19:06 tty
+-r--r--r-- 1 root       root       0 Nov  8 19:06 uptime
+-r--r--r-- 1 root       root       0 Nov  8 19:06 version
+-r--r--r-- 1 root       root       0 Nov  8 19:06 version_signature
+```
+
+####What is a signal?
+A signal is a limited way to send information to a process. It sends an integer that tells the process to do something. Some important ones can be seen below, but all of them can be seen at `man 7 signal`
+
+SIGINT - 2 - Process interupt from keyboard (aka ctrl-c)
+SIGSTP - 20 - Stops program from keyboard (aka ctrl-z)
+SIGSTOP - 19 - Stops process (used from a program)
+SIGCONT - 18 - Continues the program if it is stopped
+SIGSEGV - 11 - Invaliud memory address (aka segfault)
+SIGTERM - 15 - Termination signal
+
+####Kill all the processes!
+`$ kill <PID>` is a command line utility used to send a signal to the process associated with the PID
+By default it sends a SIGTERM signal, but you can send any signal you want by supplying it the flag of the desired signal
+`$ kill -<signal int> <PID>`
+Additionally you can use `$ killall <program>` to kill an entire program using its name.
+
+####Using Signals in C
+`kill(PID, signal)` : This is the terminal program kill, just in a function form. Returns 0 on success, -1 on failure.
+`static void sighandler(int signo)` : A function YOU code in your C program to intercept signals for your program. Can handle all signals besides for SIGKILL and SIGSTOP. An example function could be:
+```c
+static void sighandler(int signo){
+    if(signo == 11){
+        printf("OH NOOOOO I HAVE A SEGFAULT!!!!!!!!");
+    }
+}
+```
+Your job is not over for handling signals. You have this function, but how is the program going to call it?
+`signal(<signal>, sighandler)` This goes in your main method where it checks if the <signal> has been received and calles the sighandler function if it has.
+
+---
+
 ## Monday, 11/6 | Are your processes running? Then you should go out and catch them! by Jawadul Kadir
 
 **Tech news**: [Razer made a smartphone, and it’s an all-black version of the Nextbit Robin](https://arstechnica.com/gadgets/2017/11/razer-uses-nextbit-knowledge-to-craft-its-own-gamer-friendly-smartphone/)
