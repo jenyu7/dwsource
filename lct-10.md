@@ -5,10 +5,10 @@
 We learned about using execlp() and execvp() to execute processes in a C program.
 
 #### int execlp(const char *file, const char *arg0...NULL);
-The first argument of the function is the name of an executable file, which is searched for in the $PATH. The $PATH lists all of the directories where there are known executable programs. The rest of the arguments make up the command that is executed to create the new process. The arguments must end with NULL to signal that the arguments have ended. If the new process is successful, the old PID is used for the new process, replacing the old process. However, if the new process fails, the function returns -1, and the global variable errno is modified to reflect the error.
+The first argument of the function is the name of an executable file, which is searched for in the $PATH. The $PATH lists all of the directories where there are known executable programs. The rest of the arguments make up the command that is executed to create the new process. The arguments must end with NULL to signal that the arguments have ended. If the new process is successful, the old PID is used for the new process, replacing the old process. However, if the new process fails, the function returns -1, and the global variable `errno` is modified to reflect the error.
 
 #### Example
-'''
+```
 #include <unistd.h>
 
 int main() {
@@ -16,12 +16,13 @@ int main() {
 
     return 0;
 }
-'''
+```
+
 #### int execvp(const char *file, char *const argv[]);
-This function is similar to 'execlp()', except it takes an array of arguments following the name of the executable file instead of a list of individual arguments. The argument array must have NULL to signal that the arguments have ended.
+This function is similar to `execlp()`, except it takes an array of arguments following the name of the executable file instead of a list of individual arguments. The argument array must have NULL to signal that the arguments have ended.
 
 #### Example
-'''
+```
 #include <unistd.h>
 
 int main() {
@@ -35,7 +36,7 @@ int main() {
 
     return 0;
 }
-'''
+```
 
 ---
 
