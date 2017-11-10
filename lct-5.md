@@ -1,3 +1,37 @@
+## Thursday 11/09 Time to make an executive decision by Dmytro Hvirtsman
+**Tech News:** [Amazon Cloud Cam Joins Burgeoning Smart-Home Ecosystem](https://www.technewsworld.com/story/Amazon-Cloud-Cam-Joins-Burgeoning-Smart-Home-Ecosystem-84942.html)
+
+The executive family - <unistd.h>
+	These functions are functions that run other programs from within	
+	When you do this the original process terminates
+	
+```C
+execlp(<PROGRAM>, <arg1>, <arg2>, ...);
+```
+First argument will always be the name of the program
+subsequent arguments are flags
+always ends with NULL
+
+to run ls -l -a :
+
+```C
+execlp("ls", "ls", "-l", "-a", NULL);
+```
+
+The difference between execlp and execvp is execvp uses an array for its arguments
+	always has two variables
+	the <FILE> can always be taken by doing arr[0] since the first argument is the name of the file
+	
+to run ls -l -a:
+	
+```C
+char (*arr[4]);
+arr[0] = "ls";
+arr[1] = "-l";
+arr[2] = "-a";
+execvp(arr[0]. arr);
+```
+	
 ## Monday 11/06 Are your processes running? Then you should go out and catch them! By Inbar Pe’er
 ** Tech News: ** [SONY resurrects robot pet Aibo which it “put down” in 2006]
 https://www.technewsworld.com/story/Sonys-Aibo-Resurrected-From-Robot-Pet-Cemetery-84929.html
@@ -26,7 +60,7 @@ int main(){
 	fgets(s, sizeof(s), stdin);
 	printf(“s: %s \n”, s);
 	return 0;
-}
+}https://github.com/mks65/dwsource.git
 ```
 fgets call won't run until it knows that there is something in standard in to be read (BLOCKING)
 new line is a signal to send whatever was in standard out, out. (FLUSHING THE BUFFER)
