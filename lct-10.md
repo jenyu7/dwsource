@@ -1,3 +1,32 @@
+## Friday, 11/13 | I Don’t Give a Fork! By Rihui Zheng
+**Tech News:**
+
+We went over our signal assignment for the majority of the class. Most people did not realize that you were supposed to append a message to a file. Shame on you. We then went over how strsep() works.
+
+#### Usage
+`strsep( <string> , <separator> )`
+Finds the first occurrence of separator in string and set the separator equal to null. It makes string point to the index after separator and returns the original string.
+
+We then began learning about forks. We learned one function:
+#### fork()- <unistd.h>
+* Creates a separate process based on the current one. The new process is called a child, the original is the parent.
+* The child process is a duplicate of the parent process. All parts of the parent process are copied, including stack and heap memory, and the file table.
+
+#### Example
+```c
+#include <stdio.h>
+#include <stdlib.h>
+#include <unistd.h>
+
+int main(){
+printf(“Pre-fork: \n”);
+fork();
+printf(“Post-fork: %d\n”, getpid());
+}
+```
+---
+
+
 ## Thursday, 11/9 | Executive Decision by Marcus Ng
 
 **Tech news**: [Apple AR Headset](https://www.bloomberg.com/news/articles/2017-11-08/apple-is-said-to-ramp-up-work-on-augmented-reality-headset)
