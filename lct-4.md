@@ -1,3 +1,97 @@
+## Monday 13/11 What the Fork? By Haiyao Liu
+
+**COOL and GOOD tech news:** [DeepMind's AlphaGo Zero 18 Oct 2017 - nonsupervised AI masters Go tabula rasa](https://deepmind.com/documents/119/agz_unformatted_nature.pdf)
+
+In today's class we learned:
+* *homework directions are to be [read and followed]*
+* *strsep() can be used to create an array of strings (char\*\*) in-place*
+* *fork() creates a duplicate process (child) when called within an existing process (parent)*
+
+### strsep() <string.h>
+`strsep( <POINTER TO STRING> , <DELIMINATOR STRING> )`
+* finds the first occurence of any character within the deliminator string or the terminating null and replaces it with a terminating null.
+* changes the provided string pointer to the address of the character directly following the replaced character - or NULL if the end of the string has been reached.
+* returns the original string pointer.
+
+#### example
+```c
+#include <stdio.h>
+#include <stdlib.h>
+#include <string.h>
+
+int main() {
+    
+    char *str;
+    char *tmp;
+    
+    strcpy(str, "these are words,\tnot whitespace");
+    printf("original:\t%s\nparts:\n", str);
+
+    while ((tmp = strsep(&str, " \t"))) { // note 1-2
+      printf("> %s\n", tmp);
+    }
+    
+    return 0;
+    
+}
+```
+#### output
+```
+original:	these are words,	not whitespace
+parts:
+> these
+> are
+> words,
+> not
+> whitespace
+```
+
+### fork() <unistd.h>
+* Creates a copy, or child process, of the current process, the parent.
+* The stack memory, heap memory, and file table of the child process upon creation are identical to the parent's at the point fork() is executed.
+* PID is changed as the child is a distinct process.
+
+#### example
+```c
+#include <stdio.h>
+#include <stdlib.h>
+#include <unistd.h>
+
+int main() {
+
+    pid_t  pid;
+
+    printf("I'm going to be the PARENT!! My <PID> is: %d\n", getpid());
+
+    pid = fork(); //note 3
+
+    if (pid == 0) {
+        printf("I'm the CHILD and my <PID> is: %d\n", getpid());
+    }
+    
+    else { 
+        printf("I'm now the PARENT and my <PID> is still: %d\n", getpid());
+    }
+    
+    return 0;
+}
+```
+#### output
+```
+I'm going to be the PARENT!! My <PID> is: 29090
+I'm now the PARENT and my <PID> is still: 29090
+I'm the CHILD and my <PID> is: 29091
+```
+Note that 29090 and 29091 are simply PID's and will differ.
+
+### notes
+1. strsep replaces ALL characters within the deliminator string, it isn't limited to one character.
+2. wrapping an assignment in parentheses will silence the "assignment in conditional" or "= vs ==" warning.
+3. concurrent process running prevents simply sending PID's to stdout (print order is unpredictable).
+4. avoid f-bombs!
+
+---
+
 ## Thursday, 11/09: Execlp and Execvp, by Joshua Turcotti
 **Interesting tech news**: [Setback for SpaceX as its next-gen rocket explodes during testing](https://www.digitaltrends.com/cool-tech/spacex-rocket-explodes-during-testing/)
 
