@@ -3,7 +3,7 @@
 **COOL and GOOD tech news:** [DeepMind's AlphaGo Zero 18 Oct 2017 - nonsupervised AI masters Go tabula rasa](https://deepmind.com/documents/119/agz_unformatted_nature.pdf)
 
 In today's class we learned:
-* *homework directions are to be [read and followed]*
+* *homework directions are to be read and followed*
 * *strsep() can be used to create an array of strings (char\*\*) in-place*
 * *fork() creates a duplicate process (child) when called within an existing process (parent)*
 
