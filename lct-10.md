@@ -20,9 +20,9 @@ We then began learning about forks. We learned one function:
 #include <unistd.h>
 
 int main(){
-printf(“Pre-fork: \n”);
-fork();
-printf(“Post-fork: %d\n”, getpid());
+    printf(“Pre-fork: \n”);
+    fork();
+    printf(“Post-fork: %d\n”, getpid());
 }
 ```
 ---
