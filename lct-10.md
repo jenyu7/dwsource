@@ -1,10 +1,11 @@
 ## Friday, 11/13 | I Don’t Give a Fork! By Rihui Zheng
-**Tech News:**
+**Tech News:**  [Youtube Removes Extremist Videos](https://www.reuters.com/article/us-tech-hatespeech/google-broadens-takedown-of-extremist-youtube-videos-idUSKBN1DE05X)
 
 We went over our signal assignment for the majority of the class. Most people did not realize that you were supposed to append a message to a file. Shame on you. We then went over how strsep() works.
 
 #### Usage
 `strsep( <string> , <separator> )`
+
 Finds the first occurrence of separator in string and set the separator equal to null. It makes string point to the index after separator and returns the original string.
 
 We then began learning about forks. We learned one function:
