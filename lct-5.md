@@ -1,3 +1,60 @@
+## Monday 11/13 Fork
+**TechNews:** [Want To Really Teach a Robot? Command It With VR](https://www.wired.com/story/embodied-intelligence-want-to-really-teach-a-robot-command-it-with-vr/)
+
+We started by reviewing the previous 2 assignments
+
+For assignment 10 a lot of people did not read the instructions properly. 
+ Just make sure to read everything over again before you submit.
+Also test your makefiles.
+
+We went over a solution to assignment 11
+Here is mine:
+```C
+char ** parse_args ( char * line ){
+  char ** args = (char **) malloc(sizeof(char *) * 6);
+  int i = 0;
+  while(line){
+    args[i] = strsep(&line, " ");
+    printf("str %d: %s,    line: %s\n", i, args[i], line);
+    i++;
+  }
+  args[i] = NULL;
+  return args;
+}
+
+
+int main(){
+  char temp[100] = "ls -a -l";
+  char** args = parse_args(temp);
+  execvp("ls", args);
+}
+```
+Just a few quick things about this:
+
+* The char * line must point to a mutable string because strsep changes the string.
+* The pointer line must also be mutable, it is in this case because arguments are passed by value.
+* The last argument in args must be set to NULL.
+* Strsep returns the place line originally points to, and moves the pointer to one past the char you make it look for. It also replaces that char with a NULL
+
+###   Fork
+Fork is in unistd.h
+
+It creates a SEPARATE process. This new process is called a child and it is an exact copy of the parent. Essentially it continues the code from the fork. 
+
+The original, or parent, process still runs
+
+The both have different PIDs
+
+Do NOT
+```C
+while(1){
+  fork()
+}
+```
+The OS will not stop you like it will with segfaults or stack overflow errors. Bad things will happen.
+
+
+
 ## Thursday 11/09 Time to make an executive decision by Dmytro Hvirtsman
 **Tech News:** [Amazon Cloud Cam Joins Burgeoning Smart-Home Ecosystem](https://www.technewsworld.com/story/Amazon-Cloud-Cam-Joins-Burgeoning-Smart-Home-Ecosystem-84942.html)
 
