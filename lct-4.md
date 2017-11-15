@@ -1,3 +1,77 @@
+## Tuesday, 11/14 Wait For It... By Jackie Xu
+
+**Interesting Tech News:** [FDA Approved First Digitial Pill](https://www.theverge.com/2017/11/14/16648166/fda-digital-pill-abilify-otsuka-proteus)
+
+### fork() and getppid() continued
+* calling fork twice results in 4 child processes
+* return value of fork() to the parent is child process's ID or -1 if errno
+* return value of fork() to the child is 0
+* return value of getppid() for the parent is the BASH session
+* return value of getppid() for the child is 1 once the parent process ends
+* parent and child processes run concurrently, but if you can call sleep(1) to one process to change the order
+
+#### example
+```c
+int main() {
+
+    pid_t  pid;
+	
+	pid = fork();
+    fork();
+	
+	printf("pid: %d\t f: %d\t  parent: %d\n", getpid(), pid, getppid());
+    return 0;
+	
+}
+```
+#### output (without sleep)
+```
+pid: 35157	 f: 0	  parent: 35156
+pid: 35159	 f: 0	  parent: 1
+pid: 35158	 f: 35157	  parent: 35156
+pid: 35156	 f: 35157	  parent: 34152
+```
+
+#### example
+```c
+int main() {
+
+    pid_t  pid;
+	
+	pid = fork();
+    fork();
+	
+    if (pid != 0) {
+        sleep(1);
+    }
+	
+	printf("pid: %d\t f: %d\t  parent: %d\n", getpid(), pid, getppid());
+    return 0;
+	
+}
+```
+#### output (with sleep)
+```
+pid: 35179	 f: 0	  parent: 35178
+pid: 35181	 f: 0	  parent: 35179
+pid: 35180	 f: 35179	  parent: 35178
+pid: 35178	 f: 35179	  parent: 34152
+```
+
+### wait() - <unistd.h>
+* stops a parent process from running until any child has provided status info to the parent via a signal (usually the child has exited)
+* returns the pid of the child that exited or -1 (errno)
+* wait (int * status)
+    * the parameter (status is used to store info about how the process exited)
+* if multiple children, then the first child that exits will trigger wait
+
+### threads
+* similar to processes, but more complicated to interact with
+* shared memory pool
+* started from some other process, but other one must still be running in order for thread to exist
+
+---
+
 ## Monday 13/11 What the Fork? By Haiyao Liu
 
 **COOL and GOOD tech news:** [DeepMind's AlphaGo Zero 18 Oct 2017 - nonsupervised AI masters Go tabula rasa](https://deepmind.com/documents/119/agz_unformatted_nature.pdf)
