@@ -1,3 +1,44 @@
+## Tuesday, 11/14 | Wait for it By Peter Lee
+**Tech News:**  [The FDA has approved the first digital pill](https://www.theverge.com/2017/11/14/16648166/fda-digital-pill-abilify-otsuka-proteus)
+
+We learned in more detail about how we can determine which child belongs to which parent by using the return values of fork() and getppid(). We also learned how to be good parents by waiting for our slow children.
+
+#### wait(int * status) - <unistd.h>
+* Stops a parent process from running until any child has provided status information to the parent via a signal. (usually the child has exited).
+* Returns the pid of the child that exited, or -1 (errno)
+* The parameter (status) is used to store information about how the process exited.
+
+#### getppid() - <unistd.h>
+* Returns the process ID of the parent process of the current process.
+
+#### Example
+```c
+#include <stdlib.h>
+#include <stdio.h>
+#include <unistd.h>
+
+int main() {
+  int f, t;
+  printf("pre-fork\n");
+
+  f = fork(); //fork() returns the PID of the child process
+  t = 2;
+  if (f == 0) {
+    sleep(t); //child is asleep for 2 seconds!
+    printf("I'm a child: %d\t f:%d\tparent: %d\n", getpid(), f, getppid());
+  } else {
+    printf("waiting for lazy child\n");
+    wait(&t); //wait for child to sleep for 2 seconds!
+    printf("I'm a parent: %d\t f:%d\tparent: %d\n", getpid(), f, getppid());
+  }
+  return 0;
+}
+```
+
+
+---
+
+
 ## Friday, 11/13 | I Don’t Give a Fork! By Rihui Zheng
 **Tech News:**  [Youtube Removes Extremist Videos](https://www.reuters.com/article/us-tech-hatespeech/google-broadens-takedown-of-extremist-youtube-videos-idUSKBN1DE05X)
 
