@@ -1,3 +1,31 @@
+## Wednesday, 11/15: Playing Favorites by Herman Lin
+
+**Interesting Tech News:** [New Closest Temperate Exoplanet](http://www.eso.org/public/news/eso1736/)
+
+### endianness
+* the way the bytes of a number can be referred to its endianness
+* categorized into 'big-endian' and 'little-endian'
+* big-endian: most significant bytes are at the end
+
+
+	int i = 302; //in big-endian, bytes are represented as[0|0|1|46]
+
+* little-endian: least significant bytes are at the end
+
+
+	int i = 302; //in little-endian, bytes are represented as [46|1|0|0]
+    
+### waitpid - <unistd.h>
+* waits for a specific child
+
+
+	waitpid (pid, status, options)
+    
+* pid - give the PID of the specific child to look for, or -1 to wait for any child
+* options - give options that can set other behaviors for wait, or 0 to work normally
+
+---
+
 ## Tuesday, 11/14 Wait For It... By Jackie Xu
 
 **Interesting Tech News:** [FDA Approved First Digital Pill](https://www.theverge.com/2017/11/14/16648166/fda-digital-pill-abilify-otsuka-proteus)
