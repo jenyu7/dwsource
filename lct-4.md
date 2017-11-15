@@ -1,6 +1,6 @@
 ## Tuesday, 11/14 Wait For It... By Jackie Xu
 
-**Interesting Tech News:** [FDA Approved First Digitial Pill](https://www.theverge.com/2017/11/14/16648166/fda-digital-pill-abilify-otsuka-proteus)
+**Interesting Tech News:** [FDA Approved First Digital Pill](https://www.theverge.com/2017/11/14/16648166/fda-digital-pill-abilify-otsuka-proteus)
 
 ### fork() and getppid() continued
 * calling fork twice results in 4 child processes
