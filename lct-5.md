@@ -1,3 +1,87 @@
+## Tuesday 11/14, Wait for it — Yiduo Ke
+**Tech News** [Scientists use a supercomputer to simulate one of history’s biggest quakes](https://www.digitaltrends.com/cool-tech/supercomputer-earthquake-simulation/)
+
+We continued to talk about forking. We drew fork trees by analyzing outputs in the terminal.
+```c
+int childId = fork();
+```
+fork() returns the id of the child process when the current process forks. If it's 0, then that means the process has no children. If the parent is 1, then that means the parent quit but the child was still running when it printed that line. Such a process is referred to as an *orphan*.
+```c
+int main(){
+    int i=0;
+    printf("pre-fork\n");
+    int f=fork();
+    printf("me: %d, child: %d, parent: %d\n", getpid(), f, getppid());
+    return 0;
+ }
+
+```
+can produce the following output:
+```
+pre-fork
+me: 130, child: 131, parent: 2
+me: 131, child: 0, parent: 130
+```
+We can see that the parent process is 130, and its child is 131.
+
+Forking n times produces 2^n processes.
+Let's try forking twice, which should produce 4 processes:
+```c
+int main(){
+    int i=0;
+    printf("pre-fork\n");
+    int f=fork();
+    fork();
+    printf("me: %d, child: %d, parent: %d\n", getpid(), f, getppid());
+    return 0;
+ }
+
+```
+can produce the following output:
+```
+pre-fork
+me: 121, child: 122, parent: 2
+me: 123, child: 122, parent: 121
+me: 122, child: 0, parent: 1
+me: 124, child: 0, parent: 122
+```
+We can see the ancestor is 121, it forked 122, which in turn forked 124. The branch that did not fork off of 121 is 123.
+
+Then we learned about waiting.
+```c
+#include <unistd.h>
+int pidOfChildThatExited = wait(int * status)
+```
+Wait stops a parent process from running until any child has provided status information to the parent (usually when the child has exited). The child sends a signal to the parents if it has exited. Wait returns the pid of the child that has exited, or -1 (errno). The parameter -- status -- is used to store information about how the child process exited. 
+
+Sample code with child sleeping for 2 seconds before execution:
+```c
+int main(){
+    int i=0;
+    printf("pre-fork\n");
+    int f = fork();
+    fork();
+ 
+    if (f ==0 ){
+        sleep(2);
+        printf("I'm a child. post-fork: %d   f: %d   parent: %d\n", getpid(), f, getppid());
+    }
+    else{
+        printf("I'm a parent. post-fork: %d   f: %d   parent: %d\n", getpid(), f, getppid());
+    }
+    return 0;
+ }
+ ```
+ output:
+ ```
+ pre-fork
+I'm a parent. post-fork: 137   f: 138   parent: 2
+I'm a parent. post-fork: 139   f: 138   parent: 137
+whateverPath/blah/folderName$ I'm a child. post-fork: 138   f: 0   parent: 1
+I'm a child. post-fork: 140   f: 0   parent: 138
+```
+The command line shows up before one of the printed lines because the parent was done and exited so the terminal thinks the program was done but it actually wasn't and then the child ran.
+
 ## Monday 11/13 Fork
 **TechNews:** [Want To Really Teach a Robot? Command It With VR](https://www.wired.com/story/embodied-intelligence-want-to-really-teach-a-robot-command-it-with-vr/)
 
