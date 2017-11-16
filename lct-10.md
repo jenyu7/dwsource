@@ -1,3 +1,73 @@
+## Wednesday, 11/15 | Playing Favorites By Cynthia Cheng
+**Tech News:**  [Mozilla terminates its deal with Yahoo and makes Google the default in Firefox again](https://techcrunch.com/2017/11/14/mozilla-terminates-its-deal-with-yahoo-and-makes-google-the-default-in-firefox-again/)
+
+Threads vs Forking
+Fork: gives you a brand new process (child) which is a copy of the current process 
+Threads: one process can have multiple threads (needs a "parent" process)
+Threading allows easier access to memory and shared data vs child processes which do not share memory
+
+### Example
+```c
+#include <stdlib.h>
+#include <stdio.h>
+#include <unistd.h>
+void print_byte(void *p, int size){
+  int i =0
+  unsigned char *cp = (unsigned char*) p;
+  for (;i <size; i++){
+    printf("byte %d: %u\n", i*cp);
+    cp++;
+  }
+int main(){
+int x = 32;
+print_byte(&x, sizeof(x)) //print individually all the bytes
+}
+```
+x has 32 in it
+integer is 4 bytes
+[32,0,0,0]
+cp* points at 32 then goes through til after 0
+result:
+32
+0
+0
+0
+
+int x = 256;
+print_byte(&x, sizeof(x))
+result:
+0
+1
+0
+0
+
+int x = 302;
+print_byte(&x, sizeof(x))
+result:
+46
+1 (!!)
+0
+0
+
+46 in binary: 00101110
+1 in binary: 0000001
+
+0000001,00101110
+^now the 1 is the 256
+
+#### Endianness - byte order of numbers
+* Little Endian: least significant byte to the most significant byte 
+  46 = [01110100]
+* Big Endian: most significant byte to the least significant byte 
+  46 = [00101110]
+
+#### waitpid(pid, status, options) - <unistd.h>
+* waits for a specific child
+* pid: the pid of the child process one is trying to find, or -1 for any child process
+* status: Specifies the location to which the child process' exit status is stored.
+* options: gives options that can set other behaviors for wait, or 0 for normal functions
+
+
 ## Tuesday, 11/14 | Wait for it By Peter Lee
 **Tech News:**  [The FDA has approved the first digital pill](https://www.theverge.com/2017/11/14/16648166/fda-digital-pill-abilify-otsuka-proteus)
 
