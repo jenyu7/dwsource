@@ -24,35 +24,61 @@ print_byte(&x, sizeof(x)) //print individually all the bytes
 }
 ```
 x has 32 in it
+
 integer is 4 bytes
+
 [32,0,0,0]
+
 cp* points at 32 then goes through til after 0
+
 result:
+
 32
+
 0
+
 0
+
 0
+
 
 int x = 256;
-print_byte(&x, sizeof(x))
+
+print_byte(&x, sizeof(x));
+
 result:
+
 0
+
 1
+
 0
+
 0
+
+
 
 int x = 302;
+
 print_byte(&x, sizeof(x))
+
 result:
+
 46
+
 1 (!!)
-0
+
 0
 
+0
+
+
 46 in binary: 00101110
+
 1 in binary: 0000001
 
 0000001,00101110
+
 ^now the 1 is the 256
 
 #### Endianness - byte order of numbers
