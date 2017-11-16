@@ -1,3 +1,28 @@
+## Wednesday 11/15, Aim: Playing favorites
+**Tech News** [Google writes Ai to write Ai](https://www.technologyreview.com/s/603381/ai-software-learns-to-make-ai-software/)
+* Thread:
+  * Similar to a child process
+  * does not have its own memory
+  * relies on parent instructions. Needs parent process to be running
+  * This is NOT what `fork()` does
+* void pointers is a generic pointer
+* You can think of data type as number of bytes. int can be thought of as 4 bytes of data. These 4 bytes of data can hold different and significant data for each byte
+* Ordering of bytes in a variable
+  * In the examples below, there is a data type that has a certain amount of bytes. (I.e int is 4 bytes). Imagine a row of 4 bytes.
+  * 1 byte is 8 bits. 8 bits has 2 possibilities (0 and 1), so each byte holds 2^8 bits of data.
+  * Further data is incremented by powers of 2^8
+  * endian-ness: Byte order of values
+    * litle endian: least significant value would show up as first byte (1st byte is 2^8, 2nd byte is 2^16, 3rd byte is 2^8 etc)
+    * big endian: most significant value would show up as first byte (1st byte is 2^32, 2nd byte is 2^16, etc)
+* `wait( int *<STATUS>)`
+  * In `<unistd.h>`
+  * STATUS: used to store info about how the process exited
+    * Holds return value of child program in second byte
+    * first byte has a signal  
+
+<hr>
+
+
 ## Tuesday 11/14, Wait for it — Yiduo Ke
 **Tech News** [Scientists use a supercomputer to simulate one of history’s biggest quakes](https://www.digitaltrends.com/cool-tech/supercomputer-earthquake-simulation/)
 
@@ -52,7 +77,7 @@ Then we learned about waiting.
 #include <unistd.h>
 int pidOfChildThatExited = wait(int * status)
 ```
-Wait stops a parent process from running until any child has provided status information to the parent (usually when the child has exited). The child sends a signal to the parents if it has exited. Wait returns the pid of the child that has exited, or -1 (errno). The parameter -- status -- is used to store information about how the child process exited. 
+Wait stops a parent process from running until any child has provided status information to the parent (usually when the child has exited). The child sends a signal to the parents if it has exited. Wait returns the pid of the child that has exited, or -1 (errno). The parameter -- status -- is used to store information about how the child process exited.
 
 Sample code with child sleeping for 2 seconds before execution:
 ```c
@@ -61,7 +86,7 @@ int main(){
     printf("pre-fork\n");
     int f = fork();
     fork();
- 
+
     if (f ==0 ){
         sleep(2);
         printf("I'm a child. post-fork: %d   f: %d   parent: %d\n", getpid(), f, getppid());
@@ -87,7 +112,7 @@ The command line shows up before one of the printed lines because the parent was
 
 We started by reviewing the previous 2 assignments
 
-For assignment 10 a lot of people did not read the instructions properly. 
+For assignment 10 a lot of people did not read the instructions properly.
  Just make sure to read everything over again before you submit.
 Also test your makefiles.
 
@@ -123,7 +148,7 @@ Just a few quick things about this:
 ###   Fork
 Fork is in unistd.h
 
-It creates a SEPARATE process. This new process is called a child and it is an exact copy of the parent. Essentially it continues the code from the fork. 
+It creates a SEPARATE process. This new process is called a child and it is an exact copy of the parent. Essentially it continues the code from the fork.
 
 The original, or parent, process still runs
 
@@ -143,9 +168,9 @@ The OS will not stop you like it will with segfaults or stack overflow errors. B
 **Tech News:** [Amazon Cloud Cam Joins Burgeoning Smart-Home Ecosystem](https://www.technewsworld.com/story/Amazon-Cloud-Cam-Joins-Burgeoning-Smart-Home-Ecosystem-84942.html)
 
 The executive family - <unistd.h>
-	These functions are functions that run other programs from within	
+	These functions are functions that run other programs from within
 	When you do this the original process terminates
-	
+
 ```C
 execlp(<PROGRAM>, <arg1>, <arg2>, ...);
 ```
@@ -162,9 +187,9 @@ execlp("ls", "ls", "-l", "-a", NULL);
 The difference between execlp and execvp is execvp uses an array for its arguments
 	always has two variables
 	the <FILE> can always be taken by doing arr[0] since the first argument is the name of the file
-	
+
 to run ls -l -a:
-	
+
 ```C
 char (*arr[4]);
 arr[0] = "ls";
@@ -257,7 +282,7 @@ e.g.
 signal(SIGINT, sighandler);
 signal(SIGUSR1, sighandler);
 ```
-	
+
 ## Monday 11/06 Are your processes running? Then you should go out and catch them! By Inbar Pe’er
 ** Tech News: ** [SONY resurrects robot pet Aibo which it “put down” in 2006]
 https://www.technewsworld.com/story/Sonys-Aibo-Resurrected-From-Robot-Pet-Cemetery-84929.html
@@ -267,13 +292,13 @@ fgets - <stdio.h>
 	fgets(<DESTINATION>, <BYTES>, <FILE POINTER>)
 	fgets(s, n, f);
 	```
-		Reads at most n-1 characters from filestream f and stores it in s. 
-		Automatically puts in a terminating null at the end. 
+		Reads at most n-1 characters from filestream f and stores it in s.
+		Automatically puts in a terminating null at the end.
 	File pointer
-		FILE * type, more complex than a file descriptor 
+		FILE * type, more complex than a file descriptor
 		stdin is a FILE * variable
 	Stops at newline, end of file, or the byte limit.
-	If applicable, keeps the newline character as part of the string, appends NULL after. 
+	If applicable, keeps the newline character as part of the string, appends NULL after.
 fgets(s,256,stdin)
 	read a line of text from standard in
 ```C
@@ -298,13 +323,13 @@ sscanf - <stdio.h>
 Processes
 Every program that is running is a process. A process can create subprocesses, but these are no different from regular processes
 A processor can handle one process per cycle (per core).
-“multitasking” appears to happen because the processor switches all the active processes quickly. 
+“multitasking” appears to happen because the processor switches all the active processes quickly.
 operating system needs to be designed to schedule things effectively between multiple cores
 Nowadays our OS’s are pretty good about this stuff (always getting better)
-pid 
+pid
 	Every process has a unique identifier called the pid.
-	pid 1 is the init processor 
-	ps - displays the processes currently running ( but only the ones you are the owner of and the ones attached to terminal sessions) 
+	pid 1 is the init processor
+	ps - displays the processes currently running ( but only the ones you are the owner of and the ones attached to terminal sessions)
 	ps -a (all the processes by everyone)
 	ps -aux (processes not attached to terminal windows)
 	first number is pid value
@@ -358,11 +383,11 @@ char * get_perm_string(mode_t mode){
     int i;
     char *perm_string = (char *)malloc(10);
     perm_string[9]=0;
- 
+
     perms[0] = (mode & 0b111000000) >> 6;
     perms[1] = (mode & 0b111000) >> 3;
     perms[2] = (mode & 0b111);
- 
+
     for (i=0; i<3; i++){
         if (perms[i] & 0b100){
             perm_string[0+i*3]='r';
@@ -408,7 +433,7 @@ scanf( <FORMAT STRING>, <VAR 1>, <VAR 2> ... ): Included from <stdio.h>
 ```
 
 Reads in data from stdin using the format string to determine types. Puts the data in each variable. Variables must be pointers	because C is a pass-by-value language
-Example:	
+Example:
 
 ```C
 int x; float f; double d;
@@ -423,8 +448,8 @@ scanf("%d %f %lf", &x, &f, &d);
 
 ### `*nix` directory files
 
-Is a file containing the names of the files within the directory along with 
-basic information about the files(like file type etc.) 
+Is a file containing the names of the files within the directory along with
+basic information about the files(like file type etc.)
 
 When files are moved in and out of a directory, no data is moved(only change in directory files)
 
@@ -547,7 +572,7 @@ O_WRONLY = 1 = 		00000001
 
 O_APPEND = 8 = 		00001000
 
-O_WRONLY | O_APPEND =	00001001 
+O_WRONLY | O_APPEND =	00001001
 
 
 ### errno — <errno.h>
@@ -556,7 +581,7 @@ errno is an integer that corresponds to an error message. If `open()`, `read()`,
 To access the error message, use `strerror(errno)`
 
 strerror() is in <string.h>
-	
+
 For example, of errno==2, `strerror(errno)` returns "No such file or directory"
 
 
@@ -583,11 +608,11 @@ The mask is applied in the following way:
 
 Ex:
 	mask = 0002 = 000 000 010
-	
+
 	mode = 0666 = 110 110 110
-	
+
 	~mask= n/a  = 111 111 101
-     
+
 	~mask & mode = 110 110 100
 
 You can manually set the mask with
@@ -607,13 +632,13 @@ returns 0 if successful and -1 if it fails (as well as setting errno)
 Read in data from a file
 
 read(<file descriptor>, <buffer>, <amount>)
-	
+
 read(fd,buff,n)
 
 read n bytes from the file at fd in the file table and put that data in tbe buffer
-	
+
 buff must be a pointer
-	
+
 returns the number of bytes actually read. returns -1 and sets errno if unsuccessful
 
 
@@ -622,15 +647,15 @@ returns the number of bytes actually read. returns -1 and sets errno if unsucces
 write data to a file, reverse of read
 
 write(<file descriptor>, <buffer>, <amount>)
-	
+
 write(fd,buff,n)
 
 write n bytes from buff to file at fd
-	
+
 buff must be a pointer
-	
+
 returns the number of bytes written, or -1 and sets errno if unsuccessful
-	
+
 At the end of class we saw that you are not limited to writing strings, eg:
 
 ```c
@@ -748,36 +773,36 @@ There are three permission "areas"
 ## Monday, 10/23 : The Missing Bits and Pieces by Ashneel Das
 **Interesting Tech News:** [AI exhibits bias towards men in many cases, including autonomous vehicles](https://www.technologyreview.com/s/609129/the-dangers-of-tech-bro-ai/)
 
-Integers can be represented in base 2, 8, and 16 by using the following prefixes: 
+Integers can be represented in base 2, 8, and 16 by using the following prefixes:
 - Binary: 0b
 - Octal: 0
 - Hexadecimal: 0x
 
-There is NO difference between the values of these integers. 
+There is NO difference between the values of these integers.
 ```c
 0b1011 == 013 == 0xB == 11
 ```
 Arithmetic in different bases also works.
-There are certain operators that can be used on values that are evaluated on each individual bit, known as bitwise operators. 
+There are certain operators that can be used on values that are evaluated on each individual bit, known as bitwise operators.
 
 ```c
 unsigned char c = 0b10110011;
 ```
-Right shift moves all the bits to the right and adds 0s to the front. 
+Right shift moves all the bits to the right and adds 0s to the front.
 ```c
 c >> 1
 ```
-This makes the value of c 01011001. 
-Left shift moves all bits to the left and adds 0s to the end. 
+This makes the value of c 01011001.
+Left shift moves all bits to the left and adds 0s to the end.
 ```c
 c << 1
 ```
-This makes the value of c (after the right shift AND left shift) 10110010. 
-Other bitwise operators are negation, or, and, xor. 
-- ~: Negation flips every bit. 0s become 1s, and 1s become 0s. 
-- |: Performs the or operator on every pair of bits in the two numbers. 
-- &: Performs the and operator on every pair of bits in the two numbers. 
-- ^: Performs the exclusive or operator on every pair of bits in the two numbers. 
+This makes the value of c (after the right shift AND left shift) 10110010.
+Other bitwise operators are negation, or, and, xor.
+- ~: Negation flips every bit. 0s become 1s, and 1s become 0s.
+- |: Performs the or operator on every pair of bits in the two numbers.
+- &: Performs the and operator on every pair of bits in the two numbers.
+- ^: Performs the exclusive or operator on every pair of bits in the two numbers.
 
 --------------------------------------------------------------------------------
 
@@ -796,8 +821,8 @@ gdb ./a.out
 ```
 run
 ```
-- You can place a break point in the program by calling 
-``` 
+- You can place a break point in the program by calling
+```
 break line_number
 ```
 - You can print the value of a variable by calling
@@ -812,13 +837,13 @@ continue
 --------------------------------------------------------------------------------
 
 ## Wednesday, 10/18: back to the grind by Jasper Cheung
-**Interesting Tech News:** [giant robot battle!!! WOW!](https://www.cnet.com/news/robots-megabots-twitch-suidobashi-battle-japan-usa/) [(vid)](https://www.youtube.com/watch?v=Z-ouLX8Q9UM) 
+**Interesting Tech News:** [giant robot battle!!! WOW!](https://www.cnet.com/news/robots-megabots-twitch-suidobashi-battle-japan-usa/) [(vid)](https://www.youtube.com/watch?v=Z-ouLX8Q9UM)
 
 Valgrind
 - tool for debugging memory issues in C
-- (e.g. memory leaks, accessing freed memory, use of intialized memory) 
+- (e.g. memory leaks, accessing freed memory, use of intialized memory)
 - You must complie with -g to use valgrind (and other similar tools)
-``` 
+```
 gcc -g foo.c
 ```
 - then you call valgrind when running the executable
@@ -836,7 +861,7 @@ valgrind --leak-check=yes ./a.out
 Calloc - clear allocation
 ```c
 calloc (size_t n, size_t x);
-``` 
+```
 - Allocates n*x bytes of memory
 - Ensures that each bit is set to 0
 - Works like malloc in all other ways
@@ -858,7 +883,7 @@ realloc(void *p, size_t x);
  <p> 1. If there is enough space at the end of the original allocation, the original allocation will be updated </p>
 OR
 <p> 2. If there is not enough space, a new allocation will be created, containing the orginal values (copied over). The orginal allocation will be freed. </p>
-  
+
 ```c
 int *p;
 p = (int *) malloc(10);
@@ -943,7 +968,7 @@ x.c:12:11: warning: address of stack memory associated with local variable 'new'
       returned [-Wreturn-stack-address]   
   return &new;       
           ^~~        
-1 warning generated. 
+1 warning generated.
 ```
 
 The node is a piece of stack memory. When `insert_front` ends, *new* is popped off
@@ -1067,7 +1092,7 @@ printf("sizeof s: %lu", sizeof(s))
 Notice how the prototype has to be preceded by `struct`.
 
 You can also make a prototype and instantiate a new variable at the same time:
-```c	
+```c
 struct bar {int a; char x;} t;
 struct bar u;
 ```
@@ -1084,7 +1109,7 @@ Multiple File Compilation
 - You can combine multiple C files into a C program by including them all in one gcc command.
 -`gcc test.c string.c foo.c woohoo.c`
 - You cannot have duplicate functions or global variable names across these files.
-- Be careful: only one of these files should have a main 
+- Be careful: only one of these files should have a main
 
 Using `gcc -c`
 - By using `gcc -c cfile.c` a file is created with the name cfile.o
@@ -1144,7 +1169,7 @@ char *strncpy(char *dest, char *src, size_t n);
 ```
 #### strcpy(), strncpy() : ####
 These functions copy a string from one address to another, stopping at the NUL terminator on the srcstring.
-strncpy() is just like strcpy(), except only the first n characters are actually copied. Beware that if you hit the limit, n before you get a NUL terminator on the src string, your dest string won't be NUL-terminated. 
+strncpy() is just like strcpy(), except only the first n characters are actually copied. Beware that if you hit the limit, n before you get a NUL terminator on the src string, your dest string won't be NUL-terminated.
 Both functions return dest for your convenience, at no extra charge.
 ```C
 #include <string.h>
@@ -1153,7 +1178,7 @@ int strncat(const char *dest, const char *src, size_t n);
 ```
 #### strcat(), strncat() ####
 These functions take two strings, and stick them together, storing the result in the first string.
-These functions don't take the size of the first string into account when it does the concatenation. 
+These functions don't take the size of the first string into account when it does the concatenation.
 Both functions return a pointer to the destination string, like most of the string-oriented functions.
 ```C
 #include <string.h>
@@ -1181,11 +1206,11 @@ strstr() returns a pointer to the occurance of the substr inside the str, or NUL
 
 **DO NOW**: Write a function to find length of strings.
 
-There are many possible ways to do this. 
-Here is one example using bracket notation: 
+There are many possible ways to do this.
+Here is one example using bracket notation:
 ```C
 int length(char *s) {
-  int i = 0; 
+  int i = 0;
   while (s[i]) { //not necessary to write s[i] != 0 as the conditional because 0 is false in C
     i ++;
   }
@@ -1195,30 +1220,30 @@ int length(char *s) {
 Here is another example using pointers:
 ```C
 int length (char *s) {
-    int i = 0; 
+    int i = 0;
     while (*s++) { //you can imcrement the pointer in the while loop statement
         i ++;
     }
     return i;
-  
+
 }
 ```
 
-Note that while it is possible to make the argument a char[] instead of a char * , any array is automatically passed as a pointer to the function, so there is no purpose in doing so. 
+Note that while it is possible to make the argument a char[] instead of a char * , any array is automatically passed as a pointer to the function, so there is no purpose in doing so.
 
 #### Declaring Strings ####
 * `char *s2 = "Mankind"`  
 
    Creates immutable string "mankind" and returns a pointer to that string.You cannot modify strings created this way because the memory the pointer points to is immutable.
 
-* You can only assign char arrays with = at declaration 
+* You can only assign char arrays with = at declaration
 
    `char s[] = "hello"; //ok!`             
    `s[] = "seven"; //NOT ok`
 
    Array are immutable pointers, you can't reassign an array pointer.
 
-* Char pointers can assigned using = at any time 
+* Char pointers can assigned using = at any time
 
     `char * s = "hello"; //ok!`                  
     `s = "seven"; //also ok!`            
@@ -1270,7 +1295,7 @@ void foo(float *x){...} // *x will refer to the memory address of the array "arr
 * C is a procedural language, meaning that the order of the functions matters.
 * Previously, we would just place any helper functions we needed at the top of the code and call it a day, but this will run into issues when we have cyclical functions that call on themselves.
 
-* #### We have 2 better ways to fix this issue: 
+* #### We have 2 better ways to fix this issue:
     1. Declare the function header at the beginning of the code, then define later.
         * You don't need to provide names for the parameters, you just need the data types.
         ```C
@@ -1283,7 +1308,7 @@ void foo(float *x){...} // *x will refer to the memory address of the array "arr
         ```C
         // in "my_header.h"
         void print_array(int, int);
-        
+
         // in "program.c"
         #include "my_header.h"
         ```
@@ -1305,7 +1330,7 @@ p = &array1[9-i];
 array2[i] = *p;
 ```
 
-While this code is correct, `&array1[9-i]` is redundant. If we do `array[index]`, that is shorthand for `*(array + index)`. A smarter way to do this would be `p = array + 9 - i`, which uses addition of pointers. 
+While this code is correct, `&array1[9-i]` is redundant. If we do `array[index]`, that is shorthand for `*(array + index)`. A smarter way to do this would be `p = array + 9 - i`, which uses addition of pointers.
 
 Then we looked at an extreme case of C funkiness. Because array indexing is simply just pointer addition, the commutative property applies. Therefore:
 
@@ -1336,7 +1361,7 @@ int main(){
     return 0;
 }
 ```
-the output value of b would still be `3`. 
+the output value of b would still be `3`.
 
 ---
 
@@ -1390,11 +1415,11 @@ printf("Value of x: %d\n", *ip); // prints "Value of x: 4"
 ### Pointer Arithmetic
 
 * As pointers store memory addresses, they can be incremented at a size corresponding to the data type. Because of this, we can access different memory addresses relative to the initial memory address.
-Example: 
+Example:
 ```C
-int a = 10; 
+int a = 10;
 int *ip = &a;
-char b = 'a'; 
+char b = 'a';
 char *cp = &b;
 ip++; // increments ip by 4 bytes (size of int)
 cp++; // increments cp by 1 byte (size of char)
@@ -1416,7 +1441,7 @@ cp++; // increments cp by 1 byte (size of char)
 
 ### Unsigned Integers
 * All variables of the primitive data types can be initialized with the `unsigned` keyword at the front
-* Ex: `unsigned int foo = 42;` 
+* Ex: `unsigned int foo = 42;`
 * Unsigned variables can only take up non-nengative values
 * They can hold up to twice as many positive numbers as their "signed" counterparts
 * For example, a char can hold the values from -128 to 127, while an unsigned char can hold the values 0 to 255
@@ -1426,11 +1451,11 @@ cp++; // increments cp by 1 byte (size of char)
 * Instead, in C we use integer values for booleans
 * `0` corresponds to false, and any other integer corresponds to true
 
-**WARNING**: Don't do this unintentionally: 
+**WARNING**: Don't do this unintentionally:
 
- `if(x = 6){...}` 
+ `if(x = 6){...}`
 
-When you mean to do this: 
+When you mean to do this:
 
  `if (x == 6){...}`
 
@@ -1443,7 +1468,7 @@ be interpreted as true.
 #### Compiler Allocated Memory
 * Packaged with the compiled binary file
 * The variables and arrays we have been using so far use this type of mamory
-* Variables not have a standard default value, like they would in other languages like Java (the default being `0` for many 
+* Variables not have a standard default value, like they would in other languages like Java (the default being `0` for many
 data types)
 - Instead a variable that has not been declared yet will use whatever value already resides in that spot in memory
 - This is because C's philosophy is to do only exactly what we tell it to, and auto-declaring every variable to a default
@@ -1543,37 +1568,37 @@ Interesting to note is that I did not get a warning for the third printf call.
 
 ## Wednesday, 9/13 If Variables are the Spice of Life, Then are They SpiceC? By Queenie Xiang
 
-**Interesting Tech News:** [Facebook's Artificial Intelligence Robots Get "Shut Down"](http://www.independent.co.uk/life-style/gadgets-and-tech/news/facebook-artificial-intelligence-ai-chatbot-new-language-research-openai-google-a7869706.html) 
+**Interesting Tech News:** [Facebook's Artificial Intelligence Robots Get "Shut Down"](http://www.independent.co.uk/life-style/gadgets-and-tech/news/facebook-artificial-intelligence-ai-chatbot-new-language-research-openai-google-a7869706.html)
 
-The aim for today's class was "Variables are the spice of life." Our do now was to run <pre><code>$man stdio</code></pre> and share what we learned. 
+The aim for today's class was "Variables are the spice of life." Our do now was to run <pre><code>$man stdio</code></pre> and share what we learned.
 
 We found out that this displayed the manual and documentation for stdio. It shows the name, library, synopsis, description, standards, list of functions, and bugs.
 
-Generally, <code>man</code> represents the manual where you can look up the details of a command or program you're not familiar with. So for example, if you wanted to look up the documentation on <code>ls</code>, you would type in <pre><code>$man ls </code></pre> Each command/program has a section of the manual it belongs to. The number of the section appears in the top right corner. 
+Generally, <code>man</code> represents the manual where you can look up the details of a command or program you're not familiar with. So for example, if you wanted to look up the documentation on <code>ls</code>, you would type in <pre><code>$man ls </code></pre> Each command/program has a section of the manual it belongs to. The number of the section appears in the top right corner.
 
-To look up something in a particular section: 
-<pre><code> man section# command/program_name </code></pre> 
+To look up something in a particular section:
+<pre><code> man section# command/program_name </code></pre>
 For example, <code>printf</code> exists in many sections. If you wanted to look at the <code>printf</code> in section 3 instead of section 1, you would type:
 <pre><code>$man 3 printf</code></pre>
 
-In the manual, if <code>...</code> is in a function headline, it means the function can take an arbitrary number of arguments. 
+In the manual, if <code>...</code> is in a function headline, it means the function can take an arbitrary number of arguments.
 
 To include librarys and use functions defined in other files:
 * (1) Check that you're using the function correctly: the arguments and return type must match what the function defined.
-* (2) Link the code for the external function to your executeable code: GCC can automatically link functions in standard libraries and it grabs ONLY what is needed. 
+* (2) Link the code for the external function to your executeable code: GCC can automatically link functions in standard libraries and it grabs ONLY what is needed.
 
-Use: <pre><code> #include </code></pre> (used during step 1 above) 
-* Used to include function headers with your code: this tells the compiler to look and check for these functions. 
+Use: <pre><code> #include </code></pre> (used during step 1 above)
+* Used to include function headers with your code: this tells the compiler to look and check for these functions.
 * It is necessary to match arguments and return type.
 * It's not necessary for linking(step 2 above).
-* If it's a standard C library, use angle brackets: <pre><code> <standard_c_library_name> </code></pre> (otherwise, don't). 
+* If it's a standard C library, use angle brackets: <pre><code> <standard_c_library_name> </code></pre> (otherwise, don't).
 
 An example of this would be:
-```C 
+```C
 #include <stdio.h>
-``` 
+```
 
-By the way, the # in <code> #include </code> allows the include to be interpreted before all other code. 
+By the way, the # in <code> #include </code> allows the include to be interpreted before all other code.
 
 ---  
 
@@ -1607,18 +1632,18 @@ Today, we were introduced to C for the first time. We started off by contrasting
 
 Then, we learned that there are several conventions when it comes to C:
 * Put in .c files
-* snake_case 
+* snake_case
 Ex: black_mamba.c
 
 We also learned how to compile a C file. To compile, you must use the gcc(gnu c compiler). One "inconvenience" of C is that it doesn't recognize your file name when you compile the code, instead creating an output file called "a.out", which stands for "assembler output." There are ways to change that output file name. Here's an example of what you'd write in your terminal if you were trying to compile black_mamba.c:
 <blockquote>
-   
+
     $ gcc black_mamba.c #Creates a.out files  
-    
+
     $ ./a.out #output of black_mamba.c  
-   
+
     $ gcc -o snake black_mamba.c #rename a.out to snake  
-   
+
     $ ./snake #output of black_mamba.c
 </blockquote>
 
