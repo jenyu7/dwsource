@@ -107,7 +107,7 @@ I'm a child. post-fork: 140   f: 0   parent: 138
 ```
 The command line shows up before one of the printed lines because the parent was done and exited so the terminal thinks the program was done but it actually wasn't and then the child ran.
 
-## Monday 11/13 Fork
+## Monday 11/13 Fork by Daniel Pae
 **TechNews:** [Want To Really Teach a Robot? Command It With VR](https://www.wired.com/story/embodied-intelligence-want-to-really-teach-a-robot-command-it-with-vr/)
 
 We started by reviewing the previous 2 assignments
