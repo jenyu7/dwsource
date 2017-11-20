@@ -1,3 +1,46 @@
+## Friday, 11/17: Ceci n'est pas une pipe by James Ko
+
+**Interesting Tech News:** [SpaceX's mysterious Zuma launch is postponed indefinitely](https://www.theverge.com/2017/11/15/16649440/spacex-falcon-9-launch-zuma-mission-us-government-live-stream)
+
+### Pipes
+
+- A pipe is a conduit between two processes on the same computer.
+- Pipes have two ends: a *read end* and a *write end*.
+  - There is a very strong similarity between them and files; they are also interacted with via the `read`/`write` functions.
+- Pipes are unidirectional: one may be only read from or written to in a given process.
+- There are two kinds of pipes: *unnamed pipes* and *named pipes*. Unnamed pipes have no external identifier; named pipes do.
+
+- `pipe( int descriptors[2] )` - `unistd.h`
+  - Creates an unnamed pipe
+  - Returns 0 if the pipe was created, -1 if it was unsuccessful.
+  - Opens both ends of the pipe as files
+    - There is an entry in the file table for both ends
+  - `descriptors`: buffer that the pipe stores the descriptors in.
+  - `pipe` is typically used in conjunction with `fork` so that the child process knows the descriptors, even though it's not the process that called `pipe`. (important: `pipe()` call must come before `fork()`)
+  - When a pipe is initially created, both ends are open for reading and writing.
+
+### Examples
+
+```c
+int fds[2];
+pipe(fds);
+
+if (fork() == 0) {
+  // Child process
+  close(fds[READ]);
+  char s[10] = "helli!";
+  write(fds[WRITE], s, sizeof(s));
+} else {
+  // Parent process
+  close(fds[WRITE]);
+  char s[10];
+  read(fds[READ], s, sizeof(s));
+  printf("parent received: [%s]\n", s);
+}
+```
+
+---
+
 ## Wednesday, 11/15: Playing Favorites by Herman Lin
 
 **Interesting Tech News:** [New Closest Temperate Exoplanet](http://www.eso.org/public/news/eso1736/)
