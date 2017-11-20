@@ -1,4 +1,4 @@
-## Friday 11/17, Aim: Ceci n'est pas une pipe
+## Friday 11/17, Aim: Ceci n'est pas une pipe, by Asim Kapparova
 **Tech News** [Germany bans children's smartwatches, described as spying devices](http://www.bbc.com/news/technology-42030109)
 * Pipe:
   * A conduit between 2 separate processes on the same computer
