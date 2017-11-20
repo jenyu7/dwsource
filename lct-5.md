@@ -1,3 +1,27 @@
+##Friday 11/17, Aim: Ceci n'est pas une pipe
+**Tech News** [](https:)
+* Pipe:
+* a conduit between 2 separate processes on the same computer
+*pipes have 2 ends: rear + write ends
+       *Pipes are unidirectional (a single pipe must be either read or write
+	only in a process)
+	*pipes act just like files
+	*you can transfer any data you like through a pipe using read/write
+	*unnamed pipes have no external identifier
+
+*pipe -- <unistd.h>
+     	*creates an unnamed pipe
+	*returns 0 if the pipe was created, -1 if not
+	*opens both ends of the pipe as files for reading and reading
+	*pipe(int descriptors[2])
+		   *descriptors
+			 *array that will contain the descriptors for each end of the pipe
+	*read is a blocking function: if there is nothing to read then it will put everything on hold until there is data. 
+	*The parent will wait for the child to write before it runs
+
+*The pipe is basically like array: uses one side as read and one side as write
+
+
 ## Wednesday 11/15, Aim: Playing favorites
 **Tech News** [Google writes Ai to write Ai](https://www.technologyreview.com/s/603381/ai-software-learns-to-make-ai-software/)
 * Thread:
