@@ -1,5 +1,5 @@
 ## Friday 11/17, Aim: Ceci n'est pas une pipe
-**Tech News** [](https:)
+**Tech News** [Germany bans children's smartwatches, described as spying devices](http://www.bbc.com/news/technology-42030109)
 * Pipe:
   * A conduit between 2 separate processes on the same computer
   * Pipes have 2 ends: rear + write ends
@@ -8,7 +8,7 @@
   * You can transfer any data you like through a pipe using read/write
   * Unnamed pipes have no external identifier
 
-* pipe -- <unistd.h>
+* pipe -- in `<unistd.h>`
   * Creates an unnamed pipe
   * Returns 0 if the pipe was created, -1 if not
   * Opens both ends of the pipe as files for reading and reading
