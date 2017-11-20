@@ -12,11 +12,11 @@
   * Creates an unnamed pipe
   * Returns 0 if the pipe was created, -1 if not
   * Opens both ends of the pipe as files for reading and reading
-  * ipe(int descriptors[2])
-  	    * Descriptors
-		* Array that will contain the descriptors for each end of the pipe
-	* Read is a blocking function: if there is nothing to read then it will put everything on hold until there is data. 
-	* The parent will wait for the child to write before it runs
+  * pipe(int descriptors[2])
+    * Descriptors
+      * Array that will contain the descriptors for each end of the pipe
+  * Read is a blocking function: if there is nothing to read then it will put everything on hold until there is data.
+  * The parent will wait for the child to write before it runs
 
 * The pipe is basically like array: uses one side as read and one side as write
 
