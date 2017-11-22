@@ -1,3 +1,53 @@
+## Tuesday, 11/21: A pipe by any other name... by Helen Ye
+
+**Interesting Tech News:** [Android phones 'betray' user location to Google](http://www.bbc.com/news/technology-42079858)
+
+### Named Pipe
+
+Also known as FIFOs.
+
+Same as unnamed pipes except FIFOs have a name that can be used to identify
+them via different programs.
+
+Like named pipes, FIFOS are unidirectional.
+
+#### `mkfifo`
+
+Shell command to make a FIFO.
+
+```
+$ mkfifo <NAME>
+```
+
+#### `mkfifo - <sys/types.h> <sys/stat.h>`
+
+c function to create a FIFO
+
+Returns 0 on success, and -1 on failure.
+
+Once created, the FIFO acts like a regular file, and we can use open, read,
+write, and close on it.
+
+```c
+mkfifo( <name>, <permissions>)
+```
+
+FIFOs will block on open until both ends of the pipe have a connection.
+
+#### Some BAD Behavior using Named Pipes
+
+* Two write ends, one read end open
+    * Read will display information sent by both writing ends.
+      The pipe will stay open if one of the writes is closed.
+* Two read ends, one write
+    * Information will be read by either pipe, in no particular order.
+      Closing the write end will close the pipe.
+* Deleting the pipe file while it is open
+    * The pipe can still be used as it exists in memory and deleting the file
+      in storage will not affect this.
+
+---
+
 ## Friday, 11/17: Ceci n'est pas une pipe by James Ko
 
 **Interesting Tech News:** [SpaceX's mysterious Zuma launch is postponed indefinitely](https://www.theverge.com/2017/11/15/16649440/spacex-falcon-9-launch-zuma-mission-us-government-live-stream)
