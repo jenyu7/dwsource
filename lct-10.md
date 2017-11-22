@@ -1,3 +1,24 @@
+## Tuesday, 11/21 | A pipe by any other name | Ahbab Ashraf
+
+**Tech News:** [Uber data breach](https://www.cnet.com/news/uber-hid-data-breach-paid-hackers-to-delete-user-and-driver-info/)
+
+#### Named Pipes
+* aka FIFOs (first in first out, like queues in Java)
+* Interacted with in the same way that unnamed pipes are (reading, writing, unidirectionality)
+* The key difference is the presence of a name, which lets it be accessed by other programs
+* mkfifo
+	* Shell command to make a named pipe
+	* Usage: ```mkfifo <name>```
+	* The pipe shows up as a special file when you ls, can be read and written to by multiple programs
+	* Removing the pipe keeps the connection between programs, only it's now an unnamed pipe
+* mkfifo (sys/types.h, sys/stats,h)
+	* C function to create a named pipe
+	* Usage: ```mkfifo(<name>, <permissions>)```
+	* Returns 0 on success and -1 on failure
+	* The pipe will block on open until there is a connection on both ends
+
+---
+
 ## Wednesday, 11/15 | Playing Favorites By Cynthia Cheng
 **Tech News:**  [Mozilla terminates its deal with Yahoo and makes Google the default in Firefox again](https://techcrunch.com/2017/11/14/mozilla-terminates-its-deal-with-yahoo-and-makes-google-the-default-in-firefox-again/)
 
