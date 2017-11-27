@@ -3,7 +3,7 @@
 
 Today in class we discussed named pipes, often called FIFOs (First In First Out)
 
-Similar functionality unnamed pipes except FIFOs have a name that can be used to identify them via different programs. Like unnamed pipes, FIFOs are unidirectional
+Similar functionality to unnamed pipes except FIFOs have a name that can be used to identify them via different programs. Like unnamed pipes, FIFOs are unidirectional
 
 #### `mkfifo`
 
