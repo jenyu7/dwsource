@@ -1,3 +1,33 @@
+## Wednesday 11/22 Aim: A Pipe by Any Other Name - Othman "Monty" Bichouna
+**Tech News** [NASA's new titanium tires never flat](http://bgr.com/2017/11/26/nasa-airless-tire-no-flat/)
+Today in class we discussed named pipes, often called FIFOs (First In First Out)
+
+Similar functionality unnamed pipes except FIFOs have a name that can be used to identify them via different programs. Like unnamed pipes, FIFOs are unidirectional
+
+#### `mkfifo`
+
+Shell command to make a FIFO:
+
+```
+$ mkfifo <NAME>
+```
+
+C command to make a FIFO:
+
+#### `mkfifo - <sys/types.h> <sys/stat.h>`
+
+Returns 0 on success and -1 on failure
+
+### Interactions
+
+* FIFOs will block on open until both ends of the pipe have a connection.
+* Opening a pipe with `$ cat` will make it block for things to be written into it
+* You can use another shell window and do `cat > pipename` to write user inputs to the pipe
+* If you have a named pipe open on both ends, and you close one end, the other one also closes
+* Pipes only exist in RAM, so their file size using `$ls -l` is 0 because that checks for disk space
+* If 2 programs are reading from a pipe, it’s undefined which one will receive each line of data written
+* Using `$ rm` a pipe is like turning a named pipe into an unnamed pipe
+
 ## Friday 11/17, Aim: Ceci n'est pas une pipe, by Asim Kapparova
 **Tech News** [Germany bans children's smartwatches, described as spying devices](http://www.bbc.com/news/technology-42030109)
 * Pipe:
