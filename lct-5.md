@@ -28,6 +28,8 @@ Returns 0 on success and -1 on failure
 * If 2 programs are reading from a pipe, it’s undefined which one will receive each line of data written
 * Using `$ rm` a pipe is like turning a named pipe into an unnamed pipe
 
+<hr>
+
 ## Friday 11/17, Aim: Ceci n'est pas une pipe, by Asim Kapparova
 **Tech News** [Germany bans children's smartwatches, described as spying devices](http://www.bbc.com/news/technology-42030109)
 * Pipe:
