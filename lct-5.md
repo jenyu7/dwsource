@@ -1,5 +1,6 @@
 ## Wednesday 11/22 Aim: A Pipe by Any Other Name - Othman "Monty" Bichouna
 **Tech News** [NASA's new titanium tires never flat](http://bgr.com/2017/11/26/nasa-airless-tire-no-flat/)
+
 Today in class we discussed named pipes, often called FIFOs (First In First Out)
 
 Similar functionality unnamed pipes except FIFOs have a name that can be used to identify them via different programs. Like unnamed pipes, FIFOs are unidirectional
