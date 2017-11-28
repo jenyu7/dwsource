@@ -61,7 +61,7 @@
 		dup2(x, 1);
 		close(x);
 		```
-
+---
 
 ## Tuesday, 11/21: A pipe by any other name... by Helen Ye
 
