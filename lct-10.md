@@ -47,7 +47,7 @@
 
 ### Things to note
 - ```>``` overwrites but ```>>``` appends
-- If you want to keep the fd2 then dup it and replace it later on
+- If you want to keep the fd2 then dup it and replace it later on with dup2
 
 ---
 
