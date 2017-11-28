@@ -17,18 +17,19 @@
 - Redirects stdout to a file by appending
 
 ```2>```
-- Redirects stderr to a file
+- Redirects *stderr* to a file
 - Overwrites the file (2>> appends)
 
 ```&>```
-- Redirect stdout and stderr (&>> appends)
+- Redirect *stdout and stderr* (&>> appends)
 
 ```<```
-- Redirects stdin to a file
+- Redirects *stdin* to a file
 
 ```| (pipe)```
 - Redirects stdout from one command to stdin of the next
   - ex. ls | wc
+  - will ls based off of wc (word count)
 
 ### COMMANDS IN C PROGRAMS
 
@@ -43,6 +44,9 @@
 - Duplicates the behavior for fd1 at fd2
 - You will lose any reference to the original fd2, that file will be closed
 - If fd2 doesn’t exists, then return -1
+
+### Things to note
+```>``` overwrites but ```>>``` appends
 
 ---
 
