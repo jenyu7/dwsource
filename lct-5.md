@@ -11,8 +11,7 @@
     * macros: kind of like a function
       * `#define SQUARE(x) x * x`
       * `#define MIN(x, y) x < y ? x:y`
-        * `?`: if boolean before it
-	  * `:`: else
+        * `?`: if boolean before it,  `:` else
   * conditional statement:
 ```C
 #ifndef <IDENTIFIER> //ifndef: if not defined
