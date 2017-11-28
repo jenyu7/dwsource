@@ -11,7 +11,7 @@
 ```>```
 - redirects stdout to file
   - ex. $ ls > output
-- creates output file (if it doesn’t exist) and overwrites contents of output
+  - *creates* output file (if it doesn’t exist) and *overwrites* contents of output
 
 ```>>```
 - Redirects stdout to a file by appending
