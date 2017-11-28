@@ -3,10 +3,10 @@
 
 **Aim: Redirecting, how does it... SQUIRREL**
 
-#What is file redirection?
+*What is file redirection?*
 - File redirection is about changing the usual input/output behavior of a program
 
-###BASH FUNCTIONS
+### BASH FUNCTIONS
 
  ```>```
 - redirects stdout to file
@@ -30,7 +30,8 @@
 - Redirects stdout from one command to stdin of the next
   - ex. ls | wc
 
-###COMMANDS IN C PROGRAMS
+### COMMANDS IN C PROGRAMS
+
 ```dup( int <file descriptor> )```
 - found in <unistd.h>
 - Duplicates an existing entry in the file table
