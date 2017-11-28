@@ -1,3 +1,33 @@
+## Tuesday 11/28, Aim: C, the ultimate hipster, using # decades before it was cool by Terry Guan
+**Tech News** [Facebook releases AI for suicide prevention](https://www.cbsnews.com/news/facebook-artificial-intelligence-suicide-prevention/)
+
+  * `#`: preprocessor instructions
+    * These directives are handled by gcc first
+    * Separate from actual C code. It's more like gcc code
+    * `#include <LIB>` or `#include "LIB"`
+  * `#define <NAME> <VALUE>`
+    * replace all occurrances of NAME with VALUE
+    * `#define TRUE 1`
+    * macros: kind of like a function
+      * `#define SQUARE(x) x * x`
+      * `#define MIN(x, y) x < y ? x:y`
+        * `?`: if boolean before it
+	* `:`: else
+  * conditional statement:
+```C
+#ifndef <IDENTIFIER> //ifndef: if not defined
+<CODE>
+#endif
+
+//example
+#ifndef PARSE_H
+ #define PARSE_H
+  void funct();
+  //rest of C header code
+#endif
+```      
+<hr>
+
 ## Monday 11/27, Redirection, how does it...SQUIRREL? by Cesar Mu
 **Tech News** [Robotic falcons are being used to scare away birds from airports](https://goo.gl/DKUZbU)
 
