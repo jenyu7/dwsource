@@ -12,7 +12,7 @@
       * `#define SQUARE(x) x * x`
       * `#define MIN(x, y) x < y ? x:y`
         * `?`: if boolean before it
-	* `:`: else
+	  * `:`: else
   * conditional statement:
 ```C
 #ifndef <IDENTIFIER> //ifndef: if not defined
