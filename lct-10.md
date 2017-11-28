@@ -46,7 +46,8 @@
 - If fd2 doesn’t exists, then return -1
 
 ### Things to note
-```>``` overwrites but ```>>``` appends
+- ```>``` overwrites but ```>>``` appends
+- If you want to keep the fd2 then dup it and replace it later on
 
 ---
 
