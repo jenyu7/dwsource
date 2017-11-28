@@ -1,3 +1,68 @@
+## Monday, 11/27: Redirection, how does it... SQUIRREL by Jeremy Sharapov
+
+**Interesting Tech News:** TEMP
+
+### File Redirection
+
+* Changing the usual input/output behavior of a program
+
+### Command Line Redirection
+
+* `>` - Redirects stdout to a file
+	* Overwrites the contents of the file
+	* `<COMMAND> > <FILE>`
+	* Ex. 
+		```
+		ps > ps_file
+		cat ps_file
+		```
+		Now ps is in ps_file
+	* Ex2. `ls > file_list` 
+	* `cat` - Take this and send it to stdout
+		* "cat" without the filename prints stdin to stdout
+			* When you type something and hit enter, the next line will "echo" what you just typed
+		* Reminder that ctrl-d ends the file and closes the connection
+		* `cat > new_file` creates a crappy text editor where you can't make mistakes
+			* `cat new_file > newer_file`
+				* Copies contents of new_file to newer_file (basically cp)
+* `>>` - Redirects stdout to a file by appending
+* `2>` - Redirects stderr to a file
+	* Overwrites the file like `>`
+		* Use `2>>` to append
+* `&>` - Redirects both stdout and stderr to a file by overwriting
+	* `&>>` appends
+* `<` - Redirects stdin from a file
+* `|` (Pipe)
+	* Redirects stdout from one command to stdin of the next
+	* Ex. `ls | wc`
+		* Returns the word count of ls
+* `bash < commands.txt` - runs all commands in the file using bash
+	* Use this to test your shell
+		* Don't worry about the random prompts (bash handles these automatically)
+
+### Redirection in C Programs
+
+* `dup` - <unistd.h>
+	* `dup(fd)`
+	* Duplicates an existing entry in the file table
+	* Returns a new file descriptor for the duplicated entry
+* `dup2` - <unistd.h> (very original naming here)
+	* `dup2(fd1, fd2)` - Redirects fd2 to fd1
+	* Ex. `dup2(3, 1)` - Replaces stdout with "foo.txt" (that we created earlier)
+	* Duplicates the behavior for fd1 at fd2
+	* You will lose any reference to the original fd2; that file will be closed
+	* Any print always goes into the file directory of 1, regardless of whether or not it points to stdout
+	* Remember that `fork()` gives the child the parent's file table
+	* Ex2. (Use this in your project)
+		```c
+		int x = dup(1);
+		dup2(3, 1); //assume the fd of 3 is a file we created to log stuff
+		//do stuff here
+		dup2(x, 1);
+		close(x);
+		```
+
+
 ## Tuesday, 11/21: A pipe by any other name... by Helen Ye
 
 **Interesting Tech News:** [Android phones 'betray' user location to Google](http://www.bbc.com/news/technology-42079858)
