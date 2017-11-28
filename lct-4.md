@@ -1,3 +1,9 @@
+## C, the real hipster, using # before it was cool by alex
+**tech news:** LIT
+############################
+
+---
+
 ## Monday, 11/27: Redirection, how does it... SQUIRREL by Jeremy Sharapov
 
 **Interesting Tech News:** [Bitcoin Approches $10,000](https://www.theguardian.com/technology/2017/nov/27/bitcoin-nears-10000-dollar-mark-as-hedge-funds-plough-in)
