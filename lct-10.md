@@ -2,19 +2,21 @@
 **Tech News** [Apple iPhone Foldable Patent](https://www.cnet.com/news/apple-iphone-foldable-patent/)
 
 **Aim: Redirecting, how does it... SQUIRREL**
+
 #What is file redirection?
 - File redirection is about changing the usual input/output behavior of a program
 
 ###BASH FUNCTIONS
-```>```
+
+ ```>```
 - redirects stdout to file
   - ex. $ ls > output
 - creates output file (if it doesn’t exist) and overwrites contents of output
 
-```>>```
+ ```>>```
 - Redirects stdout to a file by appending
 
-```2>```
+- ```2>```
 - Redirects stderr to a file
 - Overwrites the file (2>> appends)
 
