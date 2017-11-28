@@ -1,4 +1,4 @@
-## Monday 11/27, Redirection, how does it...SQUIRREL?
+## Monday 11/27, Redirection, how does it...SQUIRREL? by Cesar Mu
 **Tech News** [Robotic falcons are being used to scare away birds from airports](https://goo.gl/DKUZbU)
 
 **File Redirection**
