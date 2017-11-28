@@ -1,3 +1,47 @@
+## Monday 11/27 | File Redirection by Jensen Li
+**Tech News** [Apple iPhone Foldable Patent](https://www.cnet.com/news/apple-iphone-foldable-patent/)
+
+**Aim: Redirecting, how does it... SQUIRREL**
+#What is file redirection?
+- File redirection is about changing the usual input/output behavior of a program
+
+###BASH FUNCTIONS
+'''>'''
+- redirects stdout to file
+  - ex. $ ls > output
+- creates output file (if it doesn’t exist) and overwrites contents of output
+
+'''>>'''
+- Redirects stdout to a file by appending
+
+'''2>'''
+- Redirects stderr to a file
+- Overwrites the file (2>> appends)
+
+'''&>'''
+- Redirect stdout and stderr (&>> appends)
+
+'''<'''
+- Redirects stdin to a file
+
+'''| (pipe)'''
+- Redirects stdout from one command to stdin of the next
+  - ex. ls | wc
+
+###COMMANDS IN C PROGRAMS
+'''dup( int <file descriptor> )'''
+- found in <unistd.h>
+- Duplicates an existing entry in the file table
+- Returns a new file descriptor of the duplicate entry
+
+'''dup2( int <fd1>, int <fd2> )'''
+- found in <unistd.h>
+- Redirects fd2 to fd1
+- Duplicates the behavior for fd1 at fd2
+- You will lose any reference to the original fd2, that file will be closed
+- If fd2 doesn’t exists, then return -1
+
+
 ## Tuesday, 11/21 | A pipe by any other name | Ahbab Ashraf
 
 **Tech News:** [Uber data breach](https://www.cnet.com/news/uber-hid-data-breach-paid-hackers-to-delete-user-and-driver-info/)
