@@ -8,15 +8,15 @@
 
 ### BASH FUNCTIONS
 
- ```>```
+```>```
 - redirects stdout to file
   - ex. $ ls > output
 - creates output file (if it doesn’t exist) and overwrites contents of output
 
- ```>>```
+```>>```
 - Redirects stdout to a file by appending
 
-- ```2>```
+```2>```
 - Redirects stderr to a file
 - Overwrites the file (2>> appends)
 
@@ -44,6 +44,7 @@
 - You will lose any reference to the original fd2, that file will be closed
 - If fd2 doesn’t exists, then return -1
 
+---
 
 ## Tuesday, 11/21 | A pipe by any other name | Ahbab Ashraf
 
