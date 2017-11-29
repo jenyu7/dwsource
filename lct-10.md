@@ -1,3 +1,42 @@
+## Tuesday 11/28 | C, the ultimate hipster, using # decades before it was cool by Ryan Siu
+**Tech News**: [MIT’s new desktop 3D printer technology increases speeds up to 10x](https://techcrunch.com/2017/11/28/mits-new-desktop-3d-printer-technology-increases-speeds-up-to-10x/)
+
+## \#
+- Used to provide preprocessor instructions.
+- These direcives are handled by `gcc` first.
+
+### #include 
+`#include <LIBRARY> | "LIBRARY"`
+- Link libraries to your code.
+
+### #define 
+`#define <NAME> <VALUE>`
+- Replace all occurrences of NAME with VALUE
+
+```c
+#define TRUE 1
+```
+
+### Macros
+- Macros act as functions
+```c
+#define SQUARE(x) x * x
+y = SQUARE(3); // y = 3 * 3
+#define MIN(x,y) x < y ? x : y
+```
+
+### #ifndef
+
+```c
+#ifndef <IDENTIFIER>
+#define <IDENTIFIER>
+<CODE>
+#endif
+```
+- Code between the `#ifndef` and `#endif` only run if the IDENTIFIER has not been defined
+
+---
+
 ## Monday 11/27 | File Redirection by Jensen Li
 **Tech News** [Apple iPhone Foldable Patent](https://www.cnet.com/news/apple-iphone-foldable-patent/)
 
