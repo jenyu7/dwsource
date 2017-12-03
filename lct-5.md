@@ -1,3 +1,46 @@
+## Friday 12/1, Sharing is Caring by Ricky Chen
+**Tech News** [Quantum Encryption Became Much Faster (and Practical)](https://www.technewsworld.com/story/Quantum-Key-Distribution-Gets-a-Speed-Boost-84983.html)
+
+**Shared Memory - <sys/shm.h>, <sys/ipc.h>, <sys/types.h>**
+- A segment of heap memory that can accessed by multiple processes.
+- Shared memory is accessed via a key that is known by any process that needs to access it.
+- Shared memory does not get released when a program exits.
+
+**5 Shared Memory Operations**
+* Create the segment (happens once)
+* Access the segment (happens once per process)
+* Attach the segment to a variable (once per process)
+* Detach the segment from a variable (once per process)
+* Remove the segment (happens once)
+
+The commands for these begin with shm[.](https://www.youtube.com/watch?v=1pAMdn9oSPE)
+
+`shmget( key, size, flags )`
+* Create and access a shared memory segment
+* Returns a shared memory descriptor (similar concept to a file descriptor), or -1 if it fails. (errno)
+* *key*
+  * Unique integer identifier for the shared memory segment (like a file name)
+* *size*
+  * How much memory to request (bytes)
+* *flags*
+  * Includes permissions for the segment, combined with bitwise or
+    * IPC_CREAT: creates a segment
+        * If segment is new, will set value to all 0’s.
+    * IPC_EXCL: Fails if the segment already exists and IPC_CREAT is on
+		
+`shmat( descriptor, address, flags)`
+* Attach a shared memory segment to a variable.
+* Returns a pointer to the segment, or -1(errno)
+  * *descriptor*
+    * The return value of shmget
+  * *address*
+    * If 0, the OS will provide the appropriate address.
+  * *flags*
+    * Usually 0, there is one useful flag:
+      * SHM_RDONLY: makes the memory read only
+	
+<hr>
+
 ## Tuesday 11/28, Aim: C, the ultimate hipster, using # decades before it was cool by Terry Guan
 **Tech News** [Facebook releases AI for suicide prevention](https://www.cbsnews.com/news/facebook-artificial-intelligence-suicide-prevention/)
 
