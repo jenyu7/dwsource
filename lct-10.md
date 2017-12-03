@@ -1,3 +1,63 @@
+## Friday 12/01 | Sharing is Caring! by Grace Cuenca
+**Tech News**: [Metascarcity and Bitcoin’s future](https://techcrunch.com/2017/12/03/metascarcity-and-bitcoins-future/)
+
+## Shared Memory
+- `<sys/shm.h>`, `<sys/ipc.h>`, `sys/types.h`
+- Is a segment of heap memory that can be accessed by multiple processes
+- Does not get released when a program exits. 
+	- Thus, when you're done with a piece of shared memory, you must manually release it.
+
+### 5 Shared memory observations
+- Create the segment (happens once)
+- Access segment (happens once per process)
+- Attach the segment to a variable (once per process) 
+	- ex. pointer to point to the shared memory
+- Detach segment from a variable (once per process)
+	- This doesn't change the value of the pointer, but it is detached so you don't have access to it anymore
+- Remove the segment (happens once)
+
+### `shmget`
+- Create or access a shared memory segment
+- Returns a shared memory descriptor (similar concept to file descriptor) or -1 if it fails (errno)
+```c
+shmget(key, size, flags)
+```
+key
+- unique integer identifier for the shared memory segment (like a file name)
+- is something you make up, not the same as memory descriptor
+
+size
+- how much memory to request
+
+flags
+- includes permissions for the segment (combined with bitwise or)
+- `IPC_CREAT` creates the segment and sets all vals to 0
+- `IPC_EXCL` fails if the segment already exists & `IPC_CREAT` is on
+
+Example:
+```c
+#define KEY 100
+int shmdt = shmget(KEY, sizeof(double), IPC_CREAT | 0600)
+```
+
+### `shmat`
+- attach a shared memory segment to a variable
+- returns a pointer to the segment or -1 (errno)
+```c
+shmat(descriptor, address, flags)
+```
+
+descriptor
+- the return value of shmget
+
+address
+- if 0, OS will provide the appropriate memory address
+
+flags
+- usually 0, there is one useful flag: `SHM_RDONLY` which makes the memory readable
+
+---
+
 ## Tuesday 11/28 | C, the ultimate hipster, using # decades before it was cool by Ryan Siu
 **Tech News**: [MIT’s new desktop 3D printer technology increases speeds up to 10x](https://techcrunch.com/2017/11/28/mits-new-desktop-3d-printer-technology-increases-speeds-up-to-10x/)
 
