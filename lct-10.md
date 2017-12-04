@@ -1,3 +1,30 @@
+## Monday, 12/04 Memes by Bayan Berri
+
+**Interesting Tech News:** [Do You Even Olin?](https://blog.ledwards.com/the-college-that-produces-founders-at-3-times-the-rate-of-stanford-2c53ea44f91e)
+
+#### Memes and Memory ####
+The aim meme refers to the history of the origin of the word meme from the book The Selfish Gene. This book was about how cultural information spreads and is shared.
+Fun Fact: it's pronounced meme so that it soudns like gene 😆
+#### Some more Shared Memory Functions ####
+# shmdt(pointer) #
+* Detach a variable from a shared memory segment
+* Returns 0 upon success or -1 upon failure. 
+* Pointer: address used to access the segment
+# shmctl(descriptor, command, buffer)
+* Perform operations on the shared memory segment
+* Each shared memory segment has metadata that can be stored in a struct
+a) Struct shmid_ds
+* Some of that data stored:last access, size, pid of creator, pid of last modification.
+* Descriptor: return value of shmget
+* Commands:
+1) IPC_RMID: remove a shared memory segment
+2) IPC_STAT: populate the buffer with information (struct shmid_ds)
+3) IPC_SET: set some of the information for the segment to the info in buffer.
+
+To see your shared memory, you can use ipcs -m
+
+---
+
 ## Friday 12/01 | Sharing is Caring! by Grace Cuenca
 **Tech News**: [Metascarcity and Bitcoin’s future](https://techcrunch.com/2017/12/03/metascarcity-and-bitcoins-future/)
 
