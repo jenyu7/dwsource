@@ -1,3 +1,42 @@
+## Friday, 12/01: Sharing is Caring by Shakil Rafi
+**Interesting tech news**: [MacOSX High Sierra had a major security hole](https://www.cnet.com/how-to/how-to-fix-the-macos-high-sierra-password-bug/)
+
+We learned about how to use shared memory
+
+### What is shared memory?
+Shared memory is a segment of memory that can be access by any process using a key. This memory is not freed when all processes exit.
+
+### What can you do with shared memory?
+You can do five different operations using shared memory using <sys/shm.h>, <sys/ipc.h>,and  <sys/types.h>:
+* create the segment (happens once)
+* access the segment (happens once per process)
+* attach segment to a variable (once per process)
+* detach the segment from the variable (once per process)
+* remove the segment (happens once)
+
+#### shmget
+* usage: shmget(key, size, flags)
+* create or access a shared memory segment
+* returns shared memory descriptor or -1 if fails
+* key is unique int id for segment
+* size is amount of memory to request
+* flags is permissions for the segment
+    * IPC_CREAT: creates the segment
+        * if segment is new, sets all values to 0
+    * IPC_EXCL: fail if segment already exists and IPC_CREAT is on
+
+#### shmat
+* usage: shmat(descriptor, address, flags)
+* attach a segment to a variable
+* returns pointer to segment or -1 if fails
+* descriptor is just return value from shmget
+* address is 0 (can mess up easily if you use anything else)
+* flags are permissions:
+    * usually it's 0
+    * SHM_RDONLY: makes it all read-only
+
+---
+
 # 11.28.17 - C, the ultimate hipster, using # decades before it was cool.
 
 
