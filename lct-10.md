@@ -4,7 +4,7 @@
 
 ## Memes and Memory ##
 The aim meme refers to the history of the origin of the word meme from the book The Selfish Gene. This book was about how cultural information spreads and is shared.
-Fun Fact: it's pronounced meme so that it soudns like gene 😆
+Fun Fact: it's pronounced meme so that it sounds like gene 😆
 ## Some more Shared Memory Functions ##
 ### shmdt(pointer) ###
 * Detach a variable from a shared memory segment
@@ -13,15 +13,15 @@ Fun Fact: it's pronounced meme so that it soudns like gene 😆
 ### shmctl(descriptor, command, buffer) ###
 * Perform operations on the shared memory segment
 * Each shared memory segment has metadata that can be stored in a struct
-a) Struct shmid_ds
+a) ```Struct shmid_ds```
 * Some of that data stored:last access, size, pid of creator, pid of last modification.
 * Descriptor: return value of shmget
 * Commands:
-1) IPC_RMID: remove a shared memory segment
-2) IPC_STAT: populate the buffer with information (struct shmid_ds)
-3) IPC_SET: set some of the information for the segment to the info in buffer.
+1) ```IPC_RMID```: remove a shared memory segment
+2) ```IPC_STAT```: populate the buffer with information (struct shmid_ds)
+3) ```IPC_SET```: set some of the information for the segment to the info in buffer.
 
-To see your shared memory, you can use ipcs -m
+To see your shared memory, you can use ```$ ipcs -m ```
 
 ---
 
