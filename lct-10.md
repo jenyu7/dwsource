@@ -1,3 +1,38 @@
+## Tuesday, 12/05 | How Do We Flag Down a Resource? by Jen Yu
+
+**Interesting Tech News:**[A.I. Will Transform the Economy. But How Much, and How Soon?](https://www.nytimes.com/2017/11/30/technology/ai-will-transform-the-economy-but-how-much-and-how-soon.html?rref=collection%2Fsectioncollection%2Ftechnology)
+
+## Semaphores ## 
+  * An IPC construct created by Edsger Dijkstra used to __control access to a shared resource__ (like a file or shared memory)
+  * Usually, a semaphore is used as a counter, representing how many processes can access a resource at a given time.
+     * If a semaphore has a value of 3, then it can have 3 active users
+     * *If it has a value of 0, then it is unavailable.*
+  * Most operations are atomic (will not be split up into multiple processor instructions)
+## Semaphore Operations ##
+*These operations are used to:*
+ 1. Create a semaphore - default is 0
+ 2. Set an initial value
+ 3. Remove a semaphore
+  
+```Up(S) / V(S)``` - atomic
+   * Releases the semaphore to signal you are done with its associated resource
+   * Pseudocode: ```S++```
+   
+```Down(S) / P(S)``` - atomic
+   * **Attempts** to take the semaphore
+   * If the semaphore is 0, waits for it to be available
+   * Pseudocode: ```while(s==0){block} s--```
+
+**When using semaphores in a file, include: ```<sys/types.h>, <sys/ipc.h>, <sys/sem.h>```.**
+```semget(<KEY>, <AMOUNT>, <FLAGS>)```
+  * Create/get access to a semaphore, **does not modify!**
+  * **Returns a semaphore descriptor or -1 (errno)**
+    * ```KEY```: Unique semaphore identifier
+    * ```AMOUNT```: # to be created/gotten in the set of sephamores (stored as one or more)
+    * ```FLAGS```: Permissions for the semaphore, combine with bitwise or
+      * ```IPC_CREAT```: create the semaphore and set the value to 0
+      * ```IPC_EXCL```: Fail if the semaphore already exists and ```IPC_CREAT``` is on
+---
 ## Monday, 12/04 Memes by Bayan Berri
 
 **Interesting Tech News:** [Oracle High School](http://www.businessinsider.com/oracle-high-school-campus-2017-12)
