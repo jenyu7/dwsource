@@ -1,3 +1,31 @@
+## Monday 12/4, Memes by Eric Zhang
+**Tech News** [Hackers can gain access to your computer monitor](http://www.businessinsider.com/how-hackers-can-compromise-your-computer-monitor-darkly-cybersecurity-ssl-mr-robot-red-balloon-security-2017-11)
+
+**More Shared Memory Functions**
+
+`shmdt( pointer )`
+* Detach a variable from ashared memory segment
+* Returns 0 upon success or -1 upon failure
+  * pointer: the address used to access the segment
+
+`shmctl( descriptor, command, buffer )`
+* Perform operations on the shared memory segment
+* Each shared memory segment has metadata that can be stored in a struct (`struct shmid_ds`)
+* Some of that data stored: last access, size, pid of creator, pid of last modification
+  * descriptor: return value of shmget
+  * commands:
+    * IPC_RMID: remove a shared memory segment
+    * IPC_STAT: populate the buffer (`struct shmid_ds *`) with segment metadata
+    * IPC_SET: set some of the segment metadata from buffer
+  * buffer: can be `NULL` if using IPC_RMID
+
+**Shell Commands**
+
+`ipcs -m`: Lists shared memory
+
+`ipcrm -m <shmid>`: clears the given shmid
+<hr>
+
 ## Friday 12/1, Sharing is Caring by Ricky Chen
 **Tech News** [Quantum Encryption Became Much Faster (and Practical)](https://www.technewsworld.com/story/Quantum-Key-Distribution-Gets-a-Speed-Boost-84983.html)
 
