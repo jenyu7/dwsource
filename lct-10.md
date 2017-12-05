@@ -6,11 +6,11 @@
 The aim meme refers to the history of the origin of the word meme from the book The Selfish Gene. This book was about how cultural information spreads and is shared.
 Fun Fact: it's pronounced meme so that it sounds like gene 😆
 ## Some more Shared Memory Functions ##
-### shmdt(pointer) ###
+### ```shmdt(pointer)``` ###
 * Detach a variable from a shared memory segment
 * Returns 0 upon success or -1 upon failure. 
 * Pointer: address used to access the segment
-### shmctl(descriptor, command, buffer) ###
+### ``` shmctl(descriptor, command, buffer)``` ###
 * Perform operations on the shared memory segment
 * Each shared memory segment has metadata that can be stored in a struct
 a) ```Struct shmid_ds```
