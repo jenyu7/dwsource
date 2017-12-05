@@ -1,3 +1,35 @@
+## Tuesday 12/5 How do we flag down a resource? by Judy Liu
+**Tech News**[Are Exoskeletons the Future of Physical Labor?](https://www.theverge.com/2017/12/5/16726004/verge-next-level-season-two-industrial-exoskeletons-ford-ekso-suitx)
+
+**Semaphores** (Edsger Dijkstra)
+	* IPC consrtuct used to control access to a shared resource (like a file or a shared memory)
+	* Most commonly, a semaphore is used as a counter representing how many processes can access a resource at a given time
+		* If a semaphore has a value of 3, then it can have 3 active "users"
+		* If a semaphore has a value of 0, then it is unavailable
+	* Most semaphore operations are "atomic", meaning they will not split up into multiple processor instructions
+	
+**Semaphore Operations**
+	* `<sys/types.h> <sys/ipc.h> <sys/sem.h>`
+	* Create a semaphore (not atomic)
+	* Set an intial value (not atomic)
+	* Remove a semaphore (not atomic)
+	1. `Up(s)/V(s)` - atomic
+		- Release the semaphore to signal you are donw with its associate resource
+		- Pseudocode: `s++`
+	2. `Down(s)/P(s)` - atomic
+		- Attempt to take the semaphore 
+		- If 0, wait for it to be available
+		- Pseudocode: `while ( s == 0 ) { block } s--;`
+	3. semget: create/get access to semaphore
+		- This is not the same as Up(s)/Down(s). It does not modify the semaphore
+		- Returns semaphore descriptor -1 (errno)
+	* `semget( <key>, <amount>, <flags>)`
+		- key: unqiue identifier
+		- amount: semaphores are stored as sets of 4 or more, number of semaphores to create/get in a set
+		- flags: includes permissions for the semaphore with bitwise
+			- `IPC_CREAT`: create the semaphore and set value to 0
+			- `IPC_EXCL`: fail if the semaphore already exists and IP_CREAT is on
+		
 ## Monday 12/4, Memes by Eric Zhang
 **Tech News** [Hackers can gain access to your computer monitor](http://www.businessinsider.com/how-hackers-can-compromise-your-computer-monitor-darkly-cybersecurity-ssl-mr-robot-red-balloon-security-2017-11)
 
