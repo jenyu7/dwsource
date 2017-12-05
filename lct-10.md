@@ -1,6 +1,6 @@
 ## Monday, 12/04 Memes by Bayan Berri
 
-**Interesting Tech News:** [Do You Even Olin?](https://blog.ledwards.com/the-college-that-produces-founders-at-3-times-the-rate-of-stanford-2c53ea44f91e)
+**Interesting Tech News:** [Oracle High School](http://www.businessinsider.com/oracle-high-school-campus-2017-12)
 
 ## Memes and Memory ##
 The aim meme refers to the history of the origin of the word meme from the book The Selfish Gene. This book was about how cultural information spreads and is shared.
