@@ -1,5 +1,5 @@
 ## Tuesday 12/5 How do we flag down a resource? by Judy Liu
-**Tech News**[Are Exoskeletons the Future of Physical Labor?](https://www.theverge.com/2017/12/5/16726004/verge-next-level-season-two-industrial-exoskeletons-ford-ekso-suitx)
+**Tech News** [Are Exoskeletons the Future of Physical Labor?](https://www.theverge.com/2017/12/5/16726004/verge-next-level-season-two-industrial-exoskeletons-ford-ekso-suitx)
 
 **Semaphores** (Edsger Dijkstra)
 * IPC consrtuct used to control access to a shared resource (like a file or a shared memory)
