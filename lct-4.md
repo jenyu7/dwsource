@@ -27,6 +27,7 @@ shmctl (descriptor, command, buffer)
 
 * The descriptor returns the value of shmget
 * The commands: 
+
 `IPC-RMID`: Removes a shared memory segment
 
 `IPC-STAT`: Populates the buffer (struct shmid_ds*) with segment metadata
