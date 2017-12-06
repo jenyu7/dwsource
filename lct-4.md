@@ -1,7 +1,7 @@
 ## Monday, 12/04 Memes by Anthony Hom
 **Tech News**: [Go Oreo ... Towards the Androids](https://www.digit.in/mobile-phones/android-oreo-go-announced-will-come-with-lightweight-apps-and-data-saving-features-for-low-end-phone-38482.html)
 
-**Yes, another tech news**: [Text 911 Efficiency for Minnesota](http://m.startribune.com/text-to-911-is-minnesota-s-new-emergency-texting-service/462075943/?section=local)
+**Yes, another tech news**: [Texting 911 Efficiency for Minnesota](http://m.startribune.com/text-to-911-is-minnesota-s-new-emergency-texting-service/462075943/?section=local)
 
 We continued talking about how we can manipulate shared memory for class. 
 
@@ -26,11 +26,12 @@ shmctl (descriptor, command, buffer)
 ```
 
 * The descriptor returns the value of shmget
-* The commands -> `IPC-RMID`: Removes a shared memory segment
+* The commands: 
+`IPC-RMID`: Removes a shared memory segment
 
-			   -> `IPC-STAT`: Populates the buffer (struct shmid_ds*) with segment metadata
-			   
-			   -> `IPC-SET`: Sets some of the segment metadata from the buffer. 
+`IPC-STAT`: Populates the buffer (struct shmid_ds*) with segment metadata
+
+`IPC-SET`: Sets some of the segment metadata from the buffer. 
 
 ---
 
