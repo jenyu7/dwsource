@@ -1,5 +1,6 @@
 ## Monday, 12/04 Memes by Anthony Hom
 **Tech News**: [Go Oreo ... Towards the Androids](https://www.digit.in/mobile-phones/android-oreo-go-announced-will-come-with-lightweight-apps-and-data-saving-features-for-low-end-phone-38482.html)
+
 **Yes, another tech news**: [Text 911 Efficiency for Minnesota](http://m.startribune.com/text-to-911-is-minnesota-s-new-emergency-texting-service/462075943/?section=local)
 
 We continued talking about how we can manipulate shared memory for class. 
@@ -13,12 +14,12 @@ shmdt (pointer)
 ```
 * The `pointer` is the address used to access the segment
 
-## shmctl 
+### shmctl 
 * Performs operations on the shared memory segment
 
-Each shared memory segment has metadata that can be stored in a struct (struct shmid_ds)
+* Each shared memory segment has metadata that can be stored in a struct (struct shmid_ds)
 
-Some of the data stored includes the last access, the size, the PID of the creator, or the PID of the last modification
+* Some of the data stored includes the last access, the size, the PID of the creator, or the PID of the last modification
 
 ```C
 shmctl (descriptor, command, buffer)
@@ -26,7 +27,9 @@ shmctl (descriptor, command, buffer)
 
 * The descriptor returns the value of shmget
 * The commands -> `IPC-RMID`: Removes a shared memory segment
+
 			   -> `IPC-STAT`: Populates the buffer (struct shmid_ds*) with segment metadata
+			   
 			   -> `IPC-SET`: Sets some of the segment metadata from the buffer. 
 
 ---
