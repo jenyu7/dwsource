@@ -1,3 +1,5 @@
+<hr>
+
 ## Tuesday 12/5 How do we flag down a resource? by Judy Liu
 **Tech News** [Are Exoskeletons the Future of Physical Labor?](https://www.theverge.com/2017/12/5/16726004/verge-next-level-season-two-industrial-exoskeletons-ford-ekso-suitx)
 
