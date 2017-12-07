@@ -1,4 +1,4 @@
-## Tuesday, 12/05 Semaphores by Max CHan
+## Tuesday, 12/05 Semaphores by Max Chan
 
 **Tech News**:  [How the Bot Stole Christmas](https://www.nytimes.com/2017/12/06/business/bots-shopping-christmas-holidays.html?rref=collection%2Fsectioncollection%2Ftechnology&action=click&contentCollection=technology&region=stream&module=stream_unit&version=latest&contentPlacement=2&pgtype=sectionfront)
 
