@@ -1,5 +1,20 @@
 ## Thursday 12/7 What's a semaphore? -- To Control Resources! by Haoyu Chen
 **Tech News** [Next year’s Android phones will be able to capture 4K HDR video](https://www.theverge.com/2017/12/6/16742600/qualcomm-snapdragon-845-processor-4k-hdr-video-2019)
+
+**semctl (Continued)**
+* semctl(int semid, int semnum, in cmd, ...)
+* This function takes in 3 or 4 arguments depending on the cmd
+* The fourth argument is a type union semun
+* The calling program must define this union as followed
+	```/*
+	union semun {
+               int              val;    /* Value for SETVAL */
+               struct semid_ds *buf;    /* Buffer for IPC_STAT, IPC_SET */
+               unsigned short  *array;  /* Array for GETALL, SETALL */
+               struct seminfo  *__buf;  /* Buffer for IPC_INFO
+                                           (Linux-specific) */
+           }; */
+```
 <hr>
 
 ## Tuesday 12/5 How do we flag down a resource? by Judy Liu
