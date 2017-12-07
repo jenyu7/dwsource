@@ -1,3 +1,48 @@
+## Thursday, 12/07 | What's a semaphore? - To control resources by Marcus Ng
+
+**Interesting Tech News:** [Instagram Standalone App For Direct Messaging](https://techcrunch.com/2017/12/07/instagram-is-testing-a-standalone-app-for-direct-messaging/)
+
+## semctl
+
+* DATA argument
+	* Variable for setting/storing semaphore metadata
+		* Type union semun
+		 	* You have to declare this union in your main c file on linux machines.
+```C
+union semun {
+	int val; // used for SETVAL (4 bytes)
+	struct semid_ds *buf; // used for IPC_STAT and IPC_SET (8 bytes)
+	unsigned short *array; // used for SETALL (8 bytes)
+	struct sminfo *__buff; // (8 bytes)
+};
+```
+			  
+## What is a union?
+* A c structure designed to hold only one value at a time from a group of potential values
+* Difference between a union and struct
+	* A union only contains one of those things at any given time
+* Just large enough to hold the largest piece of data it could potentially contain
+	* semop( DESCRIPTOR, OPERATION, AMOUNT )
+		* Perform an atomic semaphore operations
+		* You can Up/Down a semaphore by any integer value, not just 1
+		* Descriptor: Returned from semget
+		* Operation: A pointer to a struct sembuf
+		* Amount: The amount of semaphore you want to operate on in the semaphore set.
+		
+```C
+struct sembuf {
+	short sem_op; // Down(S): Any negative number / Up(S): Any positive number
+	short sem_num; // The index of the semaphore you want to work on
+	short sem_flag; // SEM_UNDO, IPC_NOWAIT
+}
+```
+* 0: Block until the semaphore reaches 0
+* sem_flag
+	* SEM_UNDO: Allow the OS to undo the given operation. Useful in the	event that a program exits before it could release a semaphore.
+	* IPC_NOWAIT: Instead of waiting for the semaphore to be available, return an err
+
+---
+
 ## Tuesday, 12/05 | How Do We Flag Down a Resource? by Jen Yu
 
 **Interesting Tech News:**[A.I. Will Transform the Economy. But How Much, and How Soon?](https://www.nytimes.com/2017/11/30/technology/ai-will-transform-the-economy-but-how-much-and-how-soon.html?rref=collection%2Fsectioncollection%2Ftechnology)
