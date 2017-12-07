@@ -1,3 +1,48 @@
+## Tuesday, 12/05 Semaphores by Max CHan
+
+**Tech News**:  [How the Bot Stole Christmas](https://www.nytimes.com/2017/12/06/business/bots-shopping-christmas-holidays.html?rref=collection%2Fsectioncollection%2Ftechnology&action=click&contentCollection=technology&region=stream&module=stream_unit&version=latest&contentPlacement=2&pgtype=sectionfront)
+
+We learned what semaphores are, and how to deal with them.
+
+### Semaphores
+* IPC construct used to control access to a shared resource (like a file, shared memory, etc.)
+* Commonly used as counter representing how many processes can access at a time
+* Counter of 0 means unavailable
+* Operations are atomic, meaning it **WILL NOT** split into multiple processor instructions
+
+### Semaphore operations
+The following operations are non-atomic:
+* Create a semaphore
+* Setting init value
+* Remove a semaphore
+
+The initial value of a semaphore is 0
+
+Up(s) / V(s)
+* Atomic
+* Release the semaphore to signal you are done with the resource
+
+Down(s) / P(s)
+* Atomic
+* Attempt to take the semaphore
+* If semaphore is 0, will **wait till available**
+
+### Semaphores in C
+Need:
+* <sys/types.h>
+* <sys/ipc.h>
+* <sys/sem.h>
+
+`semget`
+* Create or get access to semaphore
+* Does not modify semaphore
+* Returnes semaphore descriptor or -1 if error
+
+semget(KEY, AMOUNT, FLAG)
+* KEY: Unique semaphore identifier
+* AMOUNT: How many semaphores
+* FLAGS: INcludes permissions, combine bitwise
+
 ## Monday, 12/04 Memes by Anthony Hom
 **Tech News**: [Go Oreo ... Towards the Androids](https://www.digit.in/mobile-phones/android-oreo-go-announced-will-come-with-lightweight-apps-and-data-saving-features-for-low-end-phone-38482.html)
 
