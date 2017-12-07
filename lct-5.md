@@ -13,8 +13,10 @@
                unsigned short  *array;  /* Array for GETALL, SETALL */
                struct seminfo  *__buf;  /* Buffer for IPC_INFO
                                            (Linux-specific) */
-           }; */
+           }; 
+	   */
 ```
+* adsvnagvasv
 <hr>
 
 ## Tuesday 12/5 How do we flag down a resource? by Judy Liu
