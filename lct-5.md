@@ -6,17 +6,31 @@
 * This function takes in 3 or 4 arguments depending on the cmd
 * The fourth argument is a type union semun
 * The calling program must define this union as followed
-	```/*
-	union semun {
+```
+/*union semun {
                int              val;    /* Value for SETVAL */
                struct semid_ds *buf;    /* Buffer for IPC_STAT, IPC_SET */
                unsigned short  *array;  /* Array for GETALL, SETALL */
                struct seminfo  *__buf;  /* Buffer for IPC_INFO
                                            (Linux-specific) */
-           }; 
-	   */
+           };
+*/
 ```
-* adsvnagvasv
+* What is a union?
+	* A c structure designed to hold only one value at a time from a group of potential values
+	* the size of a union is just large enough to hold the largest piece of data it could potentially hold
+**semop**
+* semop ( <DESCRIPTOR> , <OPERATION> , <AMOUNT>)
+	* Descriptor : the return value of semget
+	* Operation : a pointer to a struct sembuf
+		* Sembuf contains the following members
+			* unsigned short sem_num ; // semaphore number
+			* short sem_op; //semaphore operation
+			* short sem_flg; // operation flags
+				* SEM_UNDO : allow to OS to undo the given operation. Useful in the even that a program exits before it could release a semaphore 
+				* IPC_NOWAIT : instead of waiting for the semaphore to be available return an error
+	* Amount : how many semaphores is the operation being done on
+
 <hr>
 
 ## Tuesday 12/5 How do we flag down a resource? by Judy Liu
