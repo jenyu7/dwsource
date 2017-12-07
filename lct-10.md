@@ -24,6 +24,7 @@
    * Pseudocode: ```while(s==0){block} s--```
 
 **When using semaphores in a file, include: ```<sys/types.h>, <sys/ipc.h>, <sys/sem.h>```.**
+
 ```semget(<KEY>, <AMOUNT>, <FLAGS>)```
   * Create/get access to a semaphore, **does not modify!**
   * **Returns a semaphore descriptor or -1 (errno)**
