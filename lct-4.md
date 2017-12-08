@@ -30,8 +30,9 @@ union semun {
 * perform an atomic semaphore operation
 * you can up/down a semaphore by any integer value, not just 1
 * `semop( <DESCRIPTOR>, <OPERATION>, <AMOUNT>)`
-* `amount`: the amount of semaphores you want to operate on in the semaphore set
-* `operation`: a pointer to a struct sembuf
+* `<DESCRIPTOR>`: what's returned from semget
+* `<AMOUNT>`: the amount of semaphores you want to operate on in the semaphore set
+* `<OPERATION>`: a pointer to a struct sembuf
 
 
 #### struct sembuf
