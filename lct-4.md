@@ -13,6 +13,7 @@ Don't forget, each new post should go above the one before. If you are late in p
     * type `union semun`
         * you have to declare this union in your main c file on linux machines
         * union: structure designed to hold only one value at a time from a group of potential values
+			* unlike a struct in which all values are held at the same time
 			* i.e. (for the homework assignment due today) it only holds the int value
 
 #### union semun
