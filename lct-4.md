@@ -7,7 +7,7 @@ Don't forget, each new post should go above the one before. If you are late in p
 ### More Semaphore Methods!
 
 #### semctl
-* function description on website under [Work14](http://www.stuycs.org/courses/mks65/dw/work/work14getsemcontrol)
+* function description on website under [Work 14](http://www.stuycs.org/courses/mks65/dw/work/work14getsemcontrol)
 * `<DATA>` argument
     * variable for setting/storing semaphore metadata
     * type `union semun`
