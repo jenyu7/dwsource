@@ -1,3 +1,59 @@
+## Thursday, 12/07 What's A Semaphore? To Control Resources! by Jackie Xu
+
+**Interesting Tech News:** [Facebook Usage Among Teens Set to Drop in U.S.](https://www.bloomberg.com/news/articles/2017-08-21/facebook-usage-among-teens-set-to-drop-in-u-s-emarketer-says)
+
+Don't forget, each new post should go above the one before. If you are late in posting, please put yours in the correct position.
+
+### More Semaphore Methods!
+
+#### semctl
+* function description on website under [Work14](http://www.stuycs.org/courses/mks65/dw/work/work14getsemcontrol)
+* `<DATA>` argument
+    * variable for setting/storing semaphore metadata
+    * type `union semun`
+        * you have to declare this union in your main c file on linux machines
+        * union: structure designed to hold only one value at a time from a group of potential values
+			* i.e. (for the homework assignment due today) it only holds the int value
+
+#### union semun
+```C
+union semun {
+    int val;
+    struct semid_ds *bug;
+    unsigned short *array;
+    struct seminfo *__buf;
+};
+```
+
+#### semop
+* perform an atomic semaphore operation
+* you can up/down a semaphore by any integer value, not just 1
+* `semop( <DESCRIPTOR>, <OPERATION>, <AMOUNT>)`
+* `amount`: the amount of semaphores you want to operate on in the semaphore set
+* `operation`: a pointer to a struct sembuf
+
+
+#### struct sembuf
+```C
+struct sembuf {
+    short sem_op;
+    short sem_num;
+    short sem_flag;
+}
+```
+
+* sem_num: index of semaphor you want to work on
+* sem_op:
+    * down(s): any negative number
+    * up(s): any positive number
+    * 0: block until semaphore reaches 0
+* sem_flag:
+    * SEM_UNDO: allow the OS to undo the given operation. userful in the event that a program exits before it could release a semaphore (basically you should always include this)
+    * IPC_NOWAIT: instead of waiting for the seamphore to be available, return to err
+
+
+---
+
 ## Tuesday, 12/05 Semaphores by Max Chan
 
 **Tech News**:  [How the Bot Stole Christmas](https://www.nytimes.com/2017/12/06/business/bots-shopping-christmas-holidays.html?rref=collection%2Fsectioncollection%2Ftechnology&action=click&contentCollection=technology&region=stream&module=stream_unit&version=latest&contentPlacement=2&pgtype=sectionfront)
