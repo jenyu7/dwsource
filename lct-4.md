@@ -1,3 +1,38 @@
+## Monday, 12/11 Creating a handshake agreement by William Hong
+
+**Tech news:** [Meet the new boss, same as the old boss](https://www.wsj.com/articles/meet-your-new-boss-an-algorithm-1512910800)
+
+Do-Now: Consider a program that uses pipes in order to communicate between 2 separate executable files. One file is a "server" that is always running. The other is a "client." Design a process by which both files can connect to each other and verify that each can send and receive data. Try to keep it as simple as possible
+
+#### Handshake: 
+A procedure to ensure that a connection has been established between 2 programs. Both ends of the connection must verify that they can send and receive data to and from each other
+
+#### 3 way handshake setup
+1) Client sends a message to the server
+2) Server sends a response to the client
+3) Client sends a response back to the server
+^ Useful for handling inter process communications with multiple processes that keep sending data back and forth
+
+#### Basic server/client design pattern: 
+* A) Setup: 
+  * 1) Server creates a FIFO (Well Known Pipe) and waits for a connection
+  * 2) Client creates a “private” FIFO, but it won’t starting listening just yet
+* B) Handshake: 
+	* 1) Client connects to server (WKP) and sends the private FIFO name(tells server how to connect and verifies that 		client sent the data)
+ 	* 2) Client waits for a response from the server
+  	* 3) Server receives client’s message and removes the WKP (everyone knows the name of the WKP, which if messed with 		 can disrupt flow of processes; WKP is security concern)
+	* 4) Client receives server’s message, removes its private FIFO
+	* 5) Client sends response to server
+* C) Operation
+	* 1) Server and client send info back and forth
+* D) Reset
+  * 1) Client exits, server closes any connections to the client
+  * 2) Server recreates the WKP and waits for another client
+
+Note that shared memory size is limited and what data we can put into shared memory is also limited; a pipe is more ideal for this kind of pattern
+
+---
+
 ## Thursday, 12/07 What's A Semaphore? To Control Resources! by Jackie Xu
 
 **Interesting Tech News:** [Facebook Usage Among Teens Set to Drop in U.S.](https://www.bloomberg.com/news/articles/2017-08-21/facebook-usage-among-teens-set-to-drop-in-u-s-emarketer-says)
