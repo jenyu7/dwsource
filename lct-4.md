@@ -8,10 +8,10 @@ Do-Now: Consider a program that uses pipes in order to communicate between 2 sep
 A procedure to ensure that a connection has been established between 2 programs. Both ends of the connection must verify that they can send and receive data to and from each other
 
 #### 3 way handshake setup
+This is useful for handling inter-process communications that keep sending data back and forth
 1) Client sends a message to the server
 2) Server sends a response to the client
 3) Client sends a response back to the server
-^ Useful for handling inter process communications with multiple processes that keep sending data back and forth
 
 #### Basic server/client design pattern: 
 * A) Setup: 
