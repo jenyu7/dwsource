@@ -1,3 +1,24 @@
+## Monday 12/11 Creating a handshake agreement by Dmytro Hvirtsman
+**Tech News**[Airbnb plans to start giving virtual tours of apartments](https://www.theverge.com/2017/12/11/16762046/airbnb-virtual-reality-previews-listings)
+
+*Handshake: a procedure that establishes a connection between two programs
+Basic Client/Server design pattern
+* 1. Setup
+	* Server creates a FIFO and waits for a connection (well known pipe)
+	* Client creates a "Private FIFO"
+* 2. Handshake
+	* Client connects to server and sends a private FiFO name and waits for the servers response
+	* Server recieves client message and removes Well Known Pipe
+	* Server connects to client FIFO, sending an acknowledgement message
+	* Client recieves message and removes private FIFO
+	* Client sends response
+* 3. Operation
+	* Client and Server exchange data 
+* 4. Reset
+	* Client exits, server closes the connection
+	* Server recreates Well Known Pipe
+
+
 ## Thursday 12/7 What's a semaphore? -- To Control Resources! by Haoyu Chen
 **Tech News** [Next year’s Android phones will be able to capture 4K HDR video](https://www.theverge.com/2017/12/6/16742600/qualcomm-snapdragon-845-processor-4k-hdr-video-2019)
 
