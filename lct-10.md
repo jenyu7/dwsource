@@ -1,3 +1,80 @@
+## Monday, 12/11 | Server and Client - Handshaking by Adris Jautakas
+
+**Interesting Tech News:** [Apple Said to Be Acquiring Shazam, the Song Identifying App](https://www.nytimes.com/2017/12/08/business/media/apple-shazam.html?rref=collection%2Fsectioncollection%2Ftechnology&action=click&contentCollection=technology&region=stream&module=stream_unit&version=latest&contentPlacement=5&pgtype=sectionfront)
+
+Greetings humans.
+
+I hope you're ready for this.
+
+We're talking about servers and clients.
+
+### BY ALL THAT IS HOLY, WHAT IS A SERVER AND A CLIENT
+
+Oh young child, I shall show you the way.
+
+A **Server** is a process that is constantly running.
+
+A **Client** is a process that connects to a server.
+
+Servers and clients send and receive information between each other.
+
+You're probably all familiar with what a multiplayer game is.
+
+If not, get out of my sight.
+
+Each player has its own client that connects to a server. The server sends data back to the clients
+to let the players see each other and the client sends info to the server so that the players
+can actually move in the game.
+
+In order to start a server-client connection, the server and client must verify that they can both
+send and receive information properly
+
+### INFORMATION YOU SAY??? HOW IN GODS NAME DO THEY SEND THAT
+
+Hush, I'm internally falling asleep and require that you be quit.
+
+There must be two FIFO pipes that allow a server to send info to the client and vice versa.
+
+### HOW ARE PIPES SET UP WHAT IS ANYTHING HALP
+
+Turn off your caps lock please.
+
+It all starts with the server creating a public FIFO pipe. This pipe
+can have any name, and can be accessed by anyone.
+
+The server creates the pipe and waits for the client to connect.
+
+Once the client connects, the client creates its own FIFO pipe with
+a "private" (hard to guess) name, that can connect to the server.
+
+You must try and make the client pipe have some kind of cryptic fancy name that no
+hacker can guess, to try in vain to make it secure.
+
+### BUT HOW OH HOW DO THEY VERIFY THAT THEY CAN SEND AND RECEIVE INFORMATION
+
+Calm yourself. There is much to learn.
+
+This is done using a fantabulous process kown as the ~ * **_SERVER-CLIENT H A N D S H A K E_** * ~ .
+
+Both the server and the client must verify that they are able to safely send and receive information.
+They must communicate with each other to make this work.
+
+The H A N D S H A K E follows four simple steps:
+
+1) Set up a server and client pipe
+2) Client sends info to Server, including the name of the client's secret pipe
+3) Server receives Client's FIFO pipe, and tries to send data back to the Client.
+	This information should be the same information that the Client sent to the Server (the name of the secret pipe).
+4) Client receives Server information, checks to see if the received data is correct
+5) Client then sends the data back to the Server, so the Server can verify that it is able to send data successfully.
+
+With these steps, the Client and Server can verify that they can both send and receive data correctly.
+
+Isn't that absolutely the dandiest thing you've ever heard?
+
+Now if you excuse me I'll try to find another way to escape from this grueling reality.
+
+
 ## Thursday, 12/07 | What's a semaphore? - To control resources by Marcus Ng
 
 **Interesting Tech News:** [Instagram Standalone App For Direct Messaging](https://techcrunch.com/2017/12/07/instagram-is-testing-a-standalone-app-for-direct-messaging/)
