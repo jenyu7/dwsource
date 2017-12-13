@@ -1,6 +1,6 @@
 ## Monday, 12/11 Creating a handshake agreement by William Hong
 
-**Tech news:** [Meet the new boss, same as the old boss](https://www.wsj.com/articles/meet-your-new-boss-an-algorithm-1512910800)
+**Tech news:** [All abord the Tesla bandwagon](https://www.investopedia.com/news/teslas-selfdriving-truck-sees-early-success/)
 
 Do-Now: Consider a program that uses pipes in order to communicate between 2 separate executable files. One file is a "server" that is always running. The other is a "client." Design a process by which both files can connect to each other and verify that each can send and receive data. Try to keep it as simple as possible
 
