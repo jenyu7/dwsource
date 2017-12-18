@@ -10,15 +10,19 @@
 
 #### Forking Server/Client Design Pattern
 * Handshake
-  1. Client connects to server and sends the private FIFO name. Client waits for a response from the server.
-  2. Server receives client’s message and forks off a subserver
-  3. Subserver connects to client FIFO, sending an initial acknowledgement message
-  4. Client receives subserver’s message, removes its private FIFO
+  1) Client connects to server and sends the private FIFO name. Client waits for a response from the server.
+  2) Server receives client’s message and forks off a subserver
+  3) Subserver connects to client FIFO, sending an initial acknowledgement message
+  4) Client receives subserver’s message, removes its private FIFO
 
 * Operation
-  1. Server removes WKP and closes any connections to the client
-  2. Server recreates WKP and waits for a new connection
-  3. Subserver (wkp) and client (pp) send information back and forth
+  1) Server removes WKP and closes any connections to the client
+  2) Server recreates WKP and waits for a new connection
+  3) Subserver (wkp) and client (pp) send information back and forth
+
+* Pros and Cons
+  * Simple way to handle multiple clients at once
+  * Downside is a lack of communication among clients and subservers (which may not be necessary)
 
 
 ---
