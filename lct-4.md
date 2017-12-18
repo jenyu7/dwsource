@@ -1,10 +1,36 @@
+## Monday, 12/18 Always tip your servers by Jerome Freudenberg
+
+**Tech news:** [Twitter cracks down on hate](https://www.washingtonpost.com/news/the-switch/wp/2017/12/18/twitter-purge-suspends-account-of-far-right-leader-who-was-retweeted-by-trump/?utm_term=.56ee6be9cd9b)
+
+#### Homework Tips
+* You can pass variable (ACK) to confirm connections between server and client
+  * a more robust method would be to pass an integer and perform an operation on it
+* Put the server in a forever loop and then place a while loop inside that runs until the client exits
+  * Since the pipe is not removed, use sighandler to remove it then exits
+
+#### Forking Server/Client Design Pattern
+* Handshake
+  1. Client connects to server and sends the private FIFO name. Client waits for a response from the server.
+  2. Server receives client’s message and forks off a subserver
+  3. Subserver connects to client FIFO, sending an initial acknowledgement message
+  4. Client receives subserver’s message, removes its private FIFO
+
+* Operation
+  1. Server removes WKP and closes any connections to the client
+  2. Server recreates WKP and waits for a new connection
+  3. Subserver (wkp) and client (pp) send information back and forth
+
+
+---
+
+
 ## Monday, 12/11 Creating a handshake agreement by William Hong
 
 **Tech news:** [All abord the Tesla bandwagon](https://www.investopedia.com/news/teslas-selfdriving-truck-sees-early-success/)
 
 Do-Now: Consider a program that uses pipes in order to communicate between 2 separate executable files. One file is a "server" that is always running. The other is a "client." Design a process by which both files can connect to each other and verify that each can send and receive data. Try to keep it as simple as possible
 
-#### Handshake: 
+#### Handshake:
 A procedure to ensure that a connection has been established between 2 programs. Both ends of the connection must verify that they can send and receive data to and from each other
 
 #### 3 way handshake setup
@@ -13,11 +39,11 @@ This is useful for handling inter-process communications that keep sending data 
 2) Server sends a response to the client
 3) Client sends a response back to the server
 
-#### Basic server/client design pattern: 
-* A) Setup: 
+#### Basic server/client design pattern:
+* A) Setup:
   * 1) Server creates a FIFO (Well Known Pipe) and waits for a connection
   * 2) Client creates a “private” FIFO, but it won’t starting listening just yet
-* B) Handshake: 
+* B) Handshake:
 	* 1) Client connects to server (WKP) and sends the private FIFO name(tells server how to connect and verifies that 		client sent the data)
  	* 2) Client waits for a response from the server
   	* 3) Server receives client’s message and removes the WKP (everyone knows the name of the WKP, which if messed with 		 can disrupt flow of processes; WKP is security concern)
@@ -141,7 +167,7 @@ semget(KEY, AMOUNT, FLAG)
 
 **Yes, another tech news**: [Texting 911 Efficiency for Minnesota](http://m.startribune.com/text-to-911-is-minnesota-s-new-emergency-texting-service/462075943/?section=local)
 
-We continued talking about how we can manipulate shared memory for class. 
+We continued talking about how we can manipulate shared memory for class.
 
 ### shmdt
 * Detach a variable from a shared memory segment
@@ -152,7 +178,7 @@ shmdt (pointer)
 ```
 * The `pointer` is the address used to access the segment
 
-### shmctl 
+### shmctl
 * Performs operations on the shared memory segment
 
 * Each shared memory segment has metadata that can be stored in a struct (struct shmid_ds)
@@ -164,13 +190,13 @@ shmctl (descriptor, command, buffer)
 ```
 
 * The descriptor returns the value of shmget
-* The commands: 
+* The commands:
 
 `IPC-RMID`: Removes a shared memory segment
 
 `IPC-STAT`: Populates the buffer (struct shmid_ds*) with segment metadata
 
-`IPC-SET`: Sets some of the segment metadata from the buffer. 
+`IPC-SET`: Sets some of the segment metadata from the buffer.
 
 ---
 
@@ -252,7 +278,7 @@ Useful when using header files and there are multiple functions with the same na
 <CODE>
 #endif
 ```
-If the identifier has been defined, ignore all the code up until the endif statement. 
+If the identifier has been defined, ignore all the code up until the endif statement.
 
 For example:
 ```c
@@ -277,13 +303,13 @@ int count_tokens ...
 * `>` - Redirects stdout to a file
 	* Overwrites the contents of the file
 	* `<COMMAND> > <FILE>`
-	* Ex. 
+	* Ex.
 		```
 		ps > ps_file
 		cat ps_file
 		```
 		Now ps is in ps_file
-	* Ex2. `ls > file_list` 
+	* Ex2. `ls > file_list`
 	* `cat` - Take this and send it to stdout
 		* "cat" without the filename prints stdin to stdout
 			* When you type something and hit enter, the next line will "echo" what you just typed
@@ -438,13 +464,13 @@ if (fork() == 0) {
 
 
 	int i = 302; //in little-endian, bytes are represented as [46|1|0|0]
-    
+
 ### waitpid - <unistd.h>
 * waits for a specific child
 
 
 	waitpid (pid, status, options)
-    
+
 * pid - give the PID of the specific child to look for, or -1 to wait for any child
 * options - give options that can set other behaviors for wait, or 0 to work normally
 
@@ -467,13 +493,13 @@ if (fork() == 0) {
 int main() {
 
     pid_t  pid;
-	
+
 	pid = fork();
     fork();
-	
+
 	printf("pid: %d\t f: %d\t  parent: %d\n", getpid(), pid, getppid());
     return 0;
-	
+
 }
 ```
 #### output (without sleep)
@@ -489,17 +515,17 @@ pid: 35156	 f: 35157	  parent: 34152
 int main() {
 
     pid_t  pid;
-	
+
 	pid = fork();
     fork();
-	
+
     if (pid != 0) {
         sleep(1);
     }
-	
+
 	printf("pid: %d\t f: %d\t  parent: %d\n", getpid(), pid, getppid());
     return 0;
-	
+
 }
 ```
 #### output (with sleep)
@@ -546,19 +572,19 @@ In today's class we learned:
 #include <string.h>
 
 int main() {
-    
+
     char *str;
     char *tmp;
-    
+
     strcpy(str, "these are words,\tnot whitespace");
     printf("original:\t%s\nparts:\n", str);
 
     while ((tmp = strsep(&str, " \t"))) { // note 1-2
       printf("> %s\n", tmp);
     }
-    
+
     return 0;
-    
+
 }
 ```
 #### output
@@ -594,11 +620,11 @@ int main() {
     if (pid == 0) {
         printf("I'm the CHILD and my <PID> is: %d\n", getpid());
     }
-    
-    else { 
+
+    else {
         printf("I'm now the PARENT and my <PID> is still: %d\n", getpid());
     }
-    
+
     return 0;
 }
 ```
@@ -630,7 +656,7 @@ Your original processes (a.out or however you named it) is replaced by a new one
 `int execlp(const char *file, const char *arg, ...);` is a function that terminates the current process and spawns a new one. The name of this new one is sprovided by the frist arugment <file>, which is searched for in the path as if typed into a terminal. The remaining arugments, fed as a list, specificy the arguments (argv) passed to that new process, with argv[0] always set to the name of the process.
 `int execvp(const char *file, char *const argv[]);` is an alternative function in which the arguments are passed in a vector (array) as opposed to a list; it is often the more convenient notation.
 Both are found in `<unistd.h>`.
-	
+
 #### Examples
 ```c
 #include <unistd.h>
@@ -647,7 +673,7 @@ int main() {
 	args[1] = "-a";
 	args[2] = "/";
 	args[3] = NULL;
-	
+
 	execvp(args[0], args);
 }
 
@@ -672,7 +698,7 @@ Each of the 32 signals is represented by an int from 1-32
 #### Sending signals from the terminal
 `$ kill -<signal_int> <PID>` is a command line utility that allows you to sends the signal with flag <signal_int> to the process with the given PID. If you don't include an argument for the flag of the signal you want to send, the command will send a SIGTERM signal by default.
 
-`$ killall [-<signal int>] <program_name>` sends the signal with flag <signal_int> to all programs with the name <program_name> 
+`$ killall [-<signal int>] <program_name>` sends the signal with flag <signal_int> to all programs with the name <program_name>
 
 #### Catching and Sending Signals from a C function
 `kill(PID, signal_int)` is the function form of the terminal kill command. Returns 0 when it's successful and -1 (errno) when it fails.
@@ -770,7 +796,7 @@ A processor can handle 1 process per cycle (per core)
 - Every entry in the /proc directory is a current pid
 
 `$ ps`
-lists running processes 
+lists running processes
 (that you own, that are attached to terminal)
 
 `$ ps -a`
@@ -797,8 +823,8 @@ We started off class by going over the two previous homeworks, stat and dirinfo.
 We then discussed different ways of getting input:
 
 **Command Line Argument**
-* `int main (int argc, char *argv[])` 
-* program name is considered the first command line argument: `argv[0]` 
+* `int main (int argc, char *argv[])`
+* program name is considered the first command line argument: `argv[0]`
 * argc: # of command line arguments
 * argv: array of command line arguments
 
