@@ -1,3 +1,19 @@
+## Monday, 12/18 Always tip your servers by Ashneel Das
+**Tech News** [Google uses light beams to connect rural India to the internet](https://techcrunch.com/2017/12/15/google-is-using-light-beam-tech-to-connect-rural-india-to-the-internet/)
+
+In our most recent assignment, we created a server that could accommodate for one client. 
+To have more than one client, we need to fork. 
+* Handshake
+  1. (Same as before) Client connects to server and sends the private FIFO name. Client waits for a response. 
+  2. Server receives client's message and forks off a subserver. 
+  3. Server closes and removes the WKP. 
+  4. Subserver connects to client FIFO, sending an initial acknowledgment message. 
+
+* Operation
+  1. Server removes connections to WKP. 
+  2. Server recreates WKP and waits for new connections. 
+
+  Only the server needs to be modified! Not the client. 
 ## Monday 12/11 Creating a handshake agreement by Dmytro Hvirtsman
 **Tech News**[Airbnb plans to start giving virtual tours of apartments](https://www.theverge.com/2017/12/11/16762046/airbnb-virtual-reality-previews-listings)
 
