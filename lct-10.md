@@ -1,6 +1,6 @@
 ## Monday, 12/18 | Fork off, subservers! by Peter Lee
 
-**Interesting Tech News:** [Google Maps will now alert you when it’s time to get off the bus or subway](https://www.theverge.com/2017/12/15/16763340/google-maps-train-bus-stop-transfer-alerts)
+**Interesting Tech News:** [US declares North Korea the culprit behind devastating WannaCry ransomware attack](https://www.theverge.com/2017/12/18/16793532/us-north-korea-wannacry-ransomware-cyberattack-trump-admin)
 
 We already learned how to establish a connection between programs via the FIFO by completing Work 16. It's time to expand on our server-client design and allow for multiple clients to connect!
 
