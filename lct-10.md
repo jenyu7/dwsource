@@ -1,3 +1,31 @@
+## Monday, 12/18 | Fork off, subservers! by Peter Lee
+
+**Interesting Tech News:** [Google Maps will now alert you when it’s time to get off the bus or subway](https://www.theverge.com/2017/12/15/16763340/google-maps-train-bus-stop-transfer-alerts)
+
+We already learned how to establish a connection between programs via the FIFO by completing Work 16. It's time to expand on our server-client design and allow for multiple clients to connect!
+
+### Why?
+A server where only one client can connect at a given time isn't too useful. 
+We're going to have to implement a bit more code to enable multiple clients to connect to our server at once. 
+
+### How?
+We modify our handshake!
+<ol>
+	<li> Client connects to server and sends the private FIFO name. Client waits for a response from the server. </li>
+	<li> Server receives clients message and <strong>forks off a subserver</strong>. The subserver will have a connection 		   to the WKP. </li> 
+	<li> Server closes and removes the WKP. This does not affect the subserver's connection! </li>
+	<li> Subserver connects to client FIFO, sending an initial acknowledgement message. </li>
+	<li> Client receives subservers message, removes its private FIFO. </li>
+	<li> Client sends response to subserver. </li>
+	<li> Job done! </li>
+</ol>
+We Operate!
+<ol>
+	<li> Server recreates WKP and waits for a new connection. </li>
+	<li> Subserver and client send information back and forth. </li> 
+</ol>
+
+
 ## Monday, 12/11 | Server and Client - Handshaking by Adris Jautakas
 
 **Interesting Tech News:** [Apple Said to Be Acquiring Shazam, the Song Identifying App](https://www.nytimes.com/2017/12/08/business/media/apple-shazam.html?rref=collection%2Fsectioncollection%2Ftechnology&action=click&contentCollection=technology&region=stream&module=stream_unit&version=latest&contentPlacement=5&pgtype=sectionfront)
