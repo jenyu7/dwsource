@@ -1,5 +1,8 @@
 ## Tuesday, 2018-01-02 Socket to Me by Gian Tricarico
 
+I decided to mix it up a little bit and put the tech news at the bottom 'cause
+that's what it says to do on the website anyway.
+
 Today we began learning the basic concepts of networking. We will be moving on
 to the coding part shortly and then we will go back to learn more about
 conceptual networking stuff, as we young Padawans have much to learn.
@@ -75,6 +78,8 @@ help explain why IPv4 is still the standard for the internet and the transition
 to IPv6 is proceeding quite slowly.
 
 **Tech News:** [Iran blocks messaging app Telegram used by protesters](https://www.usatoday.com/story/tech/2018/01/02/iran-blocks-messaging-app-used-protesters-share-info-demonstrations/998445001/)
+
+<hr>
 
 ## Monday, 12/18 Always tip your servers by Ashneel Das
 **Tech News** [Google uses light beams to connect rural India to the internet](https://techcrunch.com/2017/12/15/google-is-using-light-beam-tech-to-connect-rural-india-to-the-internet/)
