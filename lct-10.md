@@ -1,3 +1,52 @@
+## Monday, 1/2 How the networks by Brian Lim
+
+**Interesting tech news:** [Big tech announcements expected in the upcoming Consumer Electronics Show](http://www.techradar.com/news/ces-2018)
+
+### Sockets
+
+A socket is a connection between 2 programs over a network. Each corresponds to an IP address / port pair. When using sockets, one program waits for a connection while the other initiates a connection.
+
+How to use sockets:
+* create the socket
+* bind it to an IP / port pair
+* wait for / initiate a connection, depending on which end the program is dealing with
+* receive / send data
+
+### IP Addresses
+
+Whenever a device connects to the internet, it must get a unique IP address. Much like email addresses, the IP address is used to identify the device when it wants to communicate to the outside. When the device disconnects from the internet, the IP address is no longer needed and may be released for another device to use.
+
+IP addresses are allocated in blocks to make routing easier.
+
+Two types of addresses are used:
+
+**IPv4**
+* standard protocol
+* 2^32 or ~4 billion addresses possible
+* represented as 4 octets, each one byte represented as a number from 0 to 255, separated by dots
+	* ex: 123.4.567.8
+
+**IPv6**
+* newer, fancier protocol
+* 2^128 or ~10^38 addresses possible
+* represented as 8 hextets, each 2 bytes represented as a hexadecimal from 0 to ffff with leading 0s ignored, separated by colons
+	* ex: 1:123:90:ffa2:42:ffff:332:1
+* a single string of consecutive zero hextets can be replaced by ::
+	* ex: 1:80::2
+* can represent IPv4 addresses as 5 zero hextets, 1 ffff hextet, followed by the IPv4 address representation
+	* ex: ::ffff:149.89.150.100
+
+**Special addresses**
+127.0.0.1
+* the localhost or loopback address
+* refers to the local device
+192.168.###.###
+* refers to other devices in the private network
+192.168.1.1
+* usually refers to the router
+
+---
+
 ## Monday, 12/18 | Fork off, subservers! by Peter Lee
 
 **Interesting Tech News:** [US declares North Korea the culprit behind devastating WannaCry ransomware attack](https://www.theverge.com/2017/12/18/16793532/us-north-korea-wannacry-ransomware-cyberattack-trump-admin)
