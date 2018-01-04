@@ -1,4 +1,46 @@
-## Monday, 1/2 How the networks by Brian Lim
+## Wednesday, 01/03 | Socket it to me by Kristin Lin
+
+**Interesting tech news:** [Fooling AIs with Stickers](https://www.theverge.com/2018/1/3/16844842/ai-computer-vision-trick-adversarial-patches-google)
+
+***Why haven't we switched to IPv6?***             
+The system for IPv4 is incompatible with IPv6. While many computers can support both IPv4 and IPv6, it's the Internet providers that prevent us from making the switch. They will have update their infrastructure, which takes both money and time. Companies like Google, who are interested in more IP addresses (more users), are urging current users to voice their concern to their providers.
+
+*Sockets are analagous to named pipes. Instead of names, they require ports.*
+### Network Ports ###
+- If *sockets* were APARTMENT BUILDINGS,                          
+the *IP address* would be the FRONT DOOR,                               
+and the *port* would be each unique APARTMENT.                        
+
+- There are 2^16 ports in your computer, or 65, 536 possible connections to programs.
+
+- ONLY RULE: You can't use one port for two different programs. No conflicts.
+
+###### RESERVED PORTS ######
+Ports 1024 and under are officially reserved and should not be used.
+- 80 : http                  
+- 22 : ssh                     
+- 443 : ssl                   
+- [more](https://en.wikipedia.org/wiki/List_of_TCP_and_UDP_port_numbers)
+
+You can register your port officially with the IANA (Internet Assigned Numbers Authority).
+
+### Network Connection Types ###
+STREAM SOCKET                     
+**TCP: Transmission Control Protocol**                
+- reliable two-way communication                 
+- must be connected on both ends                  
+- data is received in the order it is sent (not as easy as it sounds)
+
+DATAGRAM SOCKET              
+**UDP: User Datagram Protocol**                
+- "connectionless"--an established connnection is not required.                
+- Data sent might be received out of order or not at all *(because data is sent in packets and may not take the same route; therefore arriving in a different order)*         
+- Advantage of being much faster because no need to package everything together                
+- Used in games and streaming media
+
+---
+
+## Tuesday, 1/2 How the networks by Brian Lim
 
 **Interesting tech news:** [Big tech announcements expected in the upcoming Consumer Electronics Show](http://www.techradar.com/news/ces-2018)
 
