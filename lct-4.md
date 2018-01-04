@@ -1,3 +1,35 @@
+## Wednesday, 1/3 Socket to Me by Sonal Parab
+
+**Tech News:** [Amazon Patents Blended Reality Mirror for Virtual Dress-Up](https://www.geekwire.com/2018/amazon-patents-blended-reality-mirror-shows-wearing-virtual-clothes-virtual-locales/)
+
+### Network Ports  
+Allow a single computer to run multiple services.  
+* A socket combines an IP address and port.  
+  
+Each computer has 2^16 (65,536) ports.   
+Some ports are reserved for specific services.
+* 80: http  
+* 22: ssh  
+* 443: ssl
+
+You can select any port, as long as it won't conflict with a service running on the desired computer.   
+* ports < 1024 are reserved and should generally not be used
+* `/etc/services` will have a list of registered ports for your local system
+
+### Network Connection Types
+
+#### Stream Sockets  
+* Reliable 2 way communication.  
+* Must be connected on both ends.  
+* Data is received in the order it is sent. (not as easily done as it sounds)  
+* Most use the Transmission Control Protocol (TCP).  
+
+#### Datagram Sockets  
+* "Connectionless" - an established connection is not required.  
+* Data sent may be received out of order (or not at all).  
+* Uses the User Datagram Protocol.    
+
+---
 ## Tuesday, 1.2.18: Socket to Me, by Ida Wang
 
 **Tech News:** [Gaming addiction classified as disorder by WHO](http://www.bbc.com/news/technology-42541404)
