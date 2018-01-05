@@ -1,3 +1,38 @@
+## Wednesday, 1/3 Socket To Me (continued) by Anish Shenoy
+**Tech News** [Major Vulnerability Discovered in Processors](https://techcrunch.com/2018/01/03/a-major-kernel-vulnerability-is-going-to-slow-down-all-intel-processors-2/)
+
+We picked up where we left off and continued to learn about networking. 
+
+### Network Ports
+
+* Allows a single computer to run multiple services
+* Each computer has 2^16 (65,536) ports
+* Some common reserved ports:
+  * 80: http
+  * 22: ssh
+  * 443: ssl
+* When slecting a port for your program, you can select any port as long as it doesn't conflict with a service running on the desired computer
+* General Rules:
+  * Ports under 1024 should'nt be used because they are reserved for the system
+  * [This](https://en.wikipedia.org/wiki/List_of_TCP_and_UDP_port_numbers) link shows a list of ports used by programs
+
+### Network Connection Types
+
+  #### Stream Sockets:
+  * Reliable 2-way communication
+  * Must be connected on both ends
+  * Data is recieved in the order it is sent (harder than it sounds)
+  * Most use the Transmission Control Protocol (TCP)
+	
+  #### Datagram Sockets: 
+		
+  * "Connectionless" - an estblished connection is not required
+  * Data sent may be recieved out of order (or not at all)
+  * Most use the User Datagram Protocol (UDP)
+  * Commonly used by video streaming services, video games, and other applications where speed is important.
+  
+<hr>
+
 ## Tuesday, 2018-01-02 Socket to Me by Gian Tricarico
 
 I decided to mix it up a little bit and put the tech news at the bottom 'cause
