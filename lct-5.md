@@ -18,18 +18,17 @@ We picked up where we left off and continued to learn about networking.
 
 ### Network Connection Types
 
-  #### Stream Sockets:
-  * Reliable 2-way communication
-  * Must be connected on both ends
-  * Data is recieved in the order it is sent (harder than it sounds)
-  * Most use the Transmission Control Protocol (TCP)
+  * #### Stream Sockets:
+    * Reliable 2-way communication
+    * Must be connected on both ends
+    * Data is recieved in the order it is sent (harder than it sounds)
+    * Most use the Transmission Control Protocol (TCP)
 	
-  #### Datagram Sockets: 
-		
-  * "Connectionless" - an estblished connection is not required
-  * Data sent may be recieved out of order (or not at all)
-  * Most use the User Datagram Protocol (UDP)
-  * Commonly used by video streaming services, video games, and other applications where speed is important.
+  * #### Datagram Sockets: 	
+    * "Connectionless" - an estblished connection is not required
+    * Data sent may be recieved out of order (or not at all)
+    * Most use the User Datagram Protocol (UDP)
+    * Commonly used by video streaming services, video games, and other applications where speed is important.
   
 <hr>
 
