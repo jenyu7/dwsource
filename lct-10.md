@@ -1,3 +1,113 @@
+## Friday - January 05 | Stop. Collaborate and listen by Kyle Lin
+
+**Interesting tech news:** [Intel, ARM and AMD chip scare: What you need to know](http://www.bbc.com/news/technology-42562303)
+
+###### How to use a socket:
+
+1. Create the socket
+2. Bind it to an address and port (server)
+3. Listen and accept (server) or connect (client)
+4. Send/receive data
+
+##### socket - <sys/socket.h>
+
+* Creates a socket.
+* Returns a socket descriptor (int that acts like a file descriptor).
+* socket(***domain***, ***type***, ***protocol***)
+  * ***domain***
+    * Type of address
+    * `AF_INET` or `AF_INET6` (*IPv4* or *IPv6*)
+  * ***type***
+    * `SOCK_STREAM` or `SOCK_DGRAM` (*Stream* socket or *Datagram* socket)
+  * ***protocol***
+    * Combination of domain and type settings.
+    * If set to 0, the OS will set to the correct protocol (*TCP* or *UDP*)
+  * ***example:***
+    * `int sd = socket(AF_INET, SOCK_STREAM, 0);`
+
+##### struct addrinfo
+
+System library calls use a `struct addrinfo` to represent network addresses (containing information like IP address, port, protocol...)
+
+* `struct addrinfo`
+  * `.ai_family`
+    * `AF_INET`: *IPv4*
+    * `AF_INET6`: *IPv6*
+    * `AF_UNSPEC`: *IPv4 or IPv6*
+  * `.ai_socktype` (Warm and fuzzy or 100% cotton)
+    * `SOCK_STREAM`: *Stream*
+    * `SOCK_DGRAM`: *Datagram*
+  * `.ai_flags` (Lots of them but this one is the most - most useful to us)
+    * `AI_PASSIVE`: Automatically set to any incoming address
+  * `ai_addr`
+    * Pointer to a `struct sockaddr` containing the IP address.
+    * Note: This struct does not actually add socks. If you need to stay warm, using this won't do anything.
+  * `ai_addrlen`
+    * Size of the address in bytes.
+
+##### getaddrinfo - <sys/types.h> <sys/socket.h> <netdb.h>
+
+* Lookup information about the desired network address and get one or more matching `struct addrinfo` entries.
+* getaddrinfo(***node***, ***service***, ***hints***, ***results***)
+  * ***node***
+    * String containing an IP address or hostname to lookup
+    * If `NULL`, uses the machine's local IP address.
+  * ***service***
+    * String with a port number or service name (if the service is in /etc/services)
+  * ***hints***
+    * Pointer to a `struct addrinfo` used to provide settings for the lookup (type of address, etc.)
+  * ***results***
+    * Pointer to a `struct addrinfo` that will be a linked list containing entries for each matching address.
+    * `getaddrinfo()` will allocate memory for these structs.
+
+##### Using getaddrinfo()
+
+```C
+struct addrinfo * hints, * results;
+hints = (struct addrinfo *)calloc(1, sizeof(struct addrinfo));
+hints->ai_family = AF_INET;
+hints->ai_socktype = SOCK_STREAM; // TCP Socket
+hints->ai_flags = AI_PASSIVE; // Only needed on server
+getaddrinfo(NULL, "80", hints, &results); // Server sets node to NULL
+//client: getaddrinfo("149.89.150.100", "9845", hints, &results);
+//do stuff...
+free(hints);
+freeaddrinfo(results);
+```
+
+##### bind (server only) - <sys/socket.h>
+
+* Binds the socket to an address and port.
+* Returns `0` (success) or `-1` (failure)
+* bind(***socket descriptor***, ***address***, ***address length***)
+  * ***socket descriptor***
+    * Return value of socket
+  * ***address***
+    * Pointer to a `struct sockaddr`
+  * ***address length***
+    * Size of the address in bytes
+  * ***address*** and ***address length*** can be obtained from getaddrinfo
+
+##### Using bind
+
+```C
+//Create socket
+int sd;
+sd = socket(AF_INET, SOCK_STREAM, 0);
+struct addrinfo * hints, * results;
+//use getaddrinfo, roast marshmellows, starting a campfire...
+bind(sd, results->ai_addr, results->ai_addrles);
+```
+
+##### listen (server only) - <sys/socket.h>
+
+* Sets a socket to passively await a connection.
+* Needed for stream sockets.
+* Does not **block**
+
+---
+
+
 ## Wednesday, 01/03 | Socket it to me by Kristin Lin
 
 **Interesting tech news:** [Fooling AIs with Stickers](https://www.theverge.com/2018/1/3/16844842/ai-computer-vision-trick-adversarial-patches-google)
